@@ -128,8 +128,18 @@ Deren Verwendung stellst sicher, dass alle Argumente mit korrektem Typ festgeleg
 Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initialisieren von Benutzerelemente wie beispielsweise einer \textit{Bottom Navigation} übernehmen. 
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{ContsraintLayout und SwiperefreshLayout}
+\subsubsection{ConstraintLayout und SwiperefreshLayout}
 \label{subsubsec:app:jetpack:layouts}
+Android Jetpack umfasst auch mehrere Layout Bibliotheken.
+Im Rahmen dieses Projektes wurden \textit{ConstraintLayout} und \textit{SwiperefreshLayout} verwendet.
+
+Komplexe Hierarchien in Benutzeroberflächen verringern deren Performanz bei Layoutänderungen.
+ConstraintLayouts ermöglichen das freie Platzieren von Elementen durch Einschränkungen ihrer Positionen.
+So können Entwickler simplere und effizientere Layouts implementieren.
+
+Bei mobilen Anwendungen gibts es die gängige Geste des Herunterziehens zum Aktualisieren eines Bildschirms.
+Mit Hilfe von SwiperefreshLayout ist es möglich diese Funktionalität mit wenigen Zeilen Quelltext zu bestehenden Benutzeroberflächen hinzuzufügen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{RecyclerView}
 \label{subsubsec:app:jetpack:recyclerview}
@@ -137,6 +147,7 @@ Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initi
 Anders als primitive \textit{Views} erzeugt RecyclerView nur die tatsächlich benötigten Container und verwendet diese wieder.
 Dies ist performanter als beispielsweise eine \textit{ListView}.
 Entwickler müssen Adapter verwenden um Daten an eine RecyclerView zu übergeben.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Room}
 \label{subsubsec:app:jetpack:room}
