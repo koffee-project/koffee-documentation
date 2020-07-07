@@ -60,18 +60,26 @@ Zur Maximierung der potenziellen Nutzer ist es entsprechend notwendig auch älte
 Damit Entwickler dort ebenfalls neue Funktionen verwenden können, wurden die \textit{Support Libraries}\footnote{https://developer.android.com/topic/libraries/support-library} eingeführt.
 Aus diesen entwickelten sich die \textit{Android Jetpack}\footnote{https://developer.android.com/jetpack/androidx} Bibliotheken.
 
-Ziel dieses Projektes ist die Entwicklung einer Kaffeekassen App und einer dazugehörigen Serveranwendung.
-Bei der Entwicklung der App sollen Android Jetpack Bibliotheken verwendet und mit bisherigen Methoden verglichen werden.
-
+Ziel dieses Projektes war die Entwicklung einer Kaffeekassen App und einer dazugehörigen Serveranwendung.
+Bei der Entwicklung der App sollten Android Jetpack Bibliotheken verwendet und mit bisherigen Methoden verglichen werden.
+Zuerst wurde jedoch die Serveranwendung, das sogenannte \textit{Backend}, entwickelt.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Android App}
 \label{sec:app}
 
-\subsection{Android Jetpack}
-\label{subsec:app:jetpack}
-
 \subsection{Architektur}
 \label{subsec:app:architecture}
+
+%TODO Bild
+Die App verwendet die von Google empfohlene Architektur\footnote{https://developer.android.com/jetpack/guide}.
+Fragmente, also Teile der Benutzeroberfläche, verwenden \textit{ViewModels} um Daten zu beziehen und auf \textit{Business Logic} zuzugreifen.
+ViewModels greifen auf wiederum auf \textit{Repositories} zu, die als \textit{Single source of truth} dienen.
+Das heißt der Zustand von Datenmodellen wird ausschließlich von Repositories festgelegt, wodurch inkonsistente Datenbestände vermieden werden.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Android Jetpack}
+\label{subsec:app:jetpack}
 
 \section{Serveranwendung}
 \label{sec:backend}
@@ -87,5 +95,10 @@ Bei der Entwicklung der App sollen Android Jetpack Bibliotheken verwendet und mi
 
 \section{Fazit}
 \label{sec:conclusion}
+
+%TODO italics
+Die Verwendung von Android Jetpack Bibliotheken im Zusammenspiel mit Kotlin vereinfacht die Entwicklung robuster und performanter Android Apps deutlich.
+Besonders die automatisierten Lebenszyklen von ViewModel und LiveData helfen bei der Vermeidung Leaks.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \end{document}
