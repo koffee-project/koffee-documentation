@@ -128,8 +128,34 @@ Deren Verwendung stellst sicher, dass alle Argumente mit korrektem Typ festgeleg
 Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initialisieren von Benutzerelemente wie beispielsweise einer \textit{Bottom Navigation} übernehmen. 
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
+\subsubsection{ContsraintLayout und SwiperefreshLayout}
+\label{subsubsec:app:jetpack:layouts}
+
+\subsubsection{RecyclerView}
+\label{subsubsec:app:jetpack:recyclerview}
+\textit{RecyclerViews} ermöglichen das Anzeigen von scrollbaren, dynamischen Listen.
+Anders als primitive \textit{Views} erzeugt RecyclerView nur die tatsächlich benötigten Container und verwendet diese wieder.
+Dies ist performanter als beispielsweise eine \textit{ListView}.
+Entwickler müssen Adapter verwenden um Daten an eine RecyclerView zu übergeben.
+
 \subsubsection{Room}
 \label{subsubsec:app:jetpack:room}
+Bei \textit{Room} handelt es sich um eine Abstraktionsebene für \textit{SQLite} Datenbanken.
+Es können sowohl programmatische als auch reguläre SQL Anfragen definiert werden.
+Die Hauptfunktion von Room liegt jedoch in der Möglichkeit Rückgabewerte in reaktiven Wrapper-Klassen, wie beispielsweise LiveData, zu erhalten.
+Room übernimmt in diesem Fall die Aktualisierung der Daten, wodurch es reicht Datenbankanfragen einmalig auszuführen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Paging}
+\label{subsubsec:app:jetpack:paging}
+Das Laden großer Datenmengen aus Datenbanken oder Netzwerkquellen ist ein nicht zu unterschätzender Aufwand.
+Die \textit{Paging} Bibliothek ermöglicht deshalb das Laden von kleinen Teilen größerer Datensätze.
+Dazu muss eine \textit{DataSource Factory} vorliegen, die das stückweise Laden von Daten unterstützt.
+Unter anderem ermöglicht Room solche Factories als Rückgabewerte zu erhalten.
+Factories lassen sich zu LiveData Objekten transformieren, die \textit{PagedLists} enthalten.
+Diese besonderen Listen können beispielsweise von für RecyclerView mit Hilfe eines \textit{PagedListAdapters} verwendet werden.
+Im Endeffekt können so Performanz und Speicherverbrauch verbessert werden.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Work}
 \label{subsubsec:app:jetpack:work}
