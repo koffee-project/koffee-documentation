@@ -53,7 +53,6 @@ autocite = superscript
 
 \section{Einleitung}
 \label{sec:intro}
-
 Die Entwicklung von Android Apps zeichnet sich unter anderem dadurch aus, dass die \textit{API Level}\footnote{Zum Zeitpunkt dieser Ausarbeitung existieren 29 API Level.} des \textit{Android Frameworks} zum Teil unterschiedlich behandelt werden müssen.
 Die Versionsverteilung bei Android erstreckt sich über mehrere Versionen\footnote{https://www.bidouille.org/misc/androidcharts}.
 Zur Maximierung der potenziellen Nutzer ist es entsprechend notwendig auch ältere API Level zu unterstützen.
@@ -70,7 +69,6 @@ Zuerst wurde jedoch die Serveranwendung, das sogenannte \textit{Backend}, entwic
 
 \subsection{Architektur}
 \label{subsec:app:architecture}
-
 %TODO Bild
 Die App verwendet die von Google empfohlene Architektur\footnote{https://developer.android.com/jetpack/guide}.
 Fragmente, also Teile der Benutzeroberfläche, verwenden \textit{ViewModels} um Daten zu beziehen und auf \textit{Business Logic} zuzugreifen.
@@ -80,21 +78,43 @@ Das heißt der Zustand von Datenmodellen wird ausschließlich von Repositories f
 
 \subsection{Android Jetpack}
 \label{subsec:app:jetpack}
+Im Folgenden werden die verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden\footnote{https://developer.android.com/jetpack/androidx/explorer}.
 
 \subsubsection{Core und AppCompat}
 \label{subsubsec:app:jetpack:base}
-
 Die \textit{Core} und \textit{AppCompat} Bibliotheken ermöglichen eine Verwendung von Funktionen neuer Android API Levels auf älteren Android Versionen.
 Dazu stellen sie eine Vielzahl an Hilfsklassen zur Verfügung, welche die unterschiedliche Behandlung der API Levels verkapseln und die Entwicklung so vereinheitlichen und vereinfachen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Fragment}
 \label{subsubsec:app:jetpack:fragment}
+Fragmente sind modulare Teile einer Benutzeroberfläche.
+Sie sind wiederverwendbar, leichtgewichtig und lassen sich in \textit{Activities} sowie anderen Fragmenten kombinieren um komplexe Benutzeroberflächen zu erstellen.
+Ihr Lebenszyklus wird von ihrem Container gesteuert. %TODO change
+Darüber hinaus ist es möglich Fragmente zur Laufzeit hinzuzufügen und zu entfernen.
+Komplexe \textit{Layouts} lassen sich so in mehrere Fragmente unterteilen. %TODO change
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{ViewModel}
-\label{subsubsec:app:jetpack:viewmodel}
+\subsubsection{Databinding}
+\label{subsubsec:app:jetpack:databinding}
+Mit Hilfe der \textit{Databinding} Bibliothek ist es möglich Datenquellen für Eigenschaften von Benutzeroberflächen und deren Elemente in Layout-Dateien festzulegen.
+In Kombination mit \textit{LiveData} passen sich Benutzeroberflächen bei Änderungen automatisch an, wodurch der Anteil an Quelltext für Benutzeroberflächen reduziert wird.
+Zusätzlich lassen sich \textit{BindingAdapters} definieren, durch welche benutzerdefiniertes Verhalten und eine Definition neuer Eigenschaften möglich wird.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{LiveData}
-\label{subsubsec:app:jetpack:livedata}
+\subsubsection{Lifecycle}
+\label{subsubsec:app:jetpack:lifecycle}
+Die \textit{Lifecycle} Bibliothek umfasst primär ViewModels und LiveData.
+Bei ViewModels handelt es sich um Klassen, die von Fragmenten zur Darstellung von Daten und Interaktion mit Business Logic verwendet werden.
+Ihre Erzeugung wird von Framework-Methoden übernommen.
+Diese stellen sicher, dass ViewModels sich dem Lebenszyklus des besitzenden Fragments anpassen und wiederverwendet werden können.
+
+LiveData baut auf diesem Konzept auf.
+Dabei handelt es sich um \textit{Wrapper} für beliebige Daten, deren Werte beobachtet werden können.
+Anders als traditionelle \textit{Observables} besitzt LiveData jedoch einen Lebenszyklus.
+Änderungen werden nur dann propagiert, wenn sie auch beobachtet.
+Zudem übernimmt das besitzende ViewModel die Verwaltung ihres Lebenszyklus, wodurch \textit{Leaks} vermieden werden.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Navigation}
 \label{subsubsec:app:jetpack:navigation}
@@ -122,7 +142,6 @@ Dazu stellen sie eine Vielzahl an Hilfsklassen zur Verfügung, welche die unters
 
 \section{Fazit}
 \label{sec:conclusion}
-
 %TODO italics
 Die Verwendung von Android Jetpack Bibliotheken im Zusammenspiel mit Kotlin vereinfacht die Entwicklung robuster und performanter Android Apps deutlich.
 Besonders die automatisierten Lebenszyklen von ViewModel und LiveData helfen bei der Vermeidung Leaks.
