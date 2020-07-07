@@ -1,17 +1,78 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[%
+backend = biber,
+sortlocale=de_DE,
+natbib=true,
+style = numeric,
+autocite = superscript
+]{biblatex}
+\addbibresource{references.bib}
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]{}
+{\bibopenbracket%
+	\usebibmacro{citeindex}%
+	\usebibmacro{cite}%
+	\usebibmacro{postnote}%
+	\bibclosebracket}
+{\supercitedelim}
+{}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\fancyhead[ER]{\rightmark}
+\fancyhead[OL]{\nouppercase{\leftmark}}
+\cfoot{\thepage}
+
+\usepackage{float}
+\newfloat{lstfloat}{htb}{lop}
+
+\usepackage[ngerman]{isodate, babel}
+
+\usepackage{hyperref}
+\addto\extrasngerman{
+	\renewcommand{\sectionautorefname}{Kapitel}
+	\renewcommand{\subsectionautorefname}{Abschnitt}
+	\renewcommand{\subsubsectionautorefname}{Unterabschnitt}
+}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\overfullrule=1mm
 
 %opening
 \title{Dokumentation zur Projektarbeit digitale Kaffeekasse}
 \author{Jan Müller}
+\date{\today}
 
 \begin{document}
 
 \maketitle
 
-\begin{abstract}
+\section{Einleitung}
+\label{sec:intro}
 
-\end{abstract}
+\section{Android App}
+\label{sec:app}
 
-\section{}
+\subsection{Android Jetpack}
+\label{subsec:app:jetpack}
+
+\subsection{Architektur}
+\label{subsec:app:architecture}
+
+\section{Serveranwendung}
+\label{sec:backend}
+
+\subsection{Architektur}
+\label{subsec:backend:architecture}
+
+\subsection{Endpunkte}
+\label{subsec:backend:endpoints}
+
+\subsection{Authentifizierung}
+\label{subsec:backend:authentication}
 
 \end{document}
