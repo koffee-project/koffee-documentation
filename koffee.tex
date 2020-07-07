@@ -79,6 +79,7 @@ Das heißt der Zustand von Datenmodellen wird ausschließlich von Repositories f
 \subsection{Android Jetpack}
 \label{subsec:app:jetpack}
 Im Folgenden werden die verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden\footnote{https://developer.android.com/jetpack/androidx/explorer}.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Core und AppCompat}
 \label{subsubsec:app:jetpack:base}
@@ -118,6 +119,14 @@ Zudem übernimmt das besitzende ViewModel die Verwaltung ihres Lebenszyklus, wod
 
 \subsubsection{Navigation}
 \label{subsubsec:app:jetpack:navigation}
+Fragmente können mit Argumenten erzeugt werden.
+Dabei ist jedoch keine Typsicherheit garantiert und es gibt keinen Mechanismus, der die Vollständigkeit von Argumenten sicherstellt.
+Die \textit{Navigation} Bibliothek löst beide Probleme durch Verwendung von Navigationsgraphen.
+In diesen werden die verfügbaren Fragmente sowie ihre Argumente definiert.
+Durch Verbindungen zwischen Fragmenten werden \textit{Directions} angegeben.
+Deren Verwendung stellst sicher, dass alle Argumente mit korrektem Typ festgelegt wurden und Navigation nur zu korrekten Fragmenten möglich ist.
+Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initialisieren von Benutzerelemente wie beispielsweise einer \textit{Bottom Navigation} übernehmen. 
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Room}
 \label{subsubsec:app:jetpack:room}
