@@ -185,34 +185,61 @@ Dazu zählen unter anderem Methoden zum Erzeugen von ViewModels und \textit{Coro
 \subsection{Weitere Bibliotheken}
 \label{subsec:app:bibs}
 
+Im Rahmen der App-Entwicklung wurden auch Bibliotheken verwendet, welche nicht Teil von Android Jetpack sind.
+Im Folgenden werden ihre Funktionen und Verwendungsgründe vorgestellt.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
 \subsubsection{Retrofit und Moshi}
 \label{subsubsec:app:bibs:retrofitmoshi}
 
-\subsubsection{Timber}
-\label{subsubsec:app:bibs:timber}
+Über \textit{Retrofit} können abstrakte Methoden zum Verwenden von APIs definiert werden.
+Entwickler müssen dazu Informationen über die Art von Anfragen angeben.
+Implementierungen dieser Methoden werden von der Bibliothek generiert.
+In Kombination mit der Serialisierungs-Bibliothek \textit{Moshi} können so Netzwerkschnittstellen mit geringem Quelltextaufwand angebunden werden.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Glide}
 \label{subsubsec:app:bibs:glide}
 
-\subsubsection{PrettyTime}
-\label{subsubsec:app:bibs:prettytime}
+% TODO mehr schreiben
+\textit{Glide} übernimmt das asynchrone Laden und Darstellen von Bildern.
+Dabei lassen sich Einstellungen für Verhalten und Darstellung anpassen, was ohne Glide nur mit hohem Aufwand möglich ist.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Image Picker}
 \label{subsubsec:app:bibs:imagepicker}
 
+Die Bibliothek \textit{Image Picker}\footnote{https://github.com/Dhaval2404/ImagePicker} ermöglicht die Auswahl von Bildern zur Laufzeit, die Nutzer entweder aus ihrer Galerie auswählen oder mit ihrer Kamera aufnehmen können.
+Eine äquivalente Funktionalität zu implementieren ist mit nicht-trivialem Aufwand verbunden, weshalb eine Verwendung existierender Bibliotheken die Entwicklung verkürzte.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
+\subsubsection{PrettyTime}
+\label{subsubsec:app:bibs:prettytime}
+
+\textit{PrettyTime} wird verwendet um Zeitstempel in ein für Menschen lesbares Format zu transformieren.
+Die Bibliothek unterstützt mehrere Sprachen, unter anderem Deutsch sowie Englisch, und erspart Entwicklern so das Übersetzen und Formatieren.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Timber}
+\label{subsubsec:app:bibs:timber}
+
+Bei \textit{Timber} handelt es sich um eine Bibliothek die das Protokollieren vereinfacht, Nachrichten mit zusätzlichen Informationen wie beispielsweise ihrem Ursprung ausgibt und jegliche Protokollierung außerhalb der Entwicklungsphase deaktiviert.
+So ist es während der Entwicklung möglich schnell detaillierte Protokollnachrichten zu verfassen, die keine Auswirkung auf ausgelieferte Endprodukte haben und bei der Suche nach Fehlern helfen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Serveranwendung}
 \label{sec:backend}
 
 Das Backend wurde, wie auch die App, mit der Programmiersprache Kotlin entwickelt.
-Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{https://restfulapi.net/}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten. 
+Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{https://restfulapi.net/}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten.
+%------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 \subsection{Bibliotheken}
 \label{subsec:backend:bibs}
 
 Um die Entwicklung des Backends zu beschleunigen wurden mehrere Open Source Bibliotheken verwendet.
 Diese werden im Folgenden vorgestellt.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Ktor}
 \label{subsubsec:backend:bibs:ktor}
@@ -227,26 +254,50 @@ Auch vordefinierte Module können im Quelltext angepasst werden.
 \subsubsection{Koin}
 \label{subsubsec:backend:bibs:koin}
 
+% TODO
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
 \subsubsection{KMongo}
 \label{subsubsec:backend:bibs:kmongo}
+
+% TODO
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{jBCrypt}
 \label{subsubsec:backend:bibs:jbcrypt}
 
+% TODO
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
 \subsubsection{Arkenv}
 \label{subsubsec:backend:bibs:arkenv}
+
+% TODO
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Docker Secrets}
 \label{subsubsec:backend:bibs:dockersecrets}
 
+% TODO
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
 \subsection{Architektur}
 \label{subsec:backend:architecture}
+
+% TODO
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Endpunkte}
 \label{subsec:backend:endpoints}
 
+% TODO
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
 \subsection{Authentifizierung}
 \label{subsec:backend:authentication}
+
+% TODO
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Fazit}
 \label{sec:conclusion}
