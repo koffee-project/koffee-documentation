@@ -179,11 +179,45 @@ Bei der Registrierung können optional Einschränkungen angegeben werden, die fe
 \label{subsubsec:app:jetpack:extensions}
 Kotlin ist bereits die von Google empfohlene Sprache für die Entwicklung von Android Apps\footnote{https://developer.android.com/kotlin}.
 Eine Vielzahl an Android Jetpack Bibliotheken enthalten Kotlin spezifische Erweiterungsmethoden und Sprachfunktionen, welche die Programmierung von Android Apps vereinfachen und verbessern.
-Dazu zählen unter anderem Methoden zum Erzeugen von ViewModels und \textit{Coroutine Scopes} für ViewModels, \textit{DSLs} für \textit{SharedPreferences} sowie Unterstützung für \textit{Coroutines} in Android Jetpack Bibliotheken.
+Dazu zählen unter anderem Methoden zum Erzeugen von ViewModels und \textit{Coroutine Scopes} für ViewModels, Erweiterungen für \textit{SharedPreferences} sowie Unterstützung für \textit{Coroutines} in Android Jetpack Bibliotheken.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Serveranwendung}
 \label{sec:backend}
+
+Das Backend wurde, wie auch die App, mit der Programmiersprache Kotlin entwickelt.
+Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{https://restfulapi.net/}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten. 
+
+\subsection{Bibliotheken}
+\label{subsec:backend:bibs}
+
+Um die Entwicklung des Backends zu beschleunigen wurden mehrere Open Source Bibliotheken verwendet.
+Diese werden im Folgenden vorgestellt.
+
+\subsubsection{Ktor}
+\label{subsubsec:backend:bibs:ktor}
+
+\textit{Ktor}\footnote{https://ktor.io/}, ein \textit{Web Framework} vom Entwickler der Sprache Kotlin, bildet die Grundlage des Backends.
+Ktor verwendet eine \textit{Domain Specific Language}, auch \textit{DSL} genannt, zum Definieren von Modulen.
+Solche Module können in der Serveranwendung installiert werden um ein erwünschtes Verhalten zu erreichen.
+Ktor selbst stellt dabei Module für verschiedene Bereiche, wie unter anderem Protokollierung, Serialisierung und Authentisierung, zur Verfügung.
+Auch vordefinierte Module können im Quelltext angepasst werden.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Koin}
+\label{subsubsec:backend:bibs:koin}
+
+\subsubsection{KMongo}
+\label{subsubsec:backend:bibs:kmongo}
+
+\subsubsection{jBCrypt}
+\label{subsubsec:backend:bibs:jbcrypt}
+
+\subsubsection{Arkenv}
+\label{subsubsec:backend:bibs:arkenv}
+
+\subsubsection{Docker Secrets}
+\label{subsubsec:backend:bibs:dockersecrets}
 
 \subsection{Architektur}
 \label{subsec:backend:architecture}
