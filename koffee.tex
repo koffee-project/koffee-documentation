@@ -1,21 +1,23 @@
 \documentclass[a4paper, 11pt]{article}
 
 \usepackage[%
-backend = biber,
-sortlocale=de_DE,
+backend=biber,
+sorting=none,
 natbib=true,
-style = numeric,
-autocite = superscript
+style=numeric,
+autocite=inline
 ]{biblatex}
 \addbibresource{references.bib}
-\DeclareCiteCommand{\supercite}[\mkbibsuperscript]{}
-{\bibopenbracket%
-	\usebibmacro{citeindex}%
-	\usebibmacro{cite}%
-	\usebibmacro{postnote}%
-	\bibclosebracket}
-{\supercitedelim}
-{}
+
+\defbibenvironment{sources}
+{\list
+	{}
+	{\setlength{\leftmargin}{\bibhang}%
+		\setlength{\itemindent}{-\leftmargin}%
+		\setlength{\itemsep}{\bibitemsep}%
+		\setlength{\parsep}{\bibparsep}}}
+{\endlist}
+{\item}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -54,10 +56,10 @@ autocite = superscript
 \section{Einleitung}
 \label{sec:intro}
 Die Entwicklung von Android Apps zeichnet sich unter anderem dadurch aus, dass die \textit{API Level}\footnote{Zum Zeitpunkt dieser Ausarbeitung existieren 29 API Level.} des \textit{Android Frameworks} zum Teil unterschiedlich behandelt werden müssen.
-Die Versionsverteilung bei Android erstreckt sich über mehrere Versionen\footnote{https://www.bidouille.org/misc/androidcharts}.
+Die Versionsverteilung bei Android erstreckt sich über mehrere Versionen \autocite{androidhistory}.
 Zur Maximierung der potenziellen Nutzer ist es entsprechend notwendig auch ältere API Level zu unterstützen.
-Damit Entwickler dort ebenfalls neue Funktionen verwenden können, wurden die \textit{Support Libraries}\footnote{https://developer.android.com/topic/libraries/support-library} eingeführt.
-Aus diesen entwickelten sich die \textit{Android Jetpack}\footnote{https://developer.android.com/jetpack/androidx} Bibliotheken.
+Damit Entwickler dort ebenfalls neue Funktionen verwenden können, wurden die \textit{Support Libraries} eingeführt \autocite{supportlibraries}.
+Aus diesen entwickelten sich die \textit{Android Jetpack} Bibliotheken \autocite{androidjetpack}.
 
 Ziel dieses Projektes war die Entwicklung einer Kaffeekassen App und einer dazugehörigen Serveranwendung mit der Programmiersprache Kotlin.
 Bei der Entwicklung der App sollten Android Jetpack Bibliotheken verwendet und mit bisherigen Methoden verglichen werden.
@@ -74,7 +76,7 @@ In diesem Kapitel werden Architektur und verwendete Bibliotheken vorgestellt.
 \subsection{Architektur}
 \label{subsec:app:architecture}
 %TODO Bild und unter Bibliotheken
-Die App verwendet die von Google empfohlene Architektur\footnote{https://developer.android.com/jetpack/guide}.
+Die App verwendet die von Google empfohlene Architektur \autocite{androidarchitecture}.
 Fragmente, also Teile der Benutzeroberfläche, verwenden \textit{ViewModels} um Daten zu beziehen und auf \textit{Business Logic} zuzugreifen.
 ViewModels greifen auf wiederum auf \textit{Repositories} zu, die als \textit{Single source of truth} dienen.
 Das heißt der Zustand von Datenmodellen wird ausschließlich von Repositories festgelegt, wodurch inkonsistente Datenbestände vermieden werden.
@@ -82,7 +84,7 @@ Das heißt der Zustand von Datenmodellen wird ausschließlich von Repositories f
 
 \subsection{Android Jetpack}
 \label{subsec:app:jetpack}
-Im Folgenden werden die verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden\footnote{https://developer.android.com/jetpack/androidx/explorer}.
+Im Folgenden werden die verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Core und AppCompat}
@@ -181,7 +183,7 @@ Bei der Registrierung können optional Einschränkungen angegeben werden, die fe
 
 \subsubsection{KTX}
 \label{subsubsec:app:jetpack:extensions}
-Kotlin ist bereits die von Google empfohlene Sprache für die Entwicklung von Android Apps\footnote{https://developer.android.com/kotlin}.
+Kotlin ist bereits die von Google empfohlene Sprache für die Entwicklung von Android Apps \autocite{androidkotlin}.
 Eine Vielzahl an Android Jetpack Bibliotheken enthalten Kotlin spezifische Erweiterungsmethoden und Sprachfunktionen, welche die Programmierung von Android Apps vereinfachen und verbessern.
 Dazu zählen unter anderem Methoden zum Erzeugen von ViewModels und \textit{Coroutine Scopes} für ViewModels, Erweiterungen für \textit{SharedPreferences} sowie Unterstützung für \textit{Coroutines} in Android Jetpack Bibliotheken.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -213,7 +215,7 @@ Dabei lassen sich Einstellungen für Verhalten und Darstellung anpassen, was ohn
 \subsubsection{Image Picker}
 \label{subsubsec:app:bibs:imagepicker}
 
-Die Bibliothek \textit{Image Picker}\footnote{https://github.com/Dhaval2404/ImagePicker} ermöglicht die Auswahl von Bildern zur Laufzeit, die Nutzer entweder aus ihrer Galerie auswählen oder mit ihrer Kamera aufnehmen können.
+Die Bibliothek \textit{Image Picker} ermöglicht die Auswahl von Bildern zur Laufzeit, die Nutzer entweder aus ihrer Galerie auswählen oder mit ihrer Kamera aufnehmen können.
 Eine äquivalente Funktionalität zu implementieren ist mit nicht-trivialem Aufwand verbunden, weshalb eine Verwendung existierender Bibliotheken die Entwicklung verkürzte.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -235,7 +237,7 @@ So ist es während der Entwicklung möglich schnell detaillierte Protokollnachri
 \label{sec:backend}
 
 Das Backend wurde, wie auch die App, mit der Programmiersprache Kotlin entwickelt.
-Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{https://restfulapi.net/}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten.
+Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{Siehe \url{https://restfulapi.net/}.}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten.
 Die folgenden Abschnitte stellen verwendete Bibliotheken, Architektur, Endpunkte und Authentisierung des Backends vor.
 %------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -249,7 +251,7 @@ Diese werden im Folgenden vorgestellt.
 \subsubsection{Ktor}
 \label{subsubsec:backend:bibs:ktor}
 
-\textit{Ktor}\footnote{https://ktor.io/}, ein \textit{Web Framework} vom Entwickler der Sprache Kotlin, bildet die Grundlage des Backends.
+\textit{Ktor}, ein \textit{Web Framework} vom Entwickler der Sprache Kotlin, bildet die Grundlage des Backends.
 Ktor verwendet eine \textit{Domain Specific Language}, auch \textit{DSL} genannt, zum Definieren von Modulen.
 Solche Module können in der Serveranwendung installiert werden um ein erwünschtes Verhalten zu erreichen.
 Ktor selbst stellt dabei Module für verschiedene Bereiche, wie unter anderem Protokollierung, Serialisierung und Authentisierung, zur Verfügung.
@@ -262,13 +264,13 @@ Dadurch können Entwickler asynchronen und performanten Quelltext schreiben ohne
 \label{subsubsec:backend:bibs:koin}
 
 %TODO mehr schreiben
-\textit{Koin}\footnote{https://insert-koin.io/} ist ein Framework für \textit{Dependency Injection}, mit dem einzelne Komponenten des Servers unabhängig von ihrem Einsatzort initialisiert werden können.
+\textit{Koin} ist ein Framework für \textit{Dependency Injection}, mit dem einzelne Komponenten des Servers unabhängig von ihrem Einsatzort initialisiert werden können.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{KMongo}
 \label{subsubsec:backend:bibs:kmongo}
 
-Die \textit{KMongo} Bibliothek\footnote{https://litote.org/kmongo/} ermöglicht eine simple Verwendung von \textit{Mongo}-Datenbanken in Kotlin.
+Die \textit{KMongo} Bibliothek ermöglicht eine simple Verwendung von \textit{Mongo}-Datenbanken in Kotlin.
 Dies erreicht sie durch automatische Serialisierung, Unterstütztung für Kotlin Coroutines und programmatische, typsichere Anfragen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -277,7 +279,7 @@ Dies erreicht sie durch automatische Serialisierung, Unterstütztung für Kotlin
 
 Das Backend muss Passwörter sicher in der Datenbank ablegen.
 Dafür müssen diese durch eine geeignete \textit{Hash}-Funktion transformiert werden.
-Die Bibliothek \textit{jBCrypt}\footnote{https://www.mindrot.org/projects/jBCrypt/} enthält solche Funktionen.
+Die Bibliothek \textit{jBCrypt} enthält solche Funktionen.
 Darüber hinaus ermöglicht sie auch das anschließende Überprüfen von Passwörtern.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -292,7 +294,7 @@ Zur Konfiguration des Backends an eine Einsatzumgebung müssen einige Parameter,
 \label{subsubsec:backend:bibs:dockersecrets}
 
 Neben Umgebungsvariablen müssen auch sensible Daten, wie die Zugangsinformationen des Standardadministrators, festgelegt werden.
-Um diese zu schützen werden beim \textit{Deployment} des Backends mit \textit{Docker}\footnote{https://www.docker.com/} sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
+Um diese zu schützen werden beim \textit{Deployment} des Backends mit \textit{Docker}\footnote{Siehe \url{https://www.docker.com/}.} sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
 Da es sich dabei um Dateien handelt ist das Einlesen ihrer Informationen mit einer Syntaxanalyse verbunden.
 Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwand und lädt Parameter von Dateien in \textit{Maps}.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -321,5 +323,10 @@ Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwan
 Die Verwendung von Android Jetpack Bibliotheken im Zusammenspiel mit Kotlin vereinfacht die Entwicklung robuster und performanter Android Apps deutlich.
 Besonders die automatisierten Lebenszyklen von ViewModel und LiveData helfen bei der Vermeidung Leaks.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+\printbibliography[title={Referenzen}, keyword={citations}]
+\nocite{*}
+\printbibliography[title={Dokumentation}, keyword={sources}, env=sources]
 
 \end{document}
