@@ -67,6 +67,10 @@ Zuerst wurde jedoch die Serveranwendung, das sogenannte \textit{Backend}, entwic
 \section{Android App}
 \label{sec:app}
 
+Kern dieser Projektarbeit ist die Android App, die als Benutzeroberfläche der digitalen Kaffeekasse dient.
+Sie basiert auf Grundlagen, welche durch Android Jetpack gelegt wurden.
+In diesem Kapitel werden Architektur und verwendete Bibliotheken vorgestellt.
+
 \subsection{Architektur}
 \label{subsec:app:architecture}
 %TODO Bild
@@ -232,6 +236,7 @@ So ist es während der Entwicklung möglich schnell detaillierte Protokollnachri
 
 Das Backend wurde, wie auch die App, mit der Programmiersprache Kotlin entwickelt.
 Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{https://restfulapi.net/}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten.
+Die folgenden Abschnitte stellen verwendete Bibliotheken, Architektur, Endpunkte und Authentisierung des Backends vor.
 %------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 \subsection{Bibliotheken}
@@ -249,36 +254,47 @@ Ktor verwendet eine \textit{Domain Specific Language}, auch \textit{DSL} genannt
 Solche Module können in der Serveranwendung installiert werden um ein erwünschtes Verhalten zu erreichen.
 Ktor selbst stellt dabei Module für verschiedene Bereiche, wie unter anderem Protokollierung, Serialisierung und Authentisierung, zur Verfügung.
 Auch vordefinierte Module können im Quelltext angepasst werden.
+Ktor zeichnet sich zudem dadurch aus, dass es vollständig asynchron arbeitet und Kotlin Coroutines an allen Stellen der Konfiguration verwendbar sind.
+Dadurch können Entwickler asynchronen und performanten Quelltext schreiben ohne zusätzliche Sprachkonstrukte zu verwenden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Koin}
 \label{subsubsec:backend:bibs:koin}
 
-% TODO
+%TODO mehr schreiben
+\textit{Koin}\footnote{https://insert-koin.io/} ist ein Framework für \textit{Dependency Injection}, mit dem einzelne Komponenten des Servers unabhängig von ihrem Einsatzort initialisiert werden können.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{KMongo}
 \label{subsubsec:backend:bibs:kmongo}
 
-% TODO
+Die \textit{KMongo} Bibliothek\footnote{https://litote.org/kmongo/} ermöglicht eine simple Verwendung von \textit{Mongo}-Datenbanken in Kotlin.
+Dies erreicht sie durch automatische Serialisierung, Unterstütztung für Kotlin Coroutines und programmatische, typsichere Anfragen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{jBCrypt}
 \label{subsubsec:backend:bibs:jbcrypt}
 
-% TODO
+Das Backend muss Passwörter sicher in der Datenbank ablegen.
+Dafür müssen diese durch eine geeignete \textit{Hash}-Funktion transformiert werden.
+Die Bibliothek \textit{jBCrypt}\footnote{https://www.mindrot.org/projects/jBCrypt/} enthält solche Funktionen.
+Darüber hinaus ermöglicht sie auch das anschließende Überprüfen von Passwörtern.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Arkenv}
 \label{subsubsec:backend:bibs:arkenv}
 
-% TODO
+Zur Konfiguration des Backends an eine Einsatzumgebung müssen einige Parameter, wie der Datenbankhost, gesetzt werden.
+\textit{Arkenv} erlaubt es diese Umgebungsvariablen programmatisch und typsicher zu definieren, so dass die Fehleranfälligkeit beim Einlesen reduziert wird.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Docker Secrets}
 \label{subsubsec:backend:bibs:dockersecrets}
 
-% TODO
+Neben Umgebungsvariablen müssen auch sensible Daten, wie die Zugangsinformationen des Standardadministrators, festgelegt werden.
+Um diese zu schützen werden beim \textit{Deployment} des Backends mit \textit{Docker}\footnote{https://www.docker.com/} sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
+Da es sich dabei um Dateien handelt ist das Einlesen ihrer Informationen mit einer Syntaxanalyse verbunden.
+Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwand und lädt Parameter von Dateien in \textit{Maps}.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Architektur}
