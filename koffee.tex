@@ -39,6 +39,8 @@ autocite=inline
 	\renewcommand{\subsubsectionautorefname}{Unterabschnitt}
 }
 
+\usepackage{ragged2e}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
@@ -324,9 +326,12 @@ Die Verwendung von Android Jetpack Bibliotheken im Zusammenspiel mit Kotlin vere
 Besonders die automatisierten Lebenszyklen von ViewModel und LiveData helfen bei der Vermeidung Leaks.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-\printbibliography[title={Referenzen}, keyword={citations}]
+\newpage
+\begingroup
+\raggedright
+\printbibliography[title={Referenzen}, keyword=citations]
 \nocite{*}
-\printbibliography[title={Dokumentation}, keyword={sources}, env=sources]
+\printbibliography[title={Dokumentation}, keyword=sources, env=sources]
+\endgroup
 
 \end{document}
