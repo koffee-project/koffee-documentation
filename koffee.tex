@@ -304,7 +304,17 @@ Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwan
 \subsection{Architektur}
 \label{subsec:backend:architecture}
 
-% TODO
+Das Backend verwendet eine serviceorientierte Architektur.
+Dabei werden Anfragen an Dienste weitergeleitet.
+Antworten von Diensten enthalten Informationen über Ergebnisse der Aktionen, wie Statuscodes, Daten oder Fehlermeldungen, und werden an Kommunikationspartner weitergeleitet.
+
+Es existieren Dienste für Nutzer-, Profilbild-, Artikel- und Transaktionsverwaltung.
+Validierung sowie Fehlerbehandlung finden ausschließlich in Diensten statt.
+
+Die Persistenzebene liegt in Form von \textit{Repositories} vor.
+Die gegebenen Implementierungen der Nutzer-, Profilbild- und Artikel-Repositories basieren auf Datenbankzugriffen.
+
+Sowohl Dienste als auch Repositories liegen als \textit{Interfaces} und Implementierungen vor, um separates Testen zu ermöglichen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Endpunkte}
