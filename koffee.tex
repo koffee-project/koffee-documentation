@@ -317,14 +317,18 @@ Die gegebenen Implementierungen der Nutzer-, Profilbild- und Artikel-Repositorie
 Sowohl Dienste als auch Repositories liegen als \textit{Interfaces} und Implementierungen vor, um separates Testen zu ermöglichen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Endpunkte}
-\label{subsec:backend:endpoints}
-
-% TODO
-%------------------------------------------------------------------------------------------------------------------------------------------------------
-
 \subsection{Authentifizierung}
 \label{subsec:backend:authentication}
+
+Um Administrator-Funktionen zu verwenden müssen sich Nutzer authentifizieren.
+Dies findet mit Hilfe von \textit{JSON Web Tokens}\footnote{Siehe \url{https://jwt.io/}.}, auch \textit{JWT} genannt, statt.
+JWTs werden nach erfolgreichen Logins mit validen Daten generiert, sind für 24 Stunden gültig und müssen bei jeder Anfrage für Administrator-Funktionen enthalten sein.
+Einloggen können sich nur Nutzer, die über Administratorrechte verfügen, welche wiederum nur von Administratoren vergeben werden können.
+Während dem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{subsec:backend:configuration}).
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Konfiguration}
+\label{subsec:backend:configuration}
 
 % TODO
 %------------------------------------------------------------------------------------------------------------------------------------------------------
