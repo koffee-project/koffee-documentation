@@ -370,6 +370,7 @@ Detaillierte Informationen zur Syntax dieser Konfigurationsdateien können der \
 Die Projektarbeit begann mit der Entwicklung des Backends.
 Zunächst wurden Aufbau sowie Struktur festgelegt und implementiert um eine Arbeitsgrundlage zu schaffen.
 Dank der modularen Zusammensetzung des Backends war es möglich die benötigten Endpunkte für Nutzer, Artikel sowie Transaktionen schnell und unabhängig voneinander zu implementieren.
+Anschließend wurde die Authentisierung hinzugefügt um betroffene Endpunkte vor unautorisierten Zugriffen zu schützen.
 Da eine langfristige Nutzung des Backends in Frage kam, wurde der relevante Quelltext nahezu vollständig getestet.
 Tests wurden parallel zum eigentlich Programm geschrieben um Fehler schnell zu erkennen.
 Im Laufe der Entwicklung wurde das Backend mehrfach überarbeitet um einen möglichst funktionalen Programmierstil zu erreichen.
@@ -388,6 +389,7 @@ Besonders die automatisierten Lebenszyklen von ViewModel und LiveData helfen bei
 \raggedright
 \printbibliography[title={Referenzen}, keyword=citations]
 \nocite{*}
+\newrefcontext[sorting=nty]
 \printbibliography[title={Dokumentation}, keyword=sources, env=sources]
 \endgroup
 
