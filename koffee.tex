@@ -32,12 +32,18 @@ autocite=inline
 
 \usepackage[ngerman]{isodate, babel}
 
+\usepackage{lmodern}
+
 \usepackage{hyperref}
 \addto\extrasngerman{
 	\renewcommand{\sectionautorefname}{Kapitel}
 	\renewcommand{\subsectionautorefname}{Abschnitt}
 	\renewcommand{\subsubsectionautorefname}{Unterabschnitt}
 }
+
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup[figure]{width=10cm}
 
 \usepackage{ragged2e}
 
@@ -74,14 +80,32 @@ Zuerst wurde jedoch die Serveranwendung, das sogenannte \textit{Backend}, entwic
 Kern dieser Projektarbeit ist die Android App, die als Benutzeroberfläche der digitalen Kaffeekasse dient.
 Sie basiert auf Grundlagen, welche durch Android Jetpack gelegt wurden.
 In diesem Kapitel werden Architektur und verwendete Bibliotheken vorgestellt.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Architektur}
 \label{subsec:app:architecture}
-%TODO Bild und unter Bibliotheken
-Die App verwendet die von Google empfohlene Architektur \autocite{androidarchitecture}.
-Fragmente, also Teile der Benutzeroberfläche, verwenden \textit{ViewModels} um Daten zu beziehen und auf \textit{Business Logic} zuzugreifen.
-ViewModels greifen auf wiederum auf \textit{Repositories} zu, die als \textit{Single source of truth} dienen.
-Das heißt der Zustand von Datenmodellen wird ausschließlich von Repositories festgelegt, wodurch inkonsistente Datenbestände vermieden werden.
+
+Die App verwendet die von Google empfohlene \textit{Model-View-ViewModel} Architektur (\textit{MVVM}) \autocite{androidarchitecture}.
+Bei dieser wird die Anwendung in Datenmodell, Benutzeroberfläche und die sogenannten \textit{ViewModels} aufgeteilt (siehe \autoref{fig:app:architecture:mvvm}).
+
+Die Ebene des Datenmodells liegt in Form von \textit{Repositories} vor.
+Diese kommunizieren über eine Netzwerkschnittstelle mit der Serveranwendung um Daten zu laden oder Aktionen wie Käufe und Logins durchzuführen.
+Darüber hinaus verwalten Repositories lokale Datenbanken, wodurch eine Persistenz ermöglicht wird und Daten bereits vor Antworten der Serveranwendung vorhanden sind.
+Weil der Zustand eines Datenmodells ausschließlich vom zugehörigen Repository bestimmt wird, werden sie auch als \textit{Single source of truth} bezeichnet.
+Durch diese Eigenschaft ist es möglich inkonsistente Datenbestände zu verhindern.
+
+ViewModels passen von Repositories bereitgestellte Daten für Benutzeroberflächen an und stellen sie in Datencontainern bereit.
+Sie selbst haben keine Informationen über Benutzeroberflächen.
+Stattdessen beobachten diese Datencontainer der ViewModels und entscheiden selbst wie Daten anzuzeigen sind.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=8cm,keepaspectratio]{./images/android-architecture.png}
+	\caption{MVVM-Entwurfsmuster in Android}
+	\caption*{\small Quelle: \url{https://developer.android.com/topic/libraries/architecture/images/final-architecture.png}}
+	\label{fig:app:architecture:mvvm}
+\end{figure}
+
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Android Jetpack}
