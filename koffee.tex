@@ -375,6 +375,21 @@ Da eine langfristige Nutzung des Backends in Frage kam, wurde der relevante Quel
 Tests wurden parallel zum eigentlich Programm geschrieben um Fehler schnell zu erkennen.
 Im Laufe der Entwicklung wurde das Backend mehrfach überarbeitet um einen möglichst funktionalen Programmierstil zu erreichen.
 So konnte die Lesbarkeit verbessert und die Fehleranfälligkeit reduziert werden.
+Während der gesamten Projektarbeit wurde zudem die Formatierung des Quelltextes mit dem Tool \textit{klint}\footnote{Siehe \url{https://github.com/pinterest/ktlint}.} kontrolliert und korrigiert.
+
+Die Entwicklung der App begann Ende April.
+Analog zu den Endpunkten des Backends wurden die Bildschirme der App nacheinander implementiert, wobei jeweils mehrere Revisionen durchgeführt wurden.
+Eine Verwendung der Android Jetpack Bibliotheken erlaubten dabei eine schnelle Entwicklung mit einem geringen Anteil an Boilerplate Code.
+Um diesen weiter zu reduzieren wurden im Laufe der Entwicklung häufig auftretende Muster, wie beispielsweise von ViewModels initiierte Aktionen, in Klassen ausgelagert.
+Auch bei den ViewModels selbst sowie Fragmenten wurde Vererbung verwendet um oft benötigtes Verhalten nicht mehrfach zu implementieren.
+Zudem wurde die Fehlerbehandlung zentralisiert um die Fehlerausgabe zu vereinfachen und Abstürze zu verhindern.
+Durch solche Änderungen war es möglich den Quelltext deutlich zu kürzen.
+Zunächst wurde die App für einen Nutzer pro Endgerät entwickelt.
+Anfang Juni wurde, nach Anfrage des Projektbetreuers, ein zusätzlicher Modus für mehrere Nutzer implementiert.
+Weil die einzelnen Komponenten der App bereits modular und wiederverwendbar waren, konnte diese größere Änderung schnell umgesetzt werden. 
+Im Anschluss wurden ein Großteil der Benutzeroberflächen sowie deren Verwendung überarbeitet und verbessert.
+
+Nachdem die Funktionalität beider Teilprojekte vollständig war wurde mit der Dokumentation des Quelltextes begonnen, welche im Internet abrufbar ist\footnote{Siehe \url{http://koffee-app.yeger.eu/} und \url{http://koffee-backend.yeger.eu/}.}.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Fazit}
