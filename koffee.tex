@@ -125,9 +125,9 @@ Dazu stellen sie eine Vielzahl an Hilfsklassen zur Verfügung, welche die unters
 \label{subsubsec:app:jetpack:fragment}
 Fragmente sind modulare Teile einer Benutzeroberfläche.
 Sie sind wiederverwendbar, leichtgewichtig und lassen sich in \textit{Activities} sowie anderen Fragmenten kombinieren um komplexe Benutzeroberflächen zu erstellen.
-Ihr Lebenszyklus wird von ihrem Container gesteuert. %TODO change
-Darüber hinaus ist es möglich Fragmente zur Laufzeit hinzuzufügen und zu entfernen.
-Komplexe \textit{Layouts} lassen sich so in mehrere Fragmente unterteilen. %TODO change
+Ihr Lebenszyklus wird von ihrem Container verwaltet, weshalb sie sich für Entwickler nur gering von Activities unterscheiden.
+Darüber hinaus ist es möglich Fragmente dynamisch hinzuzufügen und zu entfernen.
+Komplexe \textit{Layouts} lassen sich so in mehrere Fragmente unterteilen, welche unabhängig voneinander wiederverwendbar sind.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Databinding}
@@ -235,9 +235,9 @@ In Kombination mit der Serialisierungs-Bibliothek \textit{Moshi} können so Netz
 \subsubsection{Glide}
 \label{subsubsec:app:bibs:glide}
 
-% TODO mehr schreiben
 \textit{Glide} übernimmt das asynchrone Laden und Darstellen von Bildern.
-Dabei lassen sich Einstellungen für Verhalten und Darstellung anpassen, was ohne Glide nur mit hohem Aufwand möglich ist.
+Dabei lassen sich Einstellungen für Verhalten und Darstellung anpassen.
+Unter anderem kann Glide Bilder für schnelleres Laden zwischenspeichern, zuschneiden und während einem Ladevorgang durch Platzhalter ersetzen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Image Picker}
@@ -329,8 +329,8 @@ Dadurch können Entwickler asynchronen und performanten Quelltext schreiben ohne
 \subsubsection{Koin}
 \label{subsubsec:backend:bibs:koin}
 
-%TODO mehr schreiben
 \textit{Koin} ist ein Framework für \textit{Dependency Injection}, mit dem einzelne Komponenten des Servers unabhängig von ihrem Einsatzort initialisiert werden können.
+So ist es möglich Instanzen von Diensten sowie Repositories wiederzuverwenden und den für Instanziierung benötigten Quelltext zu minimieren.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{KMongo}
