@@ -360,9 +360,9 @@ Zur Konfiguration des Backends an eine Einsatzumgebung müssen einige Parameter,
 \label{subsubsec:backend:bibs:dockersecrets}
 
 Neben Umgebungsvariablen müssen auch sensible Daten, wie die Zugangsinformationen des Standardadministrators, festgelegt werden.
-Um diese zu schützen werden beim \textit{Deployment} des Backends mit \textit{Docker}\footnote{Siehe \url{https://www.docker.com/}.} sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
+Um diese zu schützen werden beim \textit{Deployment} des Backends mit Docker sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
 Da es sich dabei um Dateien handelt ist das Einlesen ihrer Informationen mit einer Syntaxanalyse verbunden.
-Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwand und lädt Parameter von Dateien in \textit{Maps}.
+Die leichtgewichtige Bibliothek Docker Secrets übernimmt diesen Aufwand und lädt Parameter von Dateien in \textit{Maps}.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Vorgehen und Entstehungsprozess}
