@@ -269,6 +269,44 @@ Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{Siehe \url{ht
 Die folgenden Abschnitte stellen verwendete Bibliotheken, Architektur, Endpunkte und Authentisierung des Backends vor.
 %------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
+\subsection{Architektur}
+\label{subsec:backend:architecture}
+
+Das Backend verwendet eine serviceorientierte Architektur.
+Dabei werden Anfragen an Dienste weitergeleitet.
+Antworten von Diensten enthalten Informationen über Ergebnisse der Aktionen, wie Statuscodes, Daten oder Fehlermeldungen, und werden an Kommunikationspartner weitergeleitet.
+
+Es existieren Dienste für Nutzer-, Profilbild-, Artikel- und Transaktionsverwaltung.
+Validierung sowie Fehlerbehandlung finden ausschließlich in Diensten statt.
+Dafür verwenden sie einen funktionalen Ansatz und sind selbst zustandslos.
+
+Analog zur Android App liegt die Persistenzebene in Form von Repositories vor.
+Die gegebenen Implementierungen der Nutzer-, Profilbild- und Artikel-Repositories fungieren als Schnittstellen zur verwendeten \textit{MongoDB}.
+
+Sowohl Dienste als auch Repositories liegen als \textit{Interfaces} und Implementierungen vor, um separates Testen zu ermöglichen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Authentifizierung}
+\label{subsec:backend:authentication}
+
+Um Administrator-Funktionen zu verwenden müssen sich Nutzer authentifizieren.
+Dies findet mit Hilfe von \textit{JSON Web Tokens}\footnote{Siehe \url{https://jwt.io/}.}, auch \textit{JWT} genannt, statt.
+Ein JWT wird nach einem erfolgreichen Login generiert, ist für 24 Stunden gültig und muss bei jeder Anfrage für Administrator-Funktionen enthalten sein.
+Einloggen können sich nur Nutzer, die über Administratorrechte verfügen, welche wiederum nur von Administratoren vergeben werden können.
+Während jedem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{subsec:backend:configuration}).
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Konfiguration}
+\label{subsec:backend:configuration}
+
+Um das Backend in Betrieb zu nehmen müssen einige Parameter konfiguriert werden.
+Dies findet über \verb|.env|-Dateien statt, welche sich in dem \verb|environments|-Ordner des Hauptverzeichnisses befinden.
+Dort werden die Adressen von Server und Datenbank sowie Eigenschaften der Zertifizierung festgelegt.
+Darüber hinaus werden die Namen der \textit{Docker Secrets}-Dateien angegeben.
+In diesen Dateien werden sensible Daten, wie die Informationen des Standardadministrators und der Schlüssel für Signierung von JWTs, hinterlegt.
+Detaillierte Informationen zur Syntax dieser Konfigurationsdateien können der \verb|README.md|-Datei entnommen werden, welche dem Projekt beiliegt.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
 \subsection{Bibliotheken}
 \label{subsec:backend:bibs}
 
@@ -325,43 +363,6 @@ Neben Umgebungsvariablen müssen auch sensible Daten, wie die Zugangsinformation
 Um diese zu schützen werden beim \textit{Deployment} des Backends mit \textit{Docker}\footnote{Siehe \url{https://www.docker.com/}.} sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
 Da es sich dabei um Dateien handelt ist das Einlesen ihrer Informationen mit einer Syntaxanalyse verbunden.
 Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwand und lädt Parameter von Dateien in \textit{Maps}.
-%------------------------------------------------------------------------------------------------------------------------------------------------------
-
-\subsection{Architektur}
-\label{subsec:backend:architecture}
-
-Das Backend verwendet eine serviceorientierte Architektur.
-Dabei werden Anfragen an Dienste weitergeleitet.
-Antworten von Diensten enthalten Informationen über Ergebnisse der Aktionen, wie Statuscodes, Daten oder Fehlermeldungen, und werden an Kommunikationspartner weitergeleitet.
-
-Es existieren Dienste für Nutzer-, Profilbild-, Artikel- und Transaktionsverwaltung.
-Validierung sowie Fehlerbehandlung finden ausschließlich in Diensten statt.
-
-Die Persistenzebene liegt in Form von \textit{Repositories} vor.
-Die gegebenen Implementierungen der Nutzer-, Profilbild- und Artikel-Repositories basieren auf Datenbankzugriffen.
-
-Sowohl Dienste als auch Repositories liegen als \textit{Interfaces} und Implementierungen vor, um separates Testen zu ermöglichen.
-%------------------------------------------------------------------------------------------------------------------------------------------------------
-
-\subsection{Authentifizierung}
-\label{subsec:backend:authentication}
-
-Um Administrator-Funktionen zu verwenden müssen sich Nutzer authentifizieren.
-Dies findet mit Hilfe von \textit{JSON Web Tokens}\footnote{Siehe \url{https://jwt.io/}.}, auch \textit{JWT} genannt, statt.
-Ein JWT wird nach einem erfolgreichen Login generiert, ist für 24 Stunden gültig und muss bei jeder Anfrage für Administrator-Funktionen enthalten sein.
-Einloggen können sich nur Nutzer, die über Administratorrechte verfügen, welche wiederum nur von Administratoren vergeben werden können.
-Während jedem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{subsec:backend:configuration}).
-%------------------------------------------------------------------------------------------------------------------------------------------------------
-
-\subsection{Konfiguration}
-\label{subsec:backend:configuration}
-
-Um das Backend in Betrieb zu nehmen müssen einige Parameter konfiguriert werden.
-Dies findet über \verb|.env|-Dateien statt, welche sich in dem \verb|environments|-Ordner des Hauptverzeichnisses befinden.
-Dort werden die Adressen von Server und Datenbank sowie Eigenschaften der Zertifizierung festgelegt.
-Darüber hinaus werden die Namen der \textit{Docker Secrets}-Dateien angegeben.
-In diesen Dateien werden sensible Daten, wie die Informationen des Standardadministrators und der Schlüssel für Signierung von JWTs, hinterlegt.
-Detaillierte Informationen zur Syntax dieser Konfigurationsdateien können der \verb|README.md|-Datei entnommen werden, welche dem Projekt beiliegt.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Vorgehen und Entstehungsprozess}
