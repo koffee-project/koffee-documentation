@@ -112,6 +112,7 @@ Stattdessen beobachten diese Datencontainer der ViewModels und entscheiden selbs
 
 \subsection{Android Jetpack}
 \label{subsec:app:jetpack}
+
 Im Folgenden werden die verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -261,6 +262,14 @@ Bei \textit{Timber} handelt es sich um eine Bibliothek die das Protokollieren ve
 So ist es während der Entwicklung möglich schnell detaillierte Protokollnachrichten zu verfassen, die keine Auswirkung auf ausgelieferte Endprodukte haben und bei der Suche nach Fehlern helfen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
+\subsection{Konfiguration}
+\label{subsec:app:configuration}
+
+Zur Konfiguration muss die Adresse der Serveranwendung angepasst werden.
+Dies findet über den Wert des Feldes \verb|KOFFEE_BACKEND_URL|, in der Datei \verb|build.gradle|, statt.
+Eine weitere Konfiguration ist nicht notwendig.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
 \section{Serveranwendung}
 \label{sec:backend}
 
@@ -294,23 +303,6 @@ Dies findet mit Hilfe von \textit{JSON Web Tokens}\footnote{Siehe \url{https://j
 Ein JWT wird nach einem erfolgreichen Login generiert, ist für 24 Stunden gültig und muss bei jeder Anfrage für Administrator-Funktionen enthalten sein.
 Einloggen können sich nur Nutzer, die über Administratorrechte verfügen, welche wiederum nur von Administratoren vergeben werden können.
 Während jedem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{subsec:backend:configuration}).
-%------------------------------------------------------------------------------------------------------------------------------------------------------
-
-\subsection{Konfiguration und Inbetriebnahme}
-\label{subsec:backend:configuration}
-
-Um das Backend an Einsatzumgebungen anzupassen können einige Parameter konfiguriert werden.
-Dies findet über \verb|.env|-Dateien statt, welche sich in dem \verb|environments|-Ordner des Hauptverzeichnisses befinden.
-Dort werden die Adressen von Server und Datenbank sowie Eigenschaften der Zertifizierung festgelegt.
-Darüber hinaus werden die Namen der \textit{Docker Secrets}-Dateien angegeben, in welchen sensible Daten hinterlegt werden.
-Bei der Standardkonfiguration müssen sich diese im \verb|secrets|-Verzeichnis befinden.
-\verb|hmac_secret.secret| muss den zur Signierung von JWTs verwendeten Schlüssel enthalten.
-Dabei kann es sich um eine beliebige Zeichenkette handeln.
-Analog zur Syntax von \verb|.env|-Dateien muss \verb|default_admin.secret| die Werte \verb|ID|, \verb|NAME| und \verb|PASSWORD| enthalten, welche zur Erzeugung von Standardadministratoren verwendet werden.
-
-Um das Backend in Betrieb müssen zuerst der \verb|URL|-Parameter in der Datei \verb|domain.env| angepasst und beide \verb|.secret|-Dateien angelegt werden.
-Nachdem das Projekt mit dem Befehl \verb|./gradlew build| erzeugt wurde, kann die Serveranwendung über Docker Compose gestartet werden.
-Detaillierte Informationen zur Syntax dieser Konfigurationsdateien sowie Inbetriebnahme und Wartung des Backends können der \verb|README.md|-Datei entnommen werden, welche dem Projekt beiliegt und dieser Dokumentation angehängt ist.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Bibliotheken}
@@ -370,6 +362,23 @@ Neben Umgebungsvariablen müssen auch sensible Daten, wie die Zugangsinformation
 Um diese zu schützen werden beim \textit{Deployment} des Backends mit Docker sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
 Da es sich dabei um Dateien handelt ist das Einlesen ihrer Informationen mit einer Syntaxanalyse verbunden.
 Die leichtgewichtige Bibliothek Docker Secrets übernimmt diesen Aufwand und lädt Parameter von Dateien in \textit{Maps}.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Konfiguration und Inbetriebnahme}
+\label{subsec:backend:configuration}
+
+Um das Backend an Einsatzumgebungen anzupassen können einige Parameter konfiguriert werden.
+Dies findet über \verb|.env|-Dateien statt, welche sich in dem \verb|environments|-Ordner des Hauptverzeichnisses befinden.
+Dort werden die Adressen von Server und Datenbank sowie Eigenschaften der Zertifizierung festgelegt.
+Darüber hinaus werden die Namen der \textit{Docker Secrets}-Dateien angegeben, in welchen sensible Daten hinterlegt werden.
+Bei der Standardkonfiguration müssen sich diese im \verb|secrets|-Verzeichnis befinden.
+\verb|hmac_secret.secret| muss den zur Signierung von JWTs verwendeten Schlüssel enthalten.
+Dabei kann es sich um eine beliebige Zeichenkette handeln.
+Analog zur Syntax von \verb|.env|-Dateien muss \verb|default_admin.secret| die Werte \verb|ID|, \verb|NAME| und \verb|PASSWORD| enthalten, welche zur Erzeugung von Standardadministratoren verwendet werden.
+
+Um das Backend in Betrieb müssen zuerst der \verb|URL|-Parameter in der Datei \verb|domain.env| angepasst und beide \verb|.secret|-Dateien angelegt werden.
+Nachdem das Projekt mit dem Befehl \verb|./gradlew build| erzeugt wurde, kann die Serveranwendung über Docker Compose gestartet werden.
+Detaillierte Informationen zur Syntax dieser Konfigurationsdateien sowie Inbetriebnahme und Wartung des Backends können der \verb|README.md|-Datei entnommen werden, welche dem Projekt beiliegt und dieser Dokumentation angehängt ist.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Vorgehen und Entstehungsprozess}
