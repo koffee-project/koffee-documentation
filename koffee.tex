@@ -63,43 +63,41 @@ autocite=inline
 
 \section{Einleitung}
 \label{sec:intro}
-Die Entwicklung von Android Apps zeichnet sich unter anderem dadurch aus, dass die \textit{API Level}\footnote{Zum Zeitpunkt dieser Ausarbeitung existieren 29 API Level.} des \textit{Android Frameworks} zum Teil unterschiedlich behandelt werden müssen.
-Die Versionsverteilung bei Android erstreckt sich über mehrere Versionen \autocite{androidhistory}.
+Die Entwicklung von Android Apps zeichnet sich unter anderem dadurch aus, dass die \textit{API Level}\footnote{Zum Zeitpunkt dieser Ausarbeitung existieren 29 API Level.} des \textit{Android Frameworks} unterschiedliche Funktionalitäten bereitstellen.
+Die Nutzerverteilung erstreckt sich über mehrere Versionen \autocite{androidhistory}.
 Zur Maximierung der potenziellen Nutzer ist es entsprechend notwendig auch ältere API Level zu unterstützen.
 Damit Entwickler dort ebenfalls neue Funktionen verwenden können, wurden die \textit{Support Libraries} eingeführt \autocite{supportlibraries}.
 Aus diesen entwickelten sich die \textit{Android Jetpack} Bibliotheken \autocite{androidjetpack}.
 
 Ziel dieses Projektes war die Entwicklung einer Kaffeekassen App und einer dazugehörigen Serveranwendung mit der Programmiersprache Kotlin.
-Für die Entwicklung der App sollten Android Jetpack Bibliotheken verwendet werden um ihre Vorzüge und Eigenschaften kennenzulernen.
+Für die Entwicklung der App sollten Android Jetpack Bibliotheken verwendet werden, um ihre Vorzüge und Eigenschaften kennenzulernen.
 
 Diese Dokumentation stellt Architektur, verwendete Bibliotheken und Eigenschaften der digitalen Kaffeekassen App sowie des zugehörigen Servers vor.
-Anschließend wird der Entstehungsprozess beider Programme erläutert und die Projektarbeit zusammengefasst.
+Anschließend wird der Entstehungsprozess beider Programme erläutert und ein Fazit zu Android Jetpack gezogen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Android App}
 \label{sec:app}
-
 Kern dieser Projektarbeit ist die Android App, die als Benutzeroberfläche der digitalen Kaffeekasse dient.
 Sie basiert auf Grundlagen, welche durch Android Jetpack gelegt wurden.
-In diesem Kapitel werden Architektur und verwendete Bibliotheken vorgestellt.
+In diesem Kapitel werden Architektur, Konfiguration, Android Jetpack und alle verwendete Bibliotheken der App vorgestellt.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Architektur}
 \label{subsec:app:architecture}
-
 Die App verwendet die von Google empfohlene \textit{Model-View-ViewModel} Architektur (\textit{MVVM}) \autocite{androidarchitecture}.
 Bei dieser wird die Anwendung in Datenmodell, Benutzeroberfläche und die sogenannten \textit{ViewModels} aufgeteilt (siehe \autoref{fig:app:architecture:mvvm}).
 
 Die Ebene des Datenmodells liegt in Form von \textit{Repositories} vor.
 Diese kommunizieren über eine Netzwerkschnittstelle mit der Serveranwendung um Daten zu laden oder Aktionen wie Käufe und Logins durchzuführen.
 So erhaltene Daten werden unmittelbar in die lokale Datenbank geschrieben und auch nur von dort aus geladen.
-Über diesen Mechanismus wird eine lokale Persistenz ermöglicht, wodurch Daten auch ohne Verbindung angezeigt werden können.
+Über diesen Mechanismus wird eine lokale Persistenz ermöglicht, wodurch Daten auch ohne Verbindung zum Server angezeigt werden können.
 Weil der Zustand eines Datenmodells ausschließlich vom zugehörigen Repository bestimmt wird, werden sie auch als \textit{Single source of truth} bezeichnet.
 Durch diese Eigenschaft ist es möglich inkonsistente Datenbestände zu verhindern.
 
 ViewModels passen von Repositories bereitgestellte Daten für Benutzeroberflächen an und stellen sie in Datencontainern bereit.
 Sie selbst haben keine Informationen über Benutzeroberflächen.
-Stattdessen beobachten diese Datencontainer der ViewModels und entscheiden selbst wie Daten anzuzeigen sind.
+Stattdessen reagieren diese auf Änderungen an ViewModels und entscheiden selbst über die Datenanzeige.
 
 \begin{figure}[H]
 	\centering
@@ -112,7 +110,6 @@ Stattdessen beobachten diese Datencontainer der ViewModels und entscheiden selbs
 
 \subsection{Android Jetpack}
 \label{subsec:app:jetpack}
-
 Im Folgenden werden die verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -141,15 +138,13 @@ Zusätzlich lassen sich \textit{BindingAdapters} definieren, durch welche benutz
 \subsubsection{Lifecycle}
 \label{subsubsec:app:jetpack:lifecycle}
 Die \textit{Lifecycle} Bibliothek umfasst primär ViewModels und LiveData.
-Bei ViewModels handelt es sich um Klassen, die von Fragmenten zur Darstellung von Daten und Interaktion mit Business Logic verwendet werden.
-Ihre Erzeugung wird von Framework-Methoden übernommen.
-Diese stellen sicher, dass ViewModels sich dem Lebenszyklus des besitzenden Fragments anpassen und wiederverwendet werden können.
+Jetpack ViewModels werden vom Android Framework verwaltet und passen sich dem Lebenszyklus des besitzenden Fragments an.
 
 LiveData baut auf diesem Konzept auf.
 Dabei handelt es sich um \textit{Wrapper} für beliebige Daten, deren Werte beobachtet werden können.
 Anders als traditionelle \textit{Observables} besitzt LiveData jedoch einen Lebenszyklus.
-Änderungen werden nur dann propagiert, wenn sie auch beobachtet.
-Zudem übernimmt das besitzende ViewModel die Verwaltung ihres Lebenszyklus, wodurch \textit{Leaks} vermieden werden.
+Änderungen werden nur dann propagiert, wenn sie auch beobachtet werden.
+Zudem übernimmt das besitzende ViewModel die Verwaltung ihres Lebenszyklus, wodurch \textit{Memory Leaks} vermieden werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Navigation}
@@ -157,10 +152,10 @@ Zudem übernimmt das besitzende ViewModel die Verwaltung ihres Lebenszyklus, wod
 Fragmente können mit Argumenten erzeugt werden.
 Dabei ist jedoch keine Typsicherheit garantiert und es gibt keinen Mechanismus, der die Vollständigkeit von Argumenten sicherstellt.
 Die \textit{Navigation} Bibliothek löst beide Probleme durch Verwendung von Navigationsgraphen.
-In diesen werden die verfügbaren Fragmente sowie ihre Argumente definiert.
+In diesen werden verfügbare Fragmente und ihre Argumente definiert.
 Durch Verbindungen zwischen Fragmenten werden \textit{Directions} angegeben.
-Deren Verwendung stellst sicher, dass alle Argumente mit korrektem Typ festgelegt wurden und Navigation nur zu korrekten Fragmenten möglich ist.
-Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initialisieren von Benutzerelemente wie beispielsweise einer \textit{Bottom Navigation} übernehmen. 
+Deren Verwendung bei der Navigation stellt sicher, dass alle Argumente mit korrektem Typ vorhanden sind und zum korrekten Fragment navigiert wird.
+Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initialisieren von Benutzerelementen wie \textit{Bottom Navigations} und \textit{Hamburger Menus} übernehmen. 
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{ConstraintLayout und SwiperefreshLayout}
@@ -169,19 +164,20 @@ Android Jetpack umfasst auch mehrere Layout Bibliotheken.
 Im Rahmen dieses Projektes wurden \textit{ConstraintLayout} und \textit{SwiperefreshLayout} verwendet.
 
 Komplexe Hierarchien in Benutzeroberflächen verringern deren Performanz bei Layoutänderungen.
-ConstraintLayouts ermöglichen das freie Platzieren von Elementen durch Einschränkungen ihrer Positionen.
+ConstraintLayouts ermöglichen das freie Platzieren von Elementen durch Angaben zur Einschränkung ihrer Positionen.
 So können Entwickler simplere und effizientere Layouts implementieren.
 
-Bei mobilen Anwendungen gibts es die gängige Geste des Herunterziehens zum Aktualisieren eines Bildschirms.
+Bei mobilen Anwendungen gibt es die gängige Geste des Herunterziehens zum Aktualisieren eines Bildschirms.
 Mit Hilfe von SwiperefreshLayout ist es möglich diese Funktionalität mit wenigen Zeilen Quelltext zu bestehenden Benutzeroberflächen hinzuzufügen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{RecyclerView}
 \label{subsubsec:app:jetpack:recyclerview}
 \textit{RecyclerViews} ermöglichen das Anzeigen von scrollbaren, dynamischen Listen.
-Anders als primitive \textit{Views} erzeugt RecyclerView nur die tatsächlich benötigten Container und verwendet diese wieder.
-Dies ist performanter als beispielsweise eine \textit{ListView}.
+Anders als primitive \textit{Views} erzeugt RecyclerView nur tatsächlich benötigten Container und verwendet diese wieder.
+Dadurch sind RecyclerViews performanter als beispielsweise \textit{ListViews} oder \textit{LinearLayouts}.
 Entwickler müssen Adapter verwenden um Daten an eine RecyclerView zu übergeben.
+Es stehen jedoch Hilfsklassen bereit, die bereits über einen Großteil der benötigten Logik verfügen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Room}
@@ -195,11 +191,11 @@ Room übernimmt in diesem Fall die Aktualisierung der Daten, wodurch es reicht D
 \subsubsection{Paging}
 \label{subsubsec:app:jetpack:paging}
 Das Laden großer Datenmengen aus Datenbanken oder Netzwerkquellen ist ein nicht zu unterschätzender Aufwand.
-Die \textit{Paging} Bibliothek ermöglicht deshalb das Laden von kleinen Teilen größerer Datensätze.
-Dazu muss eine \textit{DataSource Factory} vorliegen, die das stückweise Laden von Daten unterstützt.
-Unter anderem ermöglicht Room solche Factories als Rückgabewerte zu erhalten.
-Factories lassen sich zu LiveData Objekten transformieren, die \textit{PagedLists} enthalten.
-Diese besonderen Listen können beispielsweise von für RecyclerView mit Hilfe eines \textit{PagedListAdapters} verwendet werden.
+Die \textit{Paging} Bibliothek ermöglicht deshalb ein stückweises Laden von Datensätzen.
+Dazu muss eine \textit{DataSource Factory} vorliegen, welche dieses Konzept unterstützt.
+Unter anderem ermöglicht Room solche Factories als Rückgabewerte zu definieren.
+Sie lassen sich zu LiveData Objekten transformieren, welche \textit{PagedLists} enthalten.
+Diese besonderen Listen lassen sich unter anderem mit RecyclerViews und \textit{PagedListAdaptern} verwenden.
 Im Endeffekt können so Performanz und Speicherverbrauch verbessert werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
