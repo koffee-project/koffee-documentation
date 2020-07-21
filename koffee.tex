@@ -296,15 +296,21 @@ Einloggen können sich nur Nutzer, die über Administratorrechte verfügen, welc
 Während jedem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{subsec:backend:configuration}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Konfiguration}
+\subsection{Konfiguration und Inbetriebnahme}
 \label{subsec:backend:configuration}
 
 Um das Backend an Einsatzumgebungen anzupassen können einige Parameter konfiguriert werden.
 Dies findet über \verb|.env|-Dateien statt, welche sich in dem \verb|environments|-Ordner des Hauptverzeichnisses befinden.
 Dort werden die Adressen von Server und Datenbank sowie Eigenschaften der Zertifizierung festgelegt.
-Darüber hinaus werden die Namen der \textit{Docker Secrets}-Dateien angegeben.
-In diesen Dateien werden sensible Daten, wie die Informationen des Standardadministrators und der Schlüssel für Signierung von JWTs, hinterlegt.
-Detaillierte Informationen zur Syntax dieser Konfigurationsdateien sowie Inbetriebnahme und Wartung des Backends können der \verb|README.md|-Datei entnommen werden, welche dem Projekt beiliegt.
+Darüber hinaus werden die Namen der \textit{Docker Secrets}-Dateien angegeben, in welchen sensible Daten hinterlegt werden.
+Bei der Standardkonfiguration müssen sich diese im \verb|secrets|-Verzeichnis befinden.
+\verb|hmac_secret.secret| muss den zur Signierung von JWTs verwendeten Schlüssel enthalten.
+Dabei kann es sich um eine beliebige Zeichenkette handeln.
+Analog zur Syntax von \verb|.env|-Dateien muss \verb|default_admin.secret| die Werte \verb|ID|, \verb|NAME| und \verb|PASSWORD| enthalten, welche zur Erzeugung von Standardadministratoren verwendet werden.
+
+Um das Backend in Betrieb müssen zuerst der \verb|URL|-Parameter in der Datei \verb|domain.env| angepasst und beide \verb|.secret|-Dateien angelegt werden.
+Nachdem das Projekt mit dem Befehl \verb|./gradlew build| erzeugt wurde, kann die Serveranwendung über Docker Compose gestartet werden.
+Detaillierte Informationen zur Syntax dieser Konfigurationsdateien sowie Inbetriebnahme und Wartung des Backends können der \verb|README.md|-Datei entnommen werden, welche dem Projekt beiliegt und dieser Dokumentation angehängt ist.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Bibliotheken}
