@@ -375,12 +375,12 @@ Darüber hinaus wird der Namen des Docker Secrets angegeben, in welchem sensible
 Bei der Standardkonfiguration muss sich diese Datei im \verb|secrets|-Verzeichnis befinden.
 \verb|koffee.secret| enthält den zur Signierung von JWTs verwendeten Schlüssel sowie Informationen des Standardadministratoren.
 Das folgende Beispiel zeigt eine mögliche Konfiguration dieser Datei.
-		\begin{lstlisting}[style=simpleListing, title={Beispielinhalt von /secrets/koffee.secret}]
+\begin{lstlisting}[style=simpleListing, title={Beispielinhalt von /secrets/koffee.secret}]
 ID=admin
 NAME=Admin
 PASSWORD=adminPassword
 HMAC_SECRET=geheimeZeichenkette
-		\end{lstlisting}
+\end{lstlisting}
 Um das Backend in Betrieb zu nehmen müssen zuerst der \verb|URL|-Parameter in der Datei \verb|domain.env| angepasst und die \verb|.secret|-Datei angelegt werden.
 Nachdem das Projekt mit dem Befehl \verb|./gradlew build| erzeugt wurde, kann die Serveranwendung über Docker Compose gestartet werden.
 Schrittweise Anleitungen zur Inbetriebnahme befinden sich im Anhang (siehe \nameref{subsec:attachments:instructions}).
@@ -453,7 +453,7 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \printbibliography[title={Referenzen}, keyword=citations]
 \nocite{*}
 \newrefcontext[sorting=nty]
-\printbibliography[title={Dokumentation}, keyword=sources, env=sources]
+\printbibliography[title={Dokumentationen}, keyword=sources, env=sources]
 \endgroup
 
 \newpage
@@ -631,7 +631,7 @@ Felder eventuell benötigter \textit{Body}-Parameter sind unter den jeweiligen R
 	
 	\item[*DELETE /users/:id] Löscht den Nutzer mit der gegebenen ID.
 	
-	\item[*POST /users/:id/funding] Lädt das Guthaben des Nutzers mit der gegebenen ID um den gesendeten Betrag auf.
+	\item[*POST /users/:id/funding] Lädt das Guthaben des Nutzers mit der gegebenen ID um den gewünschten Betrag auf.
 	\begin{itemize}
 		\item amount: Double
 	\end{itemize}
@@ -644,7 +644,7 @@ Felder eventuell benötigter \textit{Body}-Parameter sind unter den jeweiligen R
 
 	\item[POST /users/:id/purchases/refund] Falls möglich wird der letzte Kauf des Nutzers mit der gegebenen ID storniert.
 	
-	\item[GET /users/:id/image] Antwortet mit den Bytes des Profilbilds eines Nutzers mit der gegebenen ID.
+	\item[GET /users/:id/image] Gibt Bytes des Profilbilds eines Nutzers mit der gegebenen ID zurück.
 	
 	\item[GET /users/:id/image/timestamp] Antwortet mit dem Zeitstempel des Profilbilds eines Nutzers mit der gegebenen ID.
 	
