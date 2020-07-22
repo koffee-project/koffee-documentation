@@ -215,14 +215,12 @@ Dazu zählen unter anderem Methoden zum Erzeugen von ViewModels sowie \textit{Co
 
 \subsection{Weitere Bibliotheken}
 \label{subsec:app:bibs}
-
 Im Rahmen der App-Entwicklung wurden auch Bibliotheken verwendet, welche nicht Teil von Android Jetpack sind.
 Im Folgenden werden ihre Funktionen und Verwendungsgründe vorgestellt.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Retrofit und Moshi}
 \label{subsubsec:app:bibs:retrofitmoshi}
-
 Über \textit{Retrofit} können abstrakte Methoden zum Anbinden von APIs definiert werden.
 Entwickler müssen dazu Informationen über die Art von Anfragen angeben.
 Implementierungen dieser Methoden werden von der Bibliothek generiert.
@@ -231,7 +229,6 @@ In Kombination mit der Serialisierungs-Bibliothek \textit{Moshi} können so Netz
 
 \subsubsection{Glide}
 \label{subsubsec:app:bibs:glide}
-
 \textit{Glide} übernimmt das asynchrone Laden und Darstellen von Bildern.
 Dabei lassen sich Einstellungen für Verhalten und Darstellung anpassen.
 Unter anderem kann Glide Bilder für schnelleres Laden zwischenspeichern, zuschneiden und während einem Ladevorgang durch Platzhalter ersetzen.
@@ -239,28 +236,24 @@ Unter anderem kann Glide Bilder für schnelleres Laden zwischenspeichern, zuschn
 
 \subsubsection{Image Picker}
 \label{subsubsec:app:bibs:imagepicker}
-
 Die Bibliothek \textit{Image Picker} ermöglicht die Auswahl von Bildern zur Laufzeit, die Nutzer entweder aus ihrer Galerie auswählen oder mit ihrer Kamera aufnehmen können.
 Eine äquivalente Funktionalität zu implementieren ist mit nicht-trivialem Aufwand verbunden, weshalb eine Verwendung existierender Bibliotheken die Entwicklung verkürzte.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{PrettyTime}
 \label{subsubsec:app:bibs:prettytime}
-
 \textit{PrettyTime} wird verwendet um Zeitstempel in ein für Menschen lesbares Format zu transformieren.
 Die Bibliothek unterstützt mehrere Sprachen, unter anderem Deutsch sowie Englisch, und erspart Entwicklern so das Übersetzen und Formatieren.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Timber}
 \label{subsubsec:app:bibs:timber}
-
 Bei \textit{Timber} handelt es sich um eine Bibliothek die das Protokollieren vereinfacht, Nachrichten mit zusätzlichen Informationen wie beispielsweise ihrem Ursprung ausgibt und jegliche Protokollierung außerhalb der Entwicklungsphase deaktiviert.
 So ist es während der Entwicklung möglich schnell detaillierte Protokollnachrichten zu verfassen, welche bei der Suche nach Fehlern helfen und keine Auswirkung auf ausgelieferte Endprodukte haben.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Konfiguration}
 \label{subsec:app:configuration}
-
 Zur Konfiguration muss die Adresse der Serveranwendung angepasst werden.
 Dies findet über den Wert des Feldes \verb|KOFFEE_BACKEND_URL|, in der Datei \verb|build.gradle|, statt.
 Eine weitere Konfiguration ist nicht notwendig.
@@ -268,7 +261,6 @@ Eine weitere Konfiguration ist nicht notwendig.
 
 \section{Serveranwendung}
 \label{sec:backend}
-
 Das Backend wurde, wie auch die App, mit der Programmiersprache Kotlin entwickelt.
 Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{Siehe \url{https://restfulapi.net/}.}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten.
 Die folgenden Abschnitte stellen Architektur, Authentifizierung, verwendete Bibliotheken sowie Konfiguration und Inbetriebnahme des Backends vor.
@@ -276,7 +268,6 @@ Die folgenden Abschnitte stellen Architektur, Authentifizierung, verwendete Bibl
 
 \subsection{Architektur}
 \label{subsec:backend:architecture}
-
 Das Backend verwendet eine serviceorientierte Architektur.
 Dabei werden Anfragen an Dienste weitergeleitet.
 Antworten von Diensten enthalten Informationen über die Ergebnisse von Aktionen, wie Statuscodes, Daten oder Fehlermeldungen, und werden an Kommunikationspartner weitergeleitet.
@@ -293,7 +284,6 @@ Sowohl Dienste als auch Repositories liegen als \textit{Interfaces} und Implemen
 
 \subsection{Authentifizierung}
 \label{subsec:backend:authentication}
-
 Um Administrator-Funktionen zu verwenden müssen sich Nutzer authentifizieren.
 Dies findet mit Hilfe von \textit{JSON Web Tokens}\footnote{Siehe \url{https://jwt.io/}.}, auch \textit{JWT} genannt, statt.
 Ein JWT wird nach einem erfolgreichen Login generiert, ist für 24 Stunden gültig und muss bei jeder Anfrage für Administrator-Funktionen enthalten sein.
@@ -303,7 +293,6 @@ Während jedem Start generiert das Backend einen Standard\-administrator, welche
 
 \subsection{Bibliotheken}
 \label{subsec:backend:bibs}
-
 Um die Entwicklung des Backends zu beschleunigen wurden mehrere Open Source Bibliotheken verwendet.
 Diese werden im Folgenden kurz vorgestellt.
 Zusätzliche Informationen können den jeweiligen Projektseiten entnommen werden.
@@ -311,7 +300,6 @@ Zusätzliche Informationen können den jeweiligen Projektseiten entnommen werden
 
 \subsubsection{Ktor}
 \label{subsubsec:backend:bibs:ktor}
-
 \textit{Ktor}, ein \textit{Web Framework} vom Entwickler der Sprache Kotlin, bildet die Grundlage des Backends.
 Ktor verwendet eine \textit{Domain Specific Language}, auch \textit{DSL} genannt, zum Definieren von Modulen.
 Solche Module können in der Serveranwendung installiert werden um ein erwünschtes Verhalten zu erreichen.
@@ -323,21 +311,18 @@ Dadurch können Entwickler asynchronen und performanten Quelltext schreiben, ohn
 
 \subsubsection{Koin}
 \label{subsubsec:backend:bibs:koin}
-
 \textit{Koin} ist ein Framework für \textit{Dependency Injection}, mit dem einzelne Komponenten des Servers unabhängig von ihrem Einsatzort initialisiert werden können.
 So ist es möglich Instanzen von Diensten sowie Repositories wiederzuverwenden und den für Instanziierung benötigten Quelltext zu minimieren.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{KMongo}
 \label{subsubsec:backend:bibs:kmongo}
-
 Die \textit{KMongo} Bibliothek ermöglicht eine simple Verwendung von \textit{Mongo}-Datenbanken in Kotlin.
 Dies erreicht sie durch automatische Serialisierung, Unterstütztung für Kotlin Coroutines und programmatische, typsichere Anfragen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{jBCrypt}
 \label{subsubsec:backend:bibs:jbcrypt}
-
 Das Backend muss Passwörter sicher in der Datenbank ablegen.
 Dafür müssen diese mit einer geeigneten \textit{Hash}-Funktion transformiert werden.
 Die Bibliothek \textit{jBCrypt} enthält solche Funktionen.
@@ -346,14 +331,12 @@ Darüber hinaus ermöglicht sie auch das anschließende Überprüfen von Passwö
 
 \subsubsection{Arkenv}
 \label{subsubsec:backend:bibs:arkenv}
-
 Zur Konfiguration des Backends an eine Einsatzumgebung müssen einige Parameter, wie die Adresse der Datenbank, gesetzt werden.
 \textit{Arkenv} erlaubt es diese Umgebungsvariablen programmatisch und typsicher zu definieren, so dass die Fehleranfälligkeit beim Einlesen reduziert wird.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Docker Secrets}
 \label{subsubsec:backend:bibs:dockersecrets}
-
 Neben Umgebungsvariablen müssen auch sensible Daten, wie die Zugangsinformationen des Standardadministrators, festgelegt werden.
 Um diese zu schützen werden beim \textit{Deployment} des Backends mit Docker sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
 Da es sich dabei um Dateien handelt ist das Einlesen ihrer Informationen mit einer Syntaxanalyse verbunden.
@@ -362,7 +345,6 @@ Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwan
 
 \subsection{Konfiguration und Inbetriebnahme}
 \label{subsec:backend:configuration}
-
 Um das Backend an Einsatzumgebungen anzupassen sollten einige Parameter konfiguriert werden.
 Dies findet über \verb|.env|-Dateien statt, welche sich in dem \verb|environments|-Ordner des Hauptverzeichnisses befinden.
 Dort werden die Adressen von Server und Datenbank sowie Eigenschaften der Zertifizierung festgelegt.
@@ -379,7 +361,6 @@ Detaillierte Informationen zur Syntax dieser Konfigurationsdateien sowie Inbetri
 
 \section{Vorgehen und Entstehungsprozess}
 \label{sec:methodologies}
-
 Die Projektarbeit begann mit der Entwicklung des Backends.
 Zunächst wurden Aufbau sowie Struktur festgelegt und implementiert um eine Arbeitsgrundlage zu schaffen.
 Dank der modularen Zusammensetzung des Backends war es möglich die benötigten Endpunkte für Nutzer, Artikel sowie Transaktionen schnell und unabhängig voneinander zu implementieren.
@@ -408,9 +389,12 @@ Im Anschluss wurden ein Großteil der Benutzeroberflächen sowie deren Verwendun
 Nachdem die Funktionalität beider Teilprojekte vollständig implementiert war, wurde mit der Dokumentation des Quelltextes begonnen, welche im Internet abrufbar ist\footnote{Siehe \url{http://koffee-app.yeger.eu/} und \url{http://koffee-backend.yeger.eu/}.}.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
+\section{Ergebnisse}
+\label{sec:results}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
 \section{Fazit}
 \label{sec:conclusion}
-
 Die Vorzüge der Android Jetpack Bibliotheken zeigten sich bereits während der Entwicklung.
 Mit Fragmenten und ViewModels war es möglich neue Bildschirme schnell zu implementieren.
 Zudem ermöglichten Android Jetpacks visuelle Navigationsgraphen ein einfaches und übersichtliches Verknüpfen von Fragmenten.
