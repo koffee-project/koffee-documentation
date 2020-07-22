@@ -441,12 +441,12 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
-		Feld         & Typ                                      & Anmerkung \\ \toprule
-		id           & String                                   &           \\ \midrule
-		name         & String                                   &           \\ \midrule
-		isAdmin      & Boolean                                  &           \\ \midrule
-		password     & String                                   & Optional  \\ \midrule
-		transactions & List\textless{}Transaction\textgreater{} &           \\ \bottomrule
+		Feld         & Typ                                      & Anmerkung             \\ \toprule
+		id           & String                                   & Muss einzigartig sein \\ \midrule
+		name         & String                                   &                       \\ \midrule
+		isAdmin      & Boolean                                  & Erlaubt Authentifizierung \\ \midrule
+		password     & String                                   & Optional              \\ \midrule
+		transactions & List\textless{}Transaction\textgreater{} & Verwendet Polymorphie \\ \bottomrule
 	\end{tabular}
 	\caption{User Schema}
 	\label{tab:attachements:user}
@@ -455,10 +455,10 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
-		Feld         & Typ    & Anmerkung        \\ \toprule
-		id           & String &                  \\ \midrule
-		encodedImage & String & Base64-Kodierung \\ \midrule
-		timestamp    & Long   &                  \\ \bottomrule
+		Feld         & Typ    & Anmerkung                      \\ \toprule
+		id           & String & Muss einer User-ID entsprechen \\ \midrule
+		encodedImage & String & Base64-Kodierung               \\ \midrule
+		timestamp    & Long   &                                \\ \bottomrule
 	\end{tabular}
 	\caption{Profile Image Schema}
 	\label{tab:attachements:profileimage}
@@ -467,11 +467,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
-		Feld   & Typ    & Anmerkung \\ \toprule
-		id     & String &           \\ \midrule
-		name   & String &           \\ \midrule
-		amount & Int    & Optional  \\ \midrule
-		price  & Double &           \\ \bottomrule
+		Feld   & Typ    & Anmerkung             \\ \toprule
+		id     & String & Muss einzigartig sein \\ \midrule
+		name   & String &                       \\ \midrule
+		amount & Int    & Optional              \\ \midrule
+		price  & Double &                       \\ \bottomrule
 	\end{tabular}
 	\caption{Item Schema}
 	\label{tab:attachements:item}
@@ -494,7 +494,7 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 	\begin{tabular}{@{}lll@{}}
 		Feld      & Typ    & Anmerkung                       \\ \toprule
 		type      & String & Muss \glqq purchase\grqq{} sein \\ \midrule
-		value     & Double &                                 \\ \midrule
+		value     & Double & Gesamtwert der Transaktion      \\ \midrule
 		timestamp & Long   &                                 \\ \midrule
 		itemId    & String &                                 \\ \midrule
 		itemName  & String &                                 \\ \midrule
@@ -509,7 +509,7 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 	\begin{tabular}{@{}lll@{}}
 		Feld      & Typ    & Anmerkung                     \\ \toprule
 		type      & String & Muss \glqq refund\grqq{} sein \\ \midrule
-		value     & Double &                               \\ \midrule
+		value     & Double & Gesamtwert der Transaktion    \\ \midrule
 		timestamp & Long   &                               \\ \midrule
 		itemId    & String &                               \\ \midrule
 		itemName  & String &                               \\ \midrule
