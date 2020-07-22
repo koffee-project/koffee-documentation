@@ -311,17 +311,7 @@ Während jedem Start generiert das Backend einen Standard\-administrator, welche
 \label{subsec:backend:database}
 Bei der MongoDB des Backends handelt es sich um eine dokumentenbasierte Datenbank.
 Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \nameref{subsec:attachments:schemas}).
-Falls die über Docker Compose vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen.
-\linebreak
-\linebreak
-\noindent Datenbank sichern:
-\begin{lstlisting}[style=simpleListing, numbers=none]
-$ docker-compose exec -T mongo mongodump --archive --gzip --db koffee-database > dump.gz
-\end{lstlisting}
-\noindent Datenbank wiederherstellen:
-\begin{lstlisting}[style=simpleListing, numbers=none]
-$ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
-\end{lstlisting}
+Falls die über Docker Compose vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen (siehe \nameref{subsec:attachments:database}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Bibliotheken}
@@ -471,7 +461,7 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \markboth{Anhang}{Anhang}
 \label{sec:attachments}
 
-\subsection*{Instruktionen zur Inbetriebnahme der Serveranwendung}
+\subsection*{Inbetriebnahme der Serveranwendung}
 \label{subsec:attachments:instructions}
 
 \subsubsection*{Einsatz während der Entwicklung}
@@ -494,6 +484,23 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 	\item \verb|docker-compose -f docker-compose-prod.yml up --build -d|
 	\item Der Server ist nun unter \verb|https://your.domain.org/koffee| erreichbar.
 \end{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection*{Datenbankverwaltung}
+\label{subsec:attachments:database}
+
+\subsubsection*{Datensicherung}
+\label{subsubsec:attachments:database:backup}
+\begin{lstlisting}[language=Bash, breaklines=true]
+$ docker-compose exec -T mongo mongodump --archive --gzip --db koffee-database > dump.gz
+\end{lstlisting}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection*{Datenwiederherstellung}
+\label{subsubsec:attachments:database:restore}
+\begin{lstlisting}[language=Bash, breaklines=true]
+$ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
+\end{lstlisting}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection*{Datenbankschemas}
