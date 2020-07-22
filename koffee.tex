@@ -96,7 +96,11 @@ Anschließend wird der Entstehungsprozess beider Programme erläutert und ein Fa
 \label{sec:app}
 Kern dieser Projektarbeit ist die Android App, die als Benutzeroberfläche der digitalen Kaffeekasse dient.
 Sie basiert auf Grundlagen, welche durch Android Jetpack gelegt wurden.
-In diesem Kapitel werden Architektur, verwendete Android Jetpack Komponenten und Bibliotheken sowie Konfiguration der App vorgestellt.
+In diesem Kapitel werden Funktionalität, Architektur, verwendete Android Jetpack Komponenten und Bibliotheken sowie Konfiguration der App vorgestellt.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Funktionalität}
+\label{subsec:app:functionality}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Architektur}
@@ -279,8 +283,16 @@ Eine weitere Konfiguration ist nicht notwendig.
 \label{sec:backend}
 Das Backend wurde, wie auch die App, mit der Programmiersprache Kotlin entwickelt.
 Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{Siehe \url{https://restfulapi.net/}.}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten.
-Die folgenden Abschnitte stellen Architektur, Authentifizierung, verwendete Bibliotheken sowie Konfiguration und Inbetriebnahme des Backends vor.
+Die folgenden Abschnitte stellen Funktionalität, Architektur, Authentifizierung, verwendete Bibliotheken sowie Konfiguration und Inbetriebnahme des Backends vor.
 %------------------------------------------------------------------------------------------------------------------------------------------------------ 
+
+\subsection{Funktionalität}
+\label{subsec:backend:functionality}
+Nach erfolgreicher Authentifizierung können Administratoren Nutzer sowie Artikel erstellen, aktualisieren und löschen.
+Zudem können Administratoren Guthabenaufladungen durchführen.
+Ohne Authentifizierung ist es möglich Artikel zu kaufen und Käufe innerhalb einer Minute zu stornieren.
+Zudem können Nutzer Profilbilder hochladen und löschen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Architektur}
 \label{subsec:backend:architecture}
