@@ -208,9 +208,9 @@ Bei der Registrierung können optional Einschränkungen angegeben werden, die fe
 
 \subsubsection{KTX}
 \label{subsubsec:app:jetpack:extensions}
-Kotlin ist bereits die von Google empfohlene Sprache für die Entwicklung von Android Apps \autocite{androidkotlin}.
-Eine Vielzahl an Android Jetpack Bibliotheken enthalten Kotlin spezifische Erweiterungsmethoden und Sprachfunktionen, welche die Programmierung von Android Apps vereinfachen und verbessern.
-Dazu zählen unter anderem Methoden zum Erzeugen von ViewModels und \textit{Coroutine Scopes} für ViewModels, Erweiterungen für \textit{SharedPreferences} sowie Unterstützung für \textit{Coroutines} in Android Jetpack Bibliotheken.
+Kotlin ist die von Google empfohlene Sprache für die Entwicklung von Android Apps \autocite{androidkotlin}.
+Eine Vielzahl an Android Jetpack Bibliotheken enthalten Erweiterungsmethoden und Sprachfunktionen, welche die Programmierung von Android Apps mit Kotlin vereinfachen und verbessern.
+Dazu zählen unter anderem Methoden zum Erzeugen von ViewModels sowie \textit{Coroutine Scopes} für ViewModels, Erweiterungen für \textit{SharedPreferences} und Unterstützung für \textit{Coroutines} in Android Jetpack Bibliotheken.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Weitere Bibliotheken}
@@ -223,7 +223,7 @@ Im Folgenden werden ihre Funktionen und Verwendungsgründe vorgestellt.
 \subsubsection{Retrofit und Moshi}
 \label{subsubsec:app:bibs:retrofitmoshi}
 
-Über \textit{Retrofit} können abstrakte Methoden zum Verwenden von APIs definiert werden.
+Über \textit{Retrofit} können abstrakte Methoden zum Anbinden von APIs definiert werden.
 Entwickler müssen dazu Informationen über die Art von Anfragen angeben.
 Implementierungen dieser Methoden werden von der Bibliothek generiert.
 In Kombination mit der Serialisierungs-Bibliothek \textit{Moshi} können so Netzwerkschnittstellen mit geringem Quelltextaufwand angebunden werden.
@@ -255,7 +255,7 @@ Die Bibliothek unterstützt mehrere Sprachen, unter anderem Deutsch sowie Englis
 \label{subsubsec:app:bibs:timber}
 
 Bei \textit{Timber} handelt es sich um eine Bibliothek die das Protokollieren vereinfacht, Nachrichten mit zusätzlichen Informationen wie beispielsweise ihrem Ursprung ausgibt und jegliche Protokollierung außerhalb der Entwicklungsphase deaktiviert.
-So ist es während der Entwicklung möglich schnell detaillierte Protokollnachrichten zu verfassen, die keine Auswirkung auf ausgelieferte Endprodukte haben und bei der Suche nach Fehlern helfen.
+So ist es während der Entwicklung möglich schnell detaillierte Protokollnachrichten zu verfassen, welche bei der Suche nach Fehlern helfen und keine Auswirkung auf ausgelieferte Endprodukte haben.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Konfiguration}
@@ -271,7 +271,7 @@ Eine weitere Konfiguration ist nicht notwendig.
 
 Das Backend wurde, wie auch die App, mit der Programmiersprache Kotlin entwickelt.
 Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{Siehe \url{https://restfulapi.net/}.}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten.
-Die folgenden Abschnitte stellen verwendete Bibliotheken, Architektur, Endpunkte und Authentisierung des Backends vor.
+Die folgenden Abschnitte stellen Architektur, Authentifizierung, verwendete Bibliotheken sowie Konfiguration und Inbetriebnahme des Backends vor.
 %------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 \subsection{Architektur}
@@ -279,7 +279,7 @@ Die folgenden Abschnitte stellen verwendete Bibliotheken, Architektur, Endpunkte
 
 Das Backend verwendet eine serviceorientierte Architektur.
 Dabei werden Anfragen an Dienste weitergeleitet.
-Antworten von Diensten enthalten Informationen über Ergebnisse der Aktionen, wie Statuscodes, Daten oder Fehlermeldungen, und werden an Kommunikationspartner weitergeleitet.
+Antworten von Diensten enthalten Informationen über die Ergebnisse von Aktionen, wie Statuscodes, Daten oder Fehlermeldungen, und werden an Kommunikationspartner weitergeleitet.
 
 Es existieren Dienste für Nutzer-, Profilbild-, Artikel- und Transaktionsverwaltung.
 Validierung sowie Fehlerbehandlung finden ausschließlich in Diensten statt.
@@ -315,10 +315,10 @@ Zusätzliche Informationen können den jeweiligen Projektseiten entnommen werden
 \textit{Ktor}, ein \textit{Web Framework} vom Entwickler der Sprache Kotlin, bildet die Grundlage des Backends.
 Ktor verwendet eine \textit{Domain Specific Language}, auch \textit{DSL} genannt, zum Definieren von Modulen.
 Solche Module können in der Serveranwendung installiert werden um ein erwünschtes Verhalten zu erreichen.
-Ktor selbst stellt dabei Module für verschiedene Bereiche, wie unter anderem Protokollierung, Serialisierung und Authentisierung, zur Verfügung.
+Ktor selbst stellt dabei Module für verschiedene Bereiche, wie unter anderem Protokollierung, Serialisierung und Authentifizierung, zur Verfügung.
 Auch vordefinierte Module können im Quelltext angepasst werden.
 Ktor zeichnet sich zudem dadurch aus, dass es vollständig asynchron arbeitet und Kotlin Coroutines an allen Stellen der Konfiguration verwendbar sind.
-Dadurch können Entwickler asynchronen und performanten Quelltext schreiben ohne zusätzliche Sprachkonstrukte zu verwenden.
+Dadurch können Entwickler asynchronen und performanten Quelltext schreiben, ohne zusätzliche Sprachkonstrukte zu verwenden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Koin}
@@ -339,7 +339,7 @@ Dies erreicht sie durch automatische Serialisierung, Unterstütztung für Kotlin
 \label{subsubsec:backend:bibs:jbcrypt}
 
 Das Backend muss Passwörter sicher in der Datenbank ablegen.
-Dafür müssen diese durch eine geeignete \textit{Hash}-Funktion transformiert werden.
+Dafür müssen diese mit einer geeigneten \textit{Hash}-Funktion transformiert werden.
 Die Bibliothek \textit{jBCrypt} enthält solche Funktionen.
 Darüber hinaus ermöglicht sie auch das anschließende Überprüfen von Passwörtern.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -347,7 +347,7 @@ Darüber hinaus ermöglicht sie auch das anschließende Überprüfen von Passwö
 \subsubsection{Arkenv}
 \label{subsubsec:backend:bibs:arkenv}
 
-Zur Konfiguration des Backends an eine Einsatzumgebung müssen einige Parameter, wie der Datenbankhost, gesetzt werden.
+Zur Konfiguration des Backends an eine Einsatzumgebung müssen einige Parameter, wie die Adresse der Datenbank, gesetzt werden.
 \textit{Arkenv} erlaubt es diese Umgebungsvariablen programmatisch und typsicher zu definieren, so dass die Fehleranfälligkeit beim Einlesen reduziert wird.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -357,24 +357,24 @@ Zur Konfiguration des Backends an eine Einsatzumgebung müssen einige Parameter,
 Neben Umgebungsvariablen müssen auch sensible Daten, wie die Zugangsinformationen des Standardadministrators, festgelegt werden.
 Um diese zu schützen werden beim \textit{Deployment} des Backends mit Docker sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
 Da es sich dabei um Dateien handelt ist das Einlesen ihrer Informationen mit einer Syntaxanalyse verbunden.
-Die leichtgewichtige Bibliothek Docker Secrets übernimmt diesen Aufwand und lädt Parameter von Dateien in \textit{Maps}.
+Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwand und lädt Parameter von Dateien in \textit{Maps}.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Konfiguration und Inbetriebnahme}
 \label{subsec:backend:configuration}
 
-Um das Backend an Einsatzumgebungen anzupassen können einige Parameter konfiguriert werden.
+Um das Backend an Einsatzumgebungen anzupassen sollten einige Parameter konfiguriert werden.
 Dies findet über \verb|.env|-Dateien statt, welche sich in dem \verb|environments|-Ordner des Hauptverzeichnisses befinden.
 Dort werden die Adressen von Server und Datenbank sowie Eigenschaften der Zertifizierung festgelegt.
-Darüber hinaus werden die Namen der \textit{Docker Secrets}-Dateien angegeben, in welchen sensible Daten hinterlegt werden.
+Darüber hinaus werden die Namen der Docker Secrets-Dateien angegeben, in welchen sensible Daten hinterlegt werden.
 Bei der Standardkonfiguration müssen sich diese im \verb|secrets|-Verzeichnis befinden.
-\verb|hmac_secret.secret| muss den zur Signierung von JWTs verwendeten Schlüssel enthalten.
+\verb|hmac_secret.secret| enthält den zur Signierung von JWTs verwendeten Schlüssel.
 Dabei kann es sich um eine beliebige Zeichenkette handeln.
 Analog zur Syntax von \verb|.env|-Dateien muss \verb|default_admin.secret| die Werte \verb|ID|, \verb|NAME| und \verb|PASSWORD| enthalten, welche zur Erzeugung von Standardadministratoren verwendet werden.
 
 Um das Backend in Betrieb müssen zuerst der \verb|URL|-Parameter in der Datei \verb|domain.env| angepasst und beide \verb|.secret|-Dateien angelegt werden.
 Nachdem das Projekt mit dem Befehl \verb|./gradlew build| erzeugt wurde, kann die Serveranwendung über Docker Compose gestartet werden.
-Detaillierte Informationen zur Syntax dieser Konfigurationsdateien sowie Inbetriebnahme und Wartung des Backends können der \verb|README.md|-Datei entnommen werden, welche dem Projekt beiliegt und dieser Dokumentation angehängt ist.
+Detaillierte Informationen zur Syntax dieser Konfigurationsdateien sowie Inbetriebnahme und Wartung des Backends können der \verb|README.md|-Datei entnommen werden, welche dem Projekt beiliegt und dieser Dokumentation anhängt.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Vorgehen und Entstehungsprozess}
@@ -383,14 +383,14 @@ Detaillierte Informationen zur Syntax dieser Konfigurationsdateien sowie Inbetri
 Die Projektarbeit begann mit der Entwicklung des Backends.
 Zunächst wurden Aufbau sowie Struktur festgelegt und implementiert um eine Arbeitsgrundlage zu schaffen.
 Dank der modularen Zusammensetzung des Backends war es möglich die benötigten Endpunkte für Nutzer, Artikel sowie Transaktionen schnell und unabhängig voneinander zu implementieren.
-Anschließend wurde die Authentisierung hinzugefügt um Endpunkte vor unautorisierten Zugriffen zu schützen.
+Anschließend wurde die Authentifizierung hinzugefügt um Endpunkte vor unautorisierten Zugriffen zu schützen.
 Da eine langfristige Nutzung des Backends in Frage kam, wurde der Quelltext nahezu vollständig getestet.
 Tests wurden parallel zum eigentlich Programm geschrieben um Fehler schnell zu erkennen.
 Im Laufe der Entwicklung wurde das Backend mehrfach überarbeitet um einen möglichst funktionalen Programmierstil zu erreichen.
-So konnte die Lesbarkeit verbessert und die Fehleranfälligkeit reduziert werden.
+So konnten Lesbarkeit des Quelltextes verbessert und Fehleranfälligkeit reduziert werden.
 Während der gesamten Projektarbeit wurde zudem die Formatierung des Quelltextes mit dem Tool \textit{klint}\footnote{Siehe \url{https://github.com/pinterest/ktlint}.} kontrolliert und korrigiert.
 Darüber hinaus wurden Open Source Bibliotheken verwendet, falls Problemlösungen einen größeren Aufwand erforderten.
-Dadurch konnte die Entwicklungszeit verkürzt und auf die eigentliche Aufgabenstellung konzentriert werden.
+Dadurch konnte die Entwicklungszeit verkürzt und auf die eigentliche Aufgabenstellung fokussiert werden.
 
 Die Entwicklung der App begann Ende April.
 Analog zu den Endpunkten des Backends wurden die Bildschirme der App nacheinander implementiert, wobei jeweils mehrere Revisionen durchgeführt wurden.
@@ -399,6 +399,7 @@ Um diesen weiter zu reduzieren wurden im Laufe der Entwicklung häufig auftreten
 Auch bei den ViewModels selbst sowie Fragmenten wurde Vererbung verwendet um oft benötigtes Verhalten nicht mehrfach zu implementieren.
 Zudem wurde die Fehlerbehandlung zentralisiert um die Fehlerausgabe zu vereinfachen und Abstürze zu verhindern.
 Durch solche Änderungen war es möglich den Quelltext deutlich zu kürzen.
+
 Zunächst wurde die App für einen Nutzer pro Endgerät entwickelt.
 Anfang Juni wurde, nach Anfrage des Projektbetreuers, ein zusätzlicher Modus für mehrere Nutzer implementiert.
 Weil die einzelnen Komponenten der App bereits modular und wiederverwendbar waren, konnte diese größere Änderung schnell umgesetzt werden. 
@@ -412,24 +413,24 @@ Nachdem die Funktionalität beider Teilprojekte vollständig implementiert war, 
 
 Die Vorzüge der Android Jetpack Bibliotheken zeigten sich bereits während der Entwicklung.
 Mit Fragmenten und ViewModels war es möglich neue Bildschirme schnell zu implementieren.
-Zudem ermöglichten Android Jetpacks visuelle Navigationsgraphen Fragmente einfach und übersichtlich zu verknüpfen.
+Zudem ermöglichten Android Jetpacks visuelle Navigationsgraphen ein einfaches und übersichtliches Verknüpfen von Fragmenten.
 Der dadurch gewonnene Gesamtüberblick resultierte in einer sicheren und fehlerresistenten Struktur.
 Der automatisierte Lebenszyklus vieler Jetpack Komponenten erlaubte zudem eine Minimierung an Interaktionen mit dem Android Framework.
-Stattdessen war es möglich den Fokus auf das Verhalten von Benutzeroberflächen und die Business Logik zu legen.
+Stattdessen war es möglich den Fokus auf das Verhalten von Benutzeroberflächen und Geschäftslogik zu legen.
 Des Weiteren hat sich Room als eine der wichtigsten Komponenten von Android Jetpack erwiesen.
-Bei der Entwicklung trivialisiert sie Datenbankzugriffe und reduziert Datenverwaltung oft auf einen Funktionsaufrufe.
+Bei der Entwicklung trivialisierte sie Datenbankzugriffe und reduzierte Datenverwaltung auf ein Minimum.
 Sichtbar wurden diese Vorzüge besonders bei der Entwicklungszeit.
 Meilensteine wurden meist Wochen zuvor erreicht, wodurch zusätzliche Funktionen implementiert werden konnten.
 
 Auch bei Verwendung der App sind Vorzüge der Jetpack Bibliotheken erkennbar.
 Die Asynchronität der Kombination von Room, LiveData und ViewModels stellt sicher, dass Datenbankzugriffe nicht zu einer Blockierung der Benutzeroberfläche führen.
 RecyclerViews sorgen zudem für eine performante Darstellung von Listen und ermöglichen flüssiges Scrollen durch diese.
-Dies wird durch die Paging Bibliothek weiter begünstigt.
+Die Paging Bibliothek begünstigt dies weiter.
 Sie sorgt dafür, dass das Laden von Listen aus der Datenbank auch bei vielen Einträgen nicht langsamer wird.
 Lifecycle Komponenten sorgen zudem dafür, dass sie nicht länger als benötigt aktiv bleiben, wodurch Speicher- sowie Prozessorverbrauch reduziert werden.
 
 Mit Android Jetpack Bibliotheken entwickelte Apps sind zwar nicht zwingend schneller oder besser als Herkömmliche, jedoch ist es für Entwickler einfacher diese Ziele zu erreichen, da Grundbausteine und Architektur bereits gegeben sind.
-Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft der von Google entwickelten Android Bibliotheken bilden ist es empfehlenswert bei Projekten auf Jetpack Komponenten zurückzugreifen.
+Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft der von Google entwickelten Android Bibliotheken bilden, ist es empfehlenswert bei der App Entwicklung auf Jetpack Komponenten zurückzugreifen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \newpage
