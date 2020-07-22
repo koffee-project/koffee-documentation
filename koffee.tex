@@ -436,8 +436,14 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \endgroup
 
 \newpage
-\section{Anhang}
+\section*{Anhang}
 \label{sec:attachements}
+
+\subsection*{Datenbankschemas}
+\label{subsec:attachements:schemas}
+
+\subsubsection*{User}
+\label{subsubsec:attachements:schemas:user}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -448,10 +454,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		password     & String                                   & Optional              \\ \midrule
 		transactions & List\textless{}Transaction\textgreater{} & Verwendet Polymorphie \\ \bottomrule
 	\end{tabular}
-	\caption{User Schema}
-	\label{tab:attachements:user}
+	\label{tab:attachements:schemas:user}
 \end{table}
 
+\subsubsection*{Profile Image}
+\label{subsubsec:attachements:schemas:profileimage}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -460,10 +467,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		encodedImage & String & Base64-Kodierung               \\ \midrule
 		timestamp    & Long   &                                \\ \bottomrule
 	\end{tabular}
-	\caption{Profile Image Schema}
-	\label{tab:attachements:profileimage}
+	\label{tab:attachements:schemas:profileimage}
 \end{table}
 
+\subsubsection*{Item}
+\label{subsubsec:attachements:schemas:item}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -473,22 +481,24 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		amount & Int    & Optional              \\ \midrule
 		price  & Double &                       \\ \bottomrule
 	\end{tabular}
-	\caption{Item Schema}
-	\label{tab:attachements:item}
+	\label{tab:attachements:schemas:item}
 \end{table}
 
+\subsubsection*{Transaction - Funding}
+\label{subsubsec:attachements:schemas:funding}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
 		Feld      & Typ    & Anmerkung                      \\ \toprule
 		type      & String & Muss \glqq funding\grqq{} sein \\ \midrule
-		value     & Double &                                \\ \midrule
+		value     & Double & Wert der Guthabenaufladung     \\ \midrule
 		timestamp & Long   &                                \\ \bottomrule
 	\end{tabular}
-	\caption{Funding Schema}
-	\label{tab:attachements:funding}
+	\label{tab:attachements:schemas:funding}
 \end{table}
 
+\subsubsection*{Transaction - Purchase}
+\label{subsubsec:attachements:schemas:purchase}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -500,10 +510,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		itemName  & String &                                 \\ \midrule
 		amount    & Int    &                                 \\ \bottomrule
 	\end{tabular}
-	\caption{Purchase Schema}
-	\label{tab:attachements:purchase}
+	\label{tab:attachements:schemas:purchase}
 \end{table}
 
+\subsubsection*{Transaction - Refund}
+\label{subsubsec:attachements:schemas:refund}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -515,8 +526,7 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		itemName  & String &                               \\ \midrule
 		amount    & Int    &                               \\ \bottomrule
 	\end{tabular}
-	\caption{Refund Schema}
-	\label{tab:attachements:refund}
+	\label{tab:attachements:schemas:refund}
 \end{table}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
