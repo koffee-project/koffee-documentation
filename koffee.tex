@@ -468,7 +468,7 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \label{subsubsec:attachments:instructions:development}
 \begin{enumerate}
 	\item \verb|./gradlew build|
-	\item Das benötigten Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
+	\item Das benötigte Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
 	\item \verb|docker-compose up --build -d|
 	\item Der Server ist nun unter \verb|http://localhost:8080| erreichbar.
 \end{enumerate}
@@ -478,11 +478,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \label{subsubsec:attachments:instructions:production}
 \begin{enumerate}
 	\item \verb|./gradlew build|
-	\item Das benötigten Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
+	\item Das benötigte Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
 	\item Den Wert von \verb|URL| in \verb|./environments/domain.env| auf eine valide Domäne ändern, über welche die Host-Maschine erreichbar ist.
 	\item Sicherstellen, dass die Host-Maschine über die Ports 80 und 443 erreichbar ist.
 	\item \verb|docker-compose -f docker-compose-prod.yml up --build -d|
-	\item Der Server ist nun unter \verb|https://your.domain.org/koffee| erreichbar.
+	\item Der Server ist nun unter \verb|https://your.domain/koffee| erreichbar.
 \end{enumerate}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
