@@ -468,7 +468,33 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 
 \newpage
 \section*{Anhang}
+\markboth{Anhang}{Anhang}
 \label{sec:attachments}
+
+\subsection*{Instruktionen zur Inbetriebnahme der Serveranwendung}
+\label{subsec:attachments:instructions}
+
+\subsubsection*{Einsatz während der Entwicklung}
+\label{subsubsec:attachments:instructions:development}
+\begin{enumerate}
+	\item \verb|./gradlew build|
+	\item Das benötigten Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
+	\item \verb|docker-compose up --build -d|
+	\item Der Server ist nun unter \verb|http://localhost:8080| erreichbar.
+\end{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection*{Einsatz in der Produktion}
+\label{subsubsec:attachments:instructions:production}
+\begin{enumerate}
+	\item \verb|./gradlew build|
+	\item Das benötigten Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
+	\item Den Wert von \verb|URL| in \verb|./environments/domain.env| auf eine valide Domäne ändern, über welche die Host-Maschine erreichbar ist.
+	\item Sicherstellen, dass die Host-Maschine über die Ports 80 und 443 erreichbar ist.
+	\item \verb|docker-compose -f docker-compose-prod.yml up --build -d|
+	\item Der Server ist nun unter \verb|https://your.domain.org/koffee| erreichbar.
+\end{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection*{Datenbankschemas}
 \label{subsec:attachments:schemas}
@@ -561,29 +587,90 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \end{table}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection*{Instruktionen zur Inbetriebnahme der Serveranwendung}
-\label{subsec:attachments:instructions}
+\subsection*{Routen}
+\label{subsec:attachments:routes}
 
-\subsubsection*{Einsatz während der Entwicklung}
-\label{subsubsec:attachments:instructions:development}
-\begin{enumerate}
-	\item \verb|./gradlew build|
-	\item Das benötigten Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
-	\item \verb|docker-compose up --build -d|
-	\item Der Server ist nun unter \verb|http://localhost:8080| erreichbar.
-\end{enumerate}
-%------------------------------------------------------------------------------------------------------------------------------------------------------
+Alle Routen verwenden JSON um Daten zu senden und erhalten.
+Routen, welche eine zuvorige Authentifizierung voraussetzen, sind mit einem Sternchen (\verb|*|) gekennzeichnet.
+Es werden keine \textit{Query}-Parameter verwendet.
+Felder eventuell benötigter \textit{Body}-Parameter sind unter den jeweiligen Routen aufgelistet.
 
-\subsubsection*{Einsatz in der Produktion}
-\label{subsubsec:attachments:instructions:production}
-\begin{enumerate}
-	\item \verb|./gradlew build|
-	\item Das benötigten Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
-	\item Den Wert von \verb|URL| in \verb|./environments/domain.env| auf eine valide Domäne ändern, über welche der Host erreichbar ist.
-	\item Sicherstellen, dass der Host über die Ports 80 und 443 erreichbar ist.
-	\item \verb|docker-compose -f docker-compose-prod.yml up --build -d|
-	\item Der Server ist nun unter \verb|https://your.domain.org/koffee| erreichbar.
-\end{enumerate}
+\begin{description}
+	\item[POST /login] Authentifiziert einen Nutzer und gibt im Erfolgsfall einen JWT zurück.
+	\begin{itemize}
+		\item id: String
+		\item password: String
+	\end{itemize}
+
+	\item[GET /users] Gibt IDs und Namen aller Nutzer zurück.
+	
+	\item[*POST /users] Erstellt einen neuen Nutzer und gibt dessen ID zurück.
+	\begin{itemize}
+		\item id: String (Optional)
+		\item name: String
+		\item isAdmin: Boolean
+		\item password: String (Optional)
+	\end{itemize}
+
+	\item[*PUT /users] Aktualisiert einen existierenden Nutzer.
+	\begin{itemize}
+		\item id: String
+		\item name: String
+		\item isAdmin: Boolean
+		\item password: String (Optional)
+	\end{itemize}
+
+	\item[GET /users/:id] Gibt ID, Name und Guthaben des Nutzers mit der gegebenen ID zurück.
+	
+	\item[*DELETE /users/:id] Löscht den Nutzer mit der gegebenen ID.
+	
+	\item[*POST /users/:id/funding] Lädt das Guthaben des Nutzers mit der gegebenen ID um den gesendeten Betrag auf.
+	\begin{itemize}
+		\item amount: Double
+	\end{itemize}
+
+	\item[POST /users/:id/purchases] Kauft einen Artikel für den Nutzer mit der gegebenen ID.
+	\begin{itemize}
+		\item itemId: String
+		\item amount: Int
+	\end{itemize}
+
+	\item[POST /users/:id/purchases/refund] Falls möglich wird der letzte Kauf des Nutzers mit der gegebenen ID storniert.
+	
+	\item[GET /users/:id/image] Antwortet mit den Bytes des Profilbilds eines Nutzers mit der gegebenen ID.
+	
+	\item[GET /users/:id/image/timestamp] Antwortet mit dem Zeitstempel des Profilbilds eines Nutzers mit der gegebenen ID.
+	
+	\item[POST /users/:id/image] Speichert die hochgeladene Datei als Profilbild des Nutzers mit der gegebenen ID.
+	\begin{itemize}
+		\item Multipart Datei (kein JSON)
+	\end{itemize}
+
+	\item[DELETE /users/:id/image] Löscht das Profilbilds des Nutzers mit der gegebenen ID.
+	
+	
+	\item[GET /items] Gibt IDs, Namen, Preise und Mengenangaben aller Artikel zurück.
+
+	\item[*POST /items] Erstellt einen neuen Artikel und gibt dessen ID zurück.
+	\begin{itemize}
+		\item id: String (Optional)
+		\item name: String
+		\item amount: Int (Optional)
+		\item price: Double
+	\end{itemize}
+	
+	\item[*PUT /items] Aktualisiert einen existierenden Artikel.
+	\begin{itemize}
+		\item id: String
+		\item name: String
+		\item amount: Int (Optional)
+		\item price: Double
+	\end{itemize}
+	
+	\item[GET /items/:id] Gibt ID, Name, Preis und Mengenangabe des Artikels mit der gegebenen ID zurück.
+	
+	\item[*DELETE /users/:id] Löscht den Artikel mit der gegebenen ID.
+\end{description}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \end{document}
