@@ -59,6 +59,7 @@ autocite=inline
 
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{subcaption}
 \captionsetup[figure]{width=10cm}
 
 \usepackage{ragged2e}
@@ -101,6 +102,68 @@ In diesem Kapitel werden Funktionalität, Architektur, verwendete Android Jetpac
 
 \subsection{Funktionalität}
 \label{subsec:app:functionality}
+Beim erstmaligen Starten der App werden Nutzer gebeten ihren Account auszuwählen.
+Alternativ können sie den Modus für eine geteilte Verwendung starten, welcher später erläutert wird.
+Der zugehörige Dialog ist in \autoref{fig:app:architecture:functionality:selection:dialog} zu sehen.
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+			\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/1-selection-dialog.png}
+		\caption{Begrüßungsdialog}
+		\label{fig:app:architecture:functionality:selection:dialog}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/user-search.png}
+		\caption{Nutzerauswahl und -suche}
+		\label{fig:app:architecture:functionality:selection:search}
+	\end{subfigure}
+	\caption{Begrüßungsdialog und Nutzerauswahl}
+	\label{fig:app:architecture:functionality:selection}
+\end{figure}
+Die Nutzerauswahl zeigt eine Liste aller existieren Nutzer an und ermöglicht es diese Interaktiv zu filtern.
+Suchergebnisse werden unmittelbar angezeigt und benötigen keine zusätzlichen Eingaben (siehe \autoref{fig:app:architecture:functionality:selection:search}).
+Nachdem ein Nutzer durch Klicken ausgewählt wurde öffnet sich die Hauptseite der App.
+Dort werden Informationen des ausgewählten Nutzers, falls vorhanden seine letzte Transaktion und verfügbare Artikel angezeigt.
+Auch diese lassen sich analog zu Nutzern filtern und durch klicken auswählen, wie in \autoref{fig:app:architecture:functionality:home:search} sichtbar.
+Falls eine stornierbare Transaktion vorliegt wird diese ebenfalls hier angezeigt (siehe \autoref{fig:app:architecture:functionality:home:transaction}).
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/home-fragment.png}
+		\caption{Artikelsuche}
+		\label{fig:app:architecture:functionality:home:search}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/home-fragment-transaction.png}
+		\caption{Stornierbare Transaktion}
+		\label{fig:app:architecture:functionality:home:transaction}
+	\end{subfigure}
+	\caption{Hauptbildschirm}
+	\label{fig:app:architecture:functionality:home}
+\end{figure}
+
+Die Artikelseite zeigt neben Preis und Name des Artikels auch alle Transaktionen des aktiven Nutzers an, die zu diesem Artikel gehören.
+Falls es sich um einen Artikel mit begrenztem Bestand handelt wird auch dieser angezeigt und bei Transaktionen aktualisiert.
+Zudem können Stornierungen auch von der Seite des betroffenen Artikels durchgeführt werden, wie in \autoref{fig:app:architecture:functionality:item} zu sehen ist.
+Wie auch beim Hauptbildschirm ist die Option nur während des gültigen Zeitrahmens von 60 Sekunden verfügbar und verschwindet nach Ablaufen der Zeit selbstständig.
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/item-purchased.png}
+		\caption{Gekaufter Artikel}
+		\label{fig:app:architecture:functionality:item:purchase}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/item-refunded.png}
+		\caption{Stornierte Transaktion}
+		\label{fig:app:architecture:functionality:item:refund}
+	\end{subfigure}
+	\caption{Artikelbildschirm}
+	\label{fig:app:architecture:functionality:item}
+\end{figure}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Architektur}
