@@ -309,12 +309,12 @@ Während jedem Start generiert das Backend einen Standard\-administrator, welche
 Bei der MongoDB des Backends handelt es sich um eine dokumentenbasierte Datenbank.
 Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \nameref{subsec:attachements:schemas}).
 Falls die über Docker Compose vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen.
-
+\linebreak
+\linebreak
 \noindent Datenbank sichern:
 \begin{lstlisting}[style=indentedCommand]
 $ docker-compose exec -T mongo mongodump --archive --gzip --db koffee-database > dump.gz
 \end{lstlisting}
-
 \noindent Datenbank wiederherstellen:
 \begin{lstlisting}[style=indentedCommand]
 $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
