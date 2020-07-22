@@ -10,6 +10,17 @@ autocite=inline
 \addbibresource{references.bib}
 
 \usepackage{booktabs}
+\usepackage{listings}
+\lstdefinestyle{indentedCommand}{
+	language=Bash,
+	numbers=none,
+	numbersep=10pt,
+	tabsize=4,
+	showspaces=false,
+	showstringspaces=false,
+	basicstyle=\small\ttfamily,
+	breaklines=true,
+}
 
 \defbibenvironment{sources}
 {\list
@@ -298,6 +309,16 @@ Während jedem Start generiert das Backend einen Standard\-administrator, welche
 Bei der MongoDB des Backends handelt es sich um eine dokumentenbasierte Datenbank.
 Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \nameref{subsec:attachements:schemas}).
 Falls die vorkonfigurierte MongoDB über Docker Compose verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen.
+
+\noindent Datenbank sichern:
+\begin{lstlisting}[style=indentedCommand]
+$ docker-compose exec -T mongo mongodump --archive --gzip --db koffee-database > dump.gz
+\end{lstlisting}
+
+\noindent Datenbank wiederherstellen:
+\begin{lstlisting}[style=indentedCommand]
+$ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
+\end{lstlisting}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Bibliotheken}
