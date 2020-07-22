@@ -295,6 +295,9 @@ Während jedem Start generiert das Backend einen Standard\-administrator, welche
 
 \subsection{Datenbank}
 \label{subsec:backend:database}
+Bei der MongoDB des Backends handelt es sich um eine dokumentenbasierte Datenbank.
+Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \nameref{subsec:attachements:schemas}).
+Falls die vorkonfigurierte MongoDB über Docker Compose verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Bibliotheken}
@@ -324,7 +327,7 @@ So ist es möglich Instanzen von Diensten sowie Repositories wiederzuverwenden u
 \subsubsection{KMongo}
 \label{subsubsec:backend:bibs:kmongo}
 Die \textit{KMongo} Bibliothek ermöglicht eine simple Verwendung von \textit{Mongo}-Datenbanken in Kotlin.
-Dies erreicht sie durch automatische Serialisierung, Unterstütztung für Kotlin Coroutines und programmatische, typsichere Anfragen.
+Dies erreicht sie durch automatische Serialisierung, Unterstützung für Kotlin Coroutines und programmatische, typsichere Anfragen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{jBCrypt}
