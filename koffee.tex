@@ -307,7 +307,7 @@ Während jedem Start generiert das Backend einen Standard\-administrator, welche
 \subsection{Datenbank}
 \label{subsec:backend:database}
 Bei der MongoDB des Backends handelt es sich um eine dokumentenbasierte Datenbank.
-Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \nameref{subsec:attachements:schemas}).
+Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \nameref{subsec:attachments:schemas}).
 Falls die über Docker Compose vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen.
 \linebreak
 \linebreak
@@ -461,13 +461,13 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 
 \newpage
 \section*{Anhang}
-\label{sec:attachements}
+\label{sec:attachments}
 
 \subsection*{Datenbankschemas}
-\label{subsec:attachements:schemas}
+\label{subsec:attachments:schemas}
 
 \subsubsection*{User}
-\label{subsubsec:attachements:schemas:user}
+\label{subsubsec:attachments:schemas:user}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -478,11 +478,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		password     & String                                   & Optional              \\ \midrule
 		transactions & List\textless{}Transaction\textgreater{} & Verwendet Polymorphie \\ \bottomrule
 	\end{tabular}
-	\label{tab:attachements:schemas:user}
+	\label{tab:attachments:schemas:user}
 \end{table}
 
 \subsubsection*{Profile Image}
-\label{subsubsec:attachements:schemas:profileimage}
+\label{subsubsec:attachments:schemas:profileimage}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -491,11 +491,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		encodedImage & String & Base64-Kodierung               \\ \midrule
 		timestamp    & Long   &                                \\ \bottomrule
 	\end{tabular}
-	\label{tab:attachements:schemas:profileimage}
+	\label{tab:attachments:schemas:profileimage}
 \end{table}
 
 \subsubsection*{Item}
-\label{subsubsec:attachements:schemas:item}
+\label{subsubsec:attachments:schemas:item}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -505,11 +505,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		amount & Int    & Optional              \\ \midrule
 		price  & Double &                       \\ \bottomrule
 	\end{tabular}
-	\label{tab:attachements:schemas:item}
+	\label{tab:attachments:schemas:item}
 \end{table}
 
 \subsubsection*{Transaction - Funding}
-\label{subsubsec:attachements:schemas:funding}
+\label{subsubsec:attachments:schemas:funding}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -518,11 +518,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		value     & Double & Wert der Guthabenaufladung     \\ \midrule
 		timestamp & Long   &                                \\ \bottomrule
 	\end{tabular}
-	\label{tab:attachements:schemas:funding}
+	\label{tab:attachments:schemas:funding}
 \end{table}
 
 \subsubsection*{Transaction - Purchase}
-\label{subsubsec:attachements:schemas:purchase}
+\label{subsubsec:attachments:schemas:purchase}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -534,11 +534,11 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		itemName  & String &                                 \\ \midrule
 		amount    & Int    &                                 \\ \bottomrule
 	\end{tabular}
-	\label{tab:attachements:schemas:purchase}
+	\label{tab:attachments:schemas:purchase}
 \end{table}
 
 \subsubsection*{Transaction - Refund}
-\label{subsubsec:attachements:schemas:refund}
+\label{subsubsec:attachments:schemas:refund}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -550,8 +550,12 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 		itemName  & String &                               \\ \midrule
 		amount    & Int    &                               \\ \bottomrule
 	\end{tabular}
-	\label{tab:attachements:schemas:refund}
+	\label{tab:attachments:schemas:refund}
 \end{table}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection*{Konfigurationsdateien}
+\label{subsec:attachments}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \end{document}
