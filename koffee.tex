@@ -127,6 +127,7 @@ Nachdem ein Nutzer durch Klicken ausgewählt wurde öffnet sich die Hauptseite d
 Dort werden Informationen des ausgewählten Nutzers, falls vorhanden seine letzte Transaktion und verfügbare Artikel angezeigt.
 Auch diese lassen sich analog zu Nutzern filtern und durch klicken auswählen, wie in \autoref{fig:app:architecture:functionality:home:search} sichtbar.
 Falls eine stornierbare Transaktion vorliegt wird diese ebenfalls hier angezeigt (siehe \autoref{fig:app:architecture:functionality:home:transaction}).
+Durch Klicken auf das Profilbild beziehungsweise dessen Platzhalter kann dieses bearbeitet oder entfernt werden.
 \begin{figure}[]
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -188,14 +189,82 @@ Wie bei allen Bildschirmen dieser App ist es zudem möglich die Seite durch eine
 	\label{fig:app:architecture:functionality:history}
 \end{figure}
 
-Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer (siehe \autoref{fig:app:architecture:functionality:statistics}).
+Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer (siehe \autoref{fig:app:architecture:functionality:various:statistics}).
 Auch hier ist es möglich durch Klicken auf einen Eintrag zur Seite des zugehörigen Artikels zu navigieren.
+
+Die Einstellungen umfassen neben Optionen zur erneuten Nutzerauswahl und Starten des geteilten Modus auch die Administrator-Funktionen (siehe \autoref{fig:app:architecture:functionality:various:settings} und \autoref{fig:app:architecture:functionality:various:adminfunctions}).
+Diese sind jedoch erst nach einem Login zugänglich, welcher über die in \autoref{fig:app:architecture:functionality:various:login} gezeigte Seite stattfindet.
 \begin{figure}[]
-	\centering
-	\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/statistics.png}
-	\caption{Statistiken}
-	\label{fig:app:architecture:functionality:statistics}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/statistics.png}
+		\caption{Statistiken}
+		\label{fig:app:architecture:functionality:various:statistics}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/settings.png}
+		\caption{Einstellungen}
+		\label{fig:app:architecture:functionality:various:settings}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/login.png}
+		\caption{Login}
+		\label{fig:app:architecture:functionality:various:login}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/settings-admin.png}
+		\caption{Administrator-Funktionen}
+		\label{fig:app:architecture:functionality:various:adminfunctions}
+	\end{subfigure}
+	\caption{Verschiedene Bildschirme}
+	\label{fig:app:architecture:functionality:various}
 \end{figure}
+
+Die Buttons \textit{MANAGE USERS} und \textit{MANAGE ITEMS} öffnen Seiten, welche respektiv denen der Nutzer- und Artikelauswahl entsprechen.
+Sie verfügen jedoch über zusätzliche Buttons, die Seiten zum Erstellen neuer Nutzer beziehungsweise Artikel öffnen.
+\autoref{fig:app:architecture:functionality:admin:create} zeigt diese Nutzervariante dieser Seite.
+Felder, welche als optional markiert sind müssen nicht ausgefüllt werden.
+IDs können beispielsweise von der Serveranwendung vergeben werden.
+Um einen Nutzer oder Artikel zu bearbeiten muss auf diesen geklickt werden.
+Während sich bei Artikel eine erweiterte Ansicht der Artikelseite öffnet haben Administratoren eine besondere Ansicht für Nutzer (siehe \autoref{fig:app:architecture:functionality:admin:user}).
+Dort sehen sie alle Transaktionen von Nutzern, können Profilbildern bearbeiten sowie löschen und haben die Möglichkeit Guthaben aufzuladen.
+Sowohl bei Nutzern als auch bei Artikeln gibt es Optionen zum Löschen und Bearbeiten der gesamten Entität.
+Bearbeitungsseiten entsprechen vom Aufbau her den Seiten zum Erstellen, wie in \autoref{fig:app:architecture:functionality:admin:edit} zu sehen ist.
+Beim Löschen müssen zwei Dialoge bestätigt werden, um sicherzustellen, dass die Aktion bewusst stattfindet.
+%TODO crediting erklären
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/create-user.png}
+		\caption{Nutzer erstellen}
+		\label{fig:app:architecture:functionality:admin:create}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/user-admin-view.png}
+		\caption{Administratoransicht}
+		\label{fig:app:architecture:functionality:admin:user}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/crediting.png}
+		\caption{Guthabenaufladung}
+		\label{fig:app:architecture:functionality:admin:crediting}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/edit-item.png}
+		\caption{Artikel bearbeiten}
+		\label{fig:app:architecture:functionality:admin:edit}
+	\end{subfigure}
+	\caption{Administrator-Funktionen}
+	\label{fig:app:architecture:functionality:admin}
+\end{figure}
+
+%TODO multi user mode erklären - parallelen zu single user mode und ohne bilder
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Architektur}
