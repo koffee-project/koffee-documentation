@@ -108,7 +108,7 @@ Der zugehörige Dialog ist in \autoref{fig:app:architecture:functionality:select
 \begin{figure}[]
 	\begin{subfigure}{.5\textwidth}
 		\centering
-			\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/1-selection-dialog.png}
+			\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/greetings-dialog.png}
 		\caption{Begrüßungsdialog}
 		\label{fig:app:architecture:functionality:selection:dialog}
 	\end{subfigure}
@@ -163,6 +163,38 @@ Wie auch beim Hauptbildschirm ist die Option nur während des gültigen Zeitrahm
 	\end{subfigure}
 	\caption{Artikelbildschirm}
 	\label{fig:app:architecture:functionality:item}
+\end{figure}
+
+Eine Übersicht über alle Transaktionen können sich Nutzer mit der Historie verschaffen.
+Diese ist wie auch die Haupt-, Statistik- und die Einstellungsseiten über die Navigationsleiste erreichbar (siehe \autoref{fig:app:architecture:functionality:history:navigation}).
+Die Historie zeigt eine vollständige Liste aller Transaktionen, die der ausgewählte Nutzer getätigt hat.
+Sie sind nach Transaktionszeitpunkten sortiert und geben Art, Wert und weitere Details der Transaktion an, wie in \autoref{fig:app:architecture:functionality:history:history} abgebildet ist.
+Durch Klicken auf Käufe oder Stornierungen wird zur Seite des zugehörigen Artikels navigiert.
+Wie bei allen Bildschirmen dieser App ist es zudem möglich die Seite durch eine \textit{Swipe-to-Refresh}-Geste zu aktualisieren.
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/navigation.png}
+		\caption{Navigation}
+		\label{fig:app:architecture:functionality:history:navigation}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/history.png}
+		\caption{Historie}
+		\label{fig:app:architecture:functionality:history:history}
+	\end{subfigure}
+	\caption{Navigation und Historie}
+	\label{fig:app:architecture:functionality:history}
+\end{figure}
+
+Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer (siehe \autoref{fig:app:architecture:functionality:statistics}).
+Auch hier ist es möglich durch Klicken auf einen Eintrag zur Seite des zugehörigen Artikels zu navigieren.
+\begin{figure}[]
+	\centering
+	\includegraphics[height=8cm,keepaspectratio]{./images/screenshots/statistics.png}
+	\caption{Statistiken}
+	\label{fig:app:architecture:functionality:statistics}
 \end{figure}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
