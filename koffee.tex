@@ -11,15 +11,18 @@ autocite=inline
 
 \usepackage{booktabs}
 \usepackage{listings}
-\lstdefinestyle{indentedCommand}{
+\lstdefinestyle{simpleListing}{
 	language=Bash,
-	numbers=none,
+	numbers=left,
 	numbersep=10pt,
+	numberstyle = \tiny,
 	tabsize=4,
 	showspaces=false,
 	showstringspaces=false,
 	basicstyle=\small\ttfamily,
 	breaklines=true,
+	xleftmargin=0.1\textwidth,
+	captionpos=b,
 }
 
 \defbibenvironment{sources}
@@ -312,11 +315,11 @@ Falls die über Docker Compose vorkonfigurierte MongoDB verwendet wird, lassen s
 \linebreak
 \linebreak
 \noindent Datenbank sichern:
-\begin{lstlisting}[style=indentedCommand]
+\begin{lstlisting}[style=simpleListing, numbers=none]
 $ docker-compose exec -T mongo mongodump --archive --gzip --db koffee-database > dump.gz
 \end{lstlisting}
 \noindent Datenbank wiederherstellen:
-\begin{lstlisting}[style=indentedCommand]
+\begin{lstlisting}[style=simpleListing, numbers=none]
 $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \end{lstlisting}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -378,15 +381,18 @@ Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwan
 Um das Backend an Einsatzumgebungen anzupassen sollten einige Parameter konfiguriert werden.
 Dies findet über \verb|.env|-Dateien statt, welche sich in dem \verb|environments|-Ordner des Hauptverzeichnisses befinden.
 Dort werden die Adressen von Server und Datenbank sowie Eigenschaften der Zertifizierung festgelegt.
-Darüber hinaus werden die Namen der Docker Secrets-Dateien angegeben, in welchen sensible Daten hinterlegt werden.
-Bei der Standardkonfiguration müssen sich diese im \verb|secrets|-Verzeichnis befinden.
-\verb|hmac_secret.secret| enthält den zur Signierung von JWTs verwendeten Schlüssel.
-Dabei kann es sich um eine beliebige Zeichenkette handeln.
-Analog zur Syntax von \verb|.env|-Dateien muss \verb|default_admin.secret| die Werte \verb|ID|, \verb|NAME| und \verb|PASSWORD| enthalten, welche zur Erzeugung von Standardadministratoren verwendet werden.
-
-Um das Backend in Betrieb müssen zuerst der \verb|URL|-Parameter in der Datei \verb|domain.env| angepasst und beide \verb|.secret|-Dateien angelegt werden.
+Darüber hinaus wird der Namen des Docker Secrets angegeben, in welchem sensible Daten hinterlegt werden.
+Bei der Standardkonfiguration muss sich diese Datei im \verb|secrets|-Verzeichnis befinden.
+\verb|koffee.secret| enthält den zur Signierung von JWTs verwendeten Schlüssel sowie Informationen des Standardadministratoren.
+Das folgende Beispiel zeigt eine mögliche Konfiguration dieser Datei.
+		\begin{lstlisting}[style=simpleListing, title={Beispielinhalt von /secrets/koffee.secret}]
+ID=admin
+NAME=Admin
+PASSWORD=adminPassword
+HMAC_SECRET=geheimeZeichenkette
+		\end{lstlisting}
+Um das Backend in Betrieb zu nehmen müssen zuerst der \verb|URL|-Parameter in der Datei \verb|domain.env| angepasst und die \verb|.secret|-Datei angelegt werden.
 Nachdem das Projekt mit dem Befehl \verb|./gradlew build| erzeugt wurde, kann die Serveranwendung über Docker Compose gestartet werden.
-Detaillierte Informationen zur Syntax dieser Konfigurationsdateien sowie Inbetriebnahme und Wartung des Backends können der \verb|README.md|-Datei entnommen werden, welche dem Projekt beiliegt und dieser Dokumentation anhängt.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Vorgehen und Entstehungsprozess}
@@ -556,6 +562,7 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 
 \subsection*{Konfigurationsdateien}
 \label{subsec:attachments}
+
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \end{document}
