@@ -9,6 +9,8 @@ autocite=inline
 ]{biblatex}
 \addbibresource{references.bib}
 
+\usepackage{booktabs}
+
 \defbibenvironment{sources}
 {\list
 	{}
@@ -291,6 +293,10 @@ Einloggen können sich nur Nutzer, die über Administratorrechte verfügen, welc
 Während jedem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{subsec:backend:configuration}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
+\subsection{Datenbank}
+\label{subsec:backend:database}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
 \subsection{Bibliotheken}
 \label{subsec:backend:bibs}
 Um die Entwicklung des Backends zu beschleunigen wurden mehrere Open Source Bibliotheken verwendet.
@@ -428,5 +434,90 @@ Weil sie zugleich eine beschleunigte Entwicklung ermöglichen und die Zukunft de
 \newrefcontext[sorting=nty]
 \printbibliography[title={Dokumentation}, keyword=sources, env=sources]
 \endgroup
+
+\newpage
+\section{Anhang}
+\label{sec:attachements}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{@{}lll@{}}
+		Feld         & Typ                                      & Anmerkung \\ \toprule
+		id           & String                                   &           \\ \midrule
+		name         & String                                   &           \\ \midrule
+		isAdmin      & Boolean                                  &           \\ \midrule
+		password     & String                                   & Optional  \\ \midrule
+		transactions & List\textless{}Transaction\textgreater{} &           \\ \bottomrule
+	\end{tabular}
+	\caption{User Schema}
+	\label{tab:attachements:user}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{@{}lll@{}}
+		Feld         & Typ    & Anmerkung        \\ \toprule
+		id           & String &                  \\ \midrule
+		encodedImage & String & Base64-Kodierung \\ \midrule
+		timestamp    & Long   &                  \\ \bottomrule
+	\end{tabular}
+	\caption{Profile Image Schema}
+	\label{tab:attachements:profileimage}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{@{}lll@{}}
+		Feld   & Typ    & Anmerkung \\ \toprule
+		id     & String &           \\ \midrule
+		name   & String &           \\ \midrule
+		amount & Int    & Optional  \\ \midrule
+		price  & Double &           \\ \bottomrule
+	\end{tabular}
+	\caption{Item Schema}
+	\label{tab:attachements:item}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{@{}lll@{}}
+		Feld      & Typ    & Anmerkung                      \\ \toprule
+		type      & String & Muss \glqq funding\grqq{} sein \\ \midrule
+		value     & Double &                                \\ \midrule
+		timestamp & Long   &                                \\ \bottomrule
+	\end{tabular}
+	\caption{Funding Schema}
+	\label{tab:attachements:funding}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{@{}lll@{}}
+		Feld      & Typ    & Anmerkung                       \\ \toprule
+		type      & String & Muss \glqq purchase\grqq{} sein \\ \midrule
+		value     & Double &                                 \\ \midrule
+		timestamp & Long   &                                 \\ \midrule
+		itemId    & String &                                 \\ \midrule
+		itemName  & String &                                 \\ \midrule
+		amount    & Int    &                                 \\ \bottomrule
+	\end{tabular}
+	\caption{Purchase Schema}
+	\label{tab:attachements:purchase}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{@{}lll@{}}
+		Feld      & Typ    & Anmerkung                     \\ \toprule
+		type      & String & Muss \glqq refund\grqq{} sein \\ \midrule
+		value     & Double &                               \\ \midrule
+		timestamp & Long   &                               \\ \midrule
+		itemId    & String &                               \\ \midrule
+		itemName  & String &                               \\ \midrule
+		amount    & Int    &                               \\ \bottomrule
+	\end{tabular}
+	\caption{Refund Schema}
+	\label{tab:attachements:refund}
+\end{table}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \end{document}
