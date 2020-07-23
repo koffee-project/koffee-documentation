@@ -300,13 +300,28 @@ Stattdessen reagieren diese auf Änderungen an ViewModels und entscheiden selbst
 
 \subsection{Android Jetpack}
 \label{subsec:app:jetpack}
-Im Folgenden werden die verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden.
+Android Jetpack umfasst eine Reihe von Bibliotheken und Tools, welche dazu dienen die Entwicklung moderner Android Apps zu vereinfachen.
+Dazu reduzieren sie beispielsweise den notwendigen \textit{Boilerplate Code} und vereinheitlichen Interaktionen mit dem Android Framework über verschiedene API Level hinweg.
+Darüber existieren Komponenten, welche bereits umfassende Grundlagen der MVVM-Architektur implementieren oder komplexe Elemente für Benutzeroberflächen bereitstellen.
+
+Vor der Einführung von Jetpack mit Android 9.0 konnten Entwickler auf Support Libraries zurückgreifen.
+Diese stellten bereits einen kleinen Teil der Jetpack Funktionalität zur Verfügung.
+Sie unterscheiden sich jedoch dadurch, dass ihre Veröffentlichungen unterschiedliche API Level unterstützten \autocite{supportlibrariesversions}.
+Dementsprechend konnten sie Entwicklern keine einheitliche Entwicklung über alle relevanten API Level ermöglichen.
+Jetpack behebt dieses Problem, indem auf unterschiedliche Versionen für mehrere API Level verzichtet wird.
+Stattdessen wird Kompatibilität von Jetpack selbst sichergestellt, indem Interaktionen mit dem Android Framework verkapselt werden.
+Die Entwicklungsumgebung Android Studio erstellt neue Projekte standardmäßig mit Jetpack.
+Projekte, welche Support Libraries verwenden, können automatisch migriert werden, so dass Entwickler schnell und einfach umsteigen können \autocite{androidxmigration}.
+
+Zum Zeitpunkt dieser Ausarbeitung existieren 82 Jetpack Bibliotheken, von denen ein Großteil produktionsbereite Veröffentlichungen besitzt \autocite{jetpackcount}.
+Diese werden kontinuierlich aktualisiert, erweitert und durch neue Bibliotheken ergänzt.
+Im Folgenden werden die in dieser App verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Core und AppCompat}
 \label{subsubsec:app:jetpack:base}
-Die \textit{Core} und \textit{AppCompat} Bibliotheken ermöglichen eine Verwendung von Funktionen neuer Android API Levels auf älteren Android Versionen.
-Dazu stellen sie eine Vielzahl an Hilfsklassen zur Verfügung, welche die unterschiedliche Behandlung der API Levels verkapseln und die Entwicklung so vereinheitlichen und vereinfachen.
+Die \textit{Core} und \textit{AppCompat} Bibliotheken ermöglichen eine Verwendung von Funktionen neuer Android API Level auf älteren Android Versionen.
+Dazu stellen sie eine Vielzahl an Hilfsklassen zur Verfügung, welche die unterschiedliche Behandlung der API Level verkapseln und die Entwicklung so vereinheitlichen und vereinfachen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Fragment}
