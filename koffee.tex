@@ -223,7 +223,7 @@ Diese sind jedoch erst nach einem Login zugänglich, welcher über die in \autor
 	\label{fig:app:architecture:functionality:various}
 \end{figure}
 
-Die Buttons \textit{MANAGE USERS} und \textit{MANAGE ITEMS} öffnen Seiten, welche respektiv denen der Nutzer- und Artikelauswahl entsprechen.
+Die Buttons \textit{MANAGE USERS} und \textit{MANAGE ITEMS} öffnen Seiten, welche jeweils denen der Nutzer- und Artikelauswahl entsprechen.
 Sie verfügen jedoch über zusätzliche Buttons, die Seiten zum Erstellen neuer Nutzer beziehungsweise Artikel öffnen.
 \autoref{fig:app:architecture:functionality:admin:create} zeigt die Nutzervariante dieser Seite.
 Felder, welche als optional markiert sind, müssen nicht ausgefüllt werden.
@@ -372,7 +372,7 @@ Komplexe Hierarchien in Benutzeroberflächen verringern deren Performanz bei Lay
 ConstraintLayouts ermöglichen das freie Platzieren von Elementen durch Angaben zur Einschränkung ihrer Positionen.
 So können Entwickler simplere und effizientere Layouts implementieren.
 
-Bei mobilen Anwendungen gibt es die gängige Geste des Herunterziehens zum Aktualisieren eines Bildschirms.
+Bei mobilen Anwendungen gibt es die gängige \textit{Swipe-to-Refresh}-Geste zum Aktualisieren eines Bildschirms.
 Mit Hilfe von SwiperefreshLayout ist es möglich diese Funktionalität mit wenigen Zeilen Quelltext zu bestehenden Benutzeroberflächen hinzuzufügen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -398,7 +398,7 @@ Room übernimmt in diesem Fall die Aktualisierung der Daten, wodurch es reicht D
 Das Laden großer Datenmengen aus Datenbanken oder Netzwerkquellen ist ein nicht zu unterschätzender Aufwand.
 Die \textit{Paging} Bibliothek ermöglicht deshalb ein stückweises Laden von Datensätzen.
 Dazu muss eine \textit{DataSource Factory} vorliegen, welche dieses Konzept unterstützt.
-Unter anderem ermöglicht Room solche Factories als Rückgabewerte zu definieren.
+Unter anderem ermöglicht Room solche \textit{Factories} als Rückgabewerte zu definieren.
 Sie lassen sich zu LiveData Objekten transformieren, welche \textit{PagedLists} enthalten.
 Diese besonderen Listen lassen sich unter anderem mit RecyclerViews und \textit{PagedListAdaptern} verwenden.
 Im Endeffekt können so Performanz und Speicherverbrauch verbessert werden.
@@ -429,7 +429,7 @@ Im Folgenden werden ihre Funktionen und Verwendungsgründe vorgestellt.
 Über \textit{Retrofit} können abstrakte Methoden zum Anbinden von APIs definiert werden.
 Entwickler müssen dazu Informationen über die Art von Anfragen angeben.
 Implementierungen dieser Methoden werden von der Bibliothek generiert.
-In Kombination mit der Serialisierungs-Bibliothek \textit{Moshi} können so Netzwerkschnittstellen mit geringem Quelltextaufwand angebunden werden.
+In Kombination mit der Serialisierungsbibliothek \textit{Moshi} können so Netzwerkschnittstellen mit geringem Quelltextaufwand angebunden werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Glide}
@@ -473,7 +473,7 @@ Die folgenden Abschnitte stellen Funktionalität, Architektur, Authentifizierung
 
 \subsection{Funktionalität}
 \label{subsec:backend:functionality}
-Alle Funktionen des Backends sind über eine vielzahl von Routen verwendbar (siehe \nameref{subsec:attachments:routes}).
+Alle Funktionen des Backends sind über eine Vielzahl von Routen verwendbar (siehe \nameref{subsec:attachments:routes}).
 Nach erfolgreicher Authentifizierung können Administratoren Nutzer sowie Artikel erstellen, aktualisieren und löschen.
 Zudem können Administratoren Guthabenaufladungen durchführen.
 Ohne Authentifizierung ist es möglich Artikel zu kaufen und Käufe innerhalb einer Minute zu stornieren.
@@ -509,7 +509,7 @@ Während jedem Start generiert das Backend einen Standard\-administrator, welche
 \label{subsec:backend:database}
 Bei der MongoDB des Backends handelt es sich um eine dokumentenbasierte Datenbank.
 Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \nameref{subsec:attachments:schemas}).
-Falls die über Docker Compose vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen (siehe \nameref{subsec:attachments:database}).
+Falls die über \textit{Docker Compose} vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen (siehe \nameref{subsec:attachments:database}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Bibliotheken}
