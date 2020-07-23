@@ -1,12 +1,11 @@
-\section{Anhang}
-\markboth{Anhang}{Anhang}
-\label{sec:attachments}
+\begin{appendix}
+\appendixpage
 
-\subsection{Inbetriebnahme der Serveranwendung}
-\label{subsec:attachments:instructions}
+\section{Inbetriebnahme der Serveranwendung}
+\label{sec:appendix:instructions}
 
-\subsubsection{Einsatz während der Entwicklung}
-\label{subsubsec:attachments:instructions:development}
+\subsection{Einsatz während der Entwicklung}
+\label{subsec:appendix:instructions:development}
 \begin{enumerate}
 	\item \verb|./gradlew build|
 	\item Das benötigte Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
@@ -15,8 +14,8 @@
 \end{enumerate}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Einsatz in der Produktion}
-\label{subsubsec:attachments:instructions:production}
+\subsection{Einsatz in der Produktion}
+\label{subsec:appendix:instructions:production}
 \begin{enumerate}
 	\item \verb|./gradlew build|
 	\item Das benötigte Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
@@ -27,28 +26,28 @@
 \end{enumerate}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Datenbankverwaltung}
-\label{subsec:attachments:database}
+\section{Datenbankverwaltung}
+\label{sec:appendix:database}
 
-\subsubsection{Datensicherung}
-\label{subsubsec:attachments:database:backup}
+\subsection{Datensicherung}
+\label{subsec:appendix:database:backup}
 \begin{lstlisting}[language=Bash, breaklines=true]
 $ docker-compose exec -T mongo mongodump --archive --gzip --db koffee-database > dump.gz
 \end{lstlisting}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Datenwiederherstellung}
-\label{subsubsec:attachments:database:restore}
+\subsection{Datenwiederherstellung}
+\label{subsec:appendix:database:restore}
 \begin{lstlisting}[language=Bash, breaklines=true]
 $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \end{lstlisting}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Datenbankschemas}
-\label{subsec:attachments:schemas}
+\section{Datenbankschemas}
+\label{sec:appendix:schemas}
 
-\subsubsection{User}
-\label{subsubsec:attachments:schemas:user}
+\subsection{User}
+\label{subsec:appendix:schemas:user}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld         & Typ                                      & Anmerkung             \\ \toprule
@@ -58,11 +57,11 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 		password     & String                                   & Optional              \\ \midrule
 		transactions & List\textless{}Transaction\textgreater{} & Verwendet Polymorphie \\ \bottomrule
 	\end{tabular*}
-	\label{tab:attachments:schemas:user}
+	\label{tab:appendix:schemas:user}
 \end{table}
 
-\subsubsection{Profile Image}
-\label{subsubsec:attachments:schemas:profileimage}
+\subsection{Profile Image}
+\label{subsec:appendix:schemas:profileimage}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld         & Typ    & Anmerkung                      \\ \toprule
@@ -70,11 +69,11 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 		encodedImage & String & Base64-Kodierung               \\ \midrule
 		timestamp    & Long   &                                \\ \bottomrule
 	\end{tabular*}
-	\label{tab:attachments:schemas:profileimage}
+	\label{tab:appendix:schemas:profileimage}
 \end{table}
 
-\subsubsection{Item}
-\label{subsubsec:attachments:schemas:item}
+\subsection{Item}
+\label{subsec:appendix:schemas:item}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld   & Typ    & Anmerkung             \\ \toprule
@@ -83,11 +82,11 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 		amount & Int    & Optional              \\ \midrule
 		price  & Double &                       \\ \bottomrule
 	\end{tabular*}
-	\label{tab:attachments:schemas:item}
+	\label{tab:appendix:schemas:item}
 \end{table}
 
-\subsubsection{Transaction - Funding}
-\label{subsubsec:attachments:schemas:funding}
+\subsection{Transaction - Funding}
+\label{subsec:appendix:schemas:funding}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld      & Typ    & Anmerkung                      \\ \toprule
@@ -95,11 +94,11 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 		value     & Double & Wert der Guthabenaufladung     \\ \midrule
 		timestamp & Long   &                                \\ \bottomrule
 	\end{tabular*}
-	\label{tab:attachments:schemas:funding}
+	\label{tab:appendix:schemas:funding}
 \end{table}
 
-\subsubsection{Transaction - Purchase}
-\label{subsubsec:attachments:schemas:purchase}
+\subsection{Transaction - Purchase}
+\label{subsec:appendix:schemas:purchase}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld      & Typ    & Anmerkung                       \\ \toprule
@@ -110,11 +109,11 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 		itemName  & String &                                 \\ \midrule
 		amount    & Int    &                                 \\ \bottomrule
 	\end{tabular*}
-	\label{tab:attachments:schemas:purchase}
+	\label{tab:appendix:schemas:purchase}
 \end{table}
 
-\subsubsection{Transaction - Refund}
-\label{subsubsec:attachments:schemas:refund}
+\subsection{Transaction - Refund}
+\label{subsec:appendix:schemas:refund}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld      & Typ    & Anmerkung                     \\ \toprule
@@ -125,12 +124,12 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 		itemName  & String &                               \\ \midrule
 		amount    & Int    &                               \\ \bottomrule
 	\end{tabular*}
-	\label{tab:attachments:schemas:refund}
+	\label{tab:appendix:schemas:refund}
 \end{table}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Routen}
-\label{subsec:attachments:routes}
+\section{Routen}
+\label{sec:appendix:routes}
 
 Alle Routen verwenden JSON um Daten zu senden und erhalten.
 Routen, welche eine zuvorige Authentifizierung voraussetzen, sind mit einem Sternchen (\verb|*|) gekennzeichnet.
@@ -213,4 +212,5 @@ Felder eventuell benötigter \textit{Body}-Parameter sind unter den jeweiligen R
 	
 	\item[*DELETE /users/:id] Löscht den Artikel mit der gegebenen ID.
 \end{description}
-%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\end{appendix}

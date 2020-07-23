@@ -7,7 +7,7 @@ Die folgenden Abschnitte stellen Funktionalität, Architektur, Authentifizierung
 
 \subsection{Funktionalität}
 \label{subsec:backend:functionality}
-Alle Funktionen des Backends sind über eine Vielzahl von Routen verwendbar (siehe \autoref{subsec:attachments:routes}).
+Alle Funktionen des Backends sind über eine Vielzahl von Routen verwendbar (siehe \autoref{sec:appendix:routes}).
 Nach erfolgreicher Authentifizierung können Administratoren Nutzer sowie Artikel erstellen, aktualisieren und löschen.
 Zudem können Administratoren Guthabenaufladungen durchführen.
 Ohne Authentifizierung ist es möglich Artikel zu kaufen und Käufe innerhalb einer Minute zu stornieren.
@@ -42,8 +42,8 @@ Während jedem Start generiert das Backend einen Standard\-administrator, welche
 \subsection{Datenbank}
 \label{subsec:backend:database}
 Bei der MongoDB des Backends handelt es sich um eine dokumentenbasierte Datenbank.
-Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \autoref{subsec:attachments:schemas}).
-Falls die über \textit{Docker Compose} vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen (siehe \autoref{subsec:attachments:database}).
+Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \autoref{sec:appendix:schemas}).
+Falls die über \textit{Docker Compose} vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen (siehe \autoref{sec:appendix:database}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Bibliotheken}
@@ -115,5 +115,5 @@ HMAC_SECRET=geheimeZeichenkette
 \end{lstlisting}
 Um das Backend in Betrieb zu nehmen müssen zuerst der \verb|URL|-Parameter in der Datei \verb|domain.env| angepasst und die \verb|.secret|-Datei angelegt werden.
 Nachdem das Projekt mit dem Befehl \verb|./gradlew build| erzeugt wurde, kann die Serveranwendung über Docker Compose gestartet werden.
-Schrittweise Anleitungen zur Inbetriebnahme befinden sich im Anhang (siehe \autoref{subsec:attachments:instructions}).
+Schrittweise Anleitungen zur Inbetriebnahme befinden sich im Anhang (siehe \autoref{sec:appendix:instructions}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
