@@ -1,11 +1,11 @@
-\section*{Anhang}
+\section{Anhang}
 \markboth{Anhang}{Anhang}
 \label{sec:attachments}
 
-\subsection*{Inbetriebnahme der Serveranwendung}
+\subsection{Inbetriebnahme der Serveranwendung}
 \label{subsec:attachments:instructions}
 
-\subsubsection*{Einsatz während der Entwicklung}
+\subsubsection{Einsatz während der Entwicklung}
 \label{subsubsec:attachments:instructions:development}
 \begin{enumerate}
 	\item \verb|./gradlew build|
@@ -15,7 +15,7 @@
 \end{enumerate}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection*{Einsatz in der Produktion}
+\subsubsection{Einsatz in der Produktion}
 \label{subsubsec:attachments:instructions:production}
 \begin{enumerate}
 	\item \verb|./gradlew build|
@@ -27,27 +27,27 @@
 \end{enumerate}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection*{Datenbankverwaltung}
+\subsection{Datenbankverwaltung}
 \label{subsec:attachments:database}
 
-\subsubsection*{Datensicherung}
+\subsubsection{Datensicherung}
 \label{subsubsec:attachments:database:backup}
 \begin{lstlisting}[language=Bash, breaklines=true]
 $ docker-compose exec -T mongo mongodump --archive --gzip --db koffee-database > dump.gz
 \end{lstlisting}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection*{Datenwiederherstellung}
+\subsubsection{Datenwiederherstellung}
 \label{subsubsec:attachments:database:restore}
 \begin{lstlisting}[language=Bash, breaklines=true]
 $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \end{lstlisting}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection*{Datenbankschemas}
+\subsection{Datenbankschemas}
 \label{subsec:attachments:schemas}
 
-\subsubsection*{User}
+\subsubsection{User}
 \label{subsubsec:attachments:schemas:user}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
@@ -61,7 +61,7 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:attachments:schemas:user}
 \end{table}
 
-\subsubsection*{Profile Image}
+\subsubsection{Profile Image}
 \label{subsubsec:attachments:schemas:profileimage}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
@@ -73,7 +73,7 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:attachments:schemas:profileimage}
 \end{table}
 
-\subsubsection*{Item}
+\subsubsection{Item}
 \label{subsubsec:attachments:schemas:item}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
@@ -86,7 +86,7 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:attachments:schemas:item}
 \end{table}
 
-\subsubsection*{Transaction - Funding}
+\subsubsection{Transaction - Funding}
 \label{subsubsec:attachments:schemas:funding}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
@@ -98,7 +98,7 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:attachments:schemas:funding}
 \end{table}
 
-\subsubsection*{Transaction - Purchase}
+\subsubsection{Transaction - Purchase}
 \label{subsubsec:attachments:schemas:purchase}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
@@ -113,7 +113,7 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:attachments:schemas:purchase}
 \end{table}
 
-\subsubsection*{Transaction - Refund}
+\subsubsection{Transaction - Refund}
 \label{subsubsec:attachments:schemas:refund}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
@@ -129,7 +129,7 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \end{table}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection*{Routen}
+\subsection{Routen}
 \label{subsec:attachments:routes}
 
 Alle Routen verwenden JSON um Daten zu senden und erhalten.
