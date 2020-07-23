@@ -231,10 +231,10 @@ IDs können beispielsweise von der Serveranwendung vergeben werden.
 Um einen Nutzer oder Artikel zu bearbeiten muss auf diesen geklickt werden.
 Während sich bei Artikel eine erweiterte Ansicht der Artikelseite öffnet haben Administratoren eine besondere Ansicht für Nutzer (siehe \autoref{fig:app:architecture:functionality:admin:user}).
 Dort sehen sie alle Transaktionen von Nutzern, können Profilbildern bearbeiten sowie löschen und haben die Möglichkeit Guthaben aufzuladen.
+Letzteres kann über eine eigene Seite, welche in \autoref{fig:app:architecture:functionality:admin:crediting} zu sehen ist, durchgeführt werden.
 Sowohl bei Nutzern als auch bei Artikeln gibt es Optionen zum Löschen und Bearbeiten der gesamten Entität.
 Bearbeitungsseiten entsprechen vom Aufbau her den Seiten zum Erstellen, wie in \autoref{fig:app:architecture:functionality:admin:edit} zu sehen ist.
-Beim Löschen müssen zwei Dialoge bestätigt werden, um sicherzustellen, dass die Aktion bewusst stattfindet.
-%TODO crediting erklären
+Beim Löschen müssen zwei Dialoge bestätigt werden um sicherzustellen, dass die Aktion bewusst stattfindet.
 \begin{figure}[]
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -264,7 +264,13 @@ Beim Löschen müssen zwei Dialoge bestätigt werden, um sicherzustellen, dass d
 	\label{fig:app:architecture:functionality:admin}
 \end{figure}
 
-%TODO multi user mode erklären - parallelen zu single user mode und ohne bilder
+Der geteilte Modus dient dazu einen schnellen Nutzerwechsel zu ermöglichen.
+Er umfasst ebenfalls Nutzerauswahl, Hauptbildschirm und Artikelseiten.
+Es ist jedoch nur möglich in dieser Reihenfolge zwischen ihnen zu navigieren, da ausgewählte Nutzer nicht gespeichert werden.
+Nachdem dieser Modus gestartet wurde, kann er nur durch einen Neustart der App wieder verlassen werden.
+
+Sollten während einer Verwendung der App Fehler auftreten, werden Nutzer über einen Text am unteren Bildschirmrand darüber informiert.
+Parallel werden Fehlerbehebungen, wie das Entfernen veralteter Daten, durchgeführt.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Architektur}
@@ -283,7 +289,7 @@ ViewModels passen von Repositories bereitgestellte Daten für Benutzeroberfläch
 Sie selbst haben keine Informationen über Benutzeroberflächen.
 Stattdessen reagieren diese auf Änderungen an ViewModels und entscheiden selbst über die Datenanzeige.
 
-\begin{figure}[H]
+\begin{figure}[]
 	\centering
 	\includegraphics[height=8cm,keepaspectratio]{./images/android-architecture.png}
 	\caption{MVVM-Entwurfsmuster in Android}
@@ -452,6 +458,7 @@ Die folgenden Abschnitte stellen Funktionalität, Architektur, Authentifizierung
 
 \subsection{Funktionalität}
 \label{subsec:backend:functionality}
+%TODO auf routen verweisen
 Nach erfolgreicher Authentifizierung können Administratoren Nutzer sowie Artikel erstellen, aktualisieren und löschen.
 Zudem können Administratoren Guthabenaufladungen durchführen.
 Ohne Authentifizierung ist es möglich Artikel zu kaufen und Käufe innerhalb einer Minute zu stornieren.
