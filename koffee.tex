@@ -715,58 +715,58 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \subsubsection*{User}
 \label{subsubsec:attachments:schemas:user}
 \begin{table}[H]
-	\begin{tabular}{@{}lll@{}}
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld         & Typ                                      & Anmerkung             \\ \toprule
 		id           & String                                   & Muss einzigartig sein \\ \midrule
 		name         & String                                   &                       \\ \midrule
 		isAdmin      & Boolean                                  & Erlaubt Authentifizierung \\ \midrule
 		password     & String                                   & Optional              \\ \midrule
 		transactions & List\textless{}Transaction\textgreater{} & Verwendet Polymorphie \\ \bottomrule
-	\end{tabular}
+	\end{tabular*}
 	\label{tab:attachments:schemas:user}
 \end{table}
 
 \subsubsection*{Profile Image}
 \label{subsubsec:attachments:schemas:profileimage}
 \begin{table}[H]
-	\begin{tabular}{@{}lll@{}}
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld         & Typ    & Anmerkung                      \\ \toprule
 		id           & String & Muss einer User-ID entsprechen \\ \midrule
 		encodedImage & String & Base64-Kodierung               \\ \midrule
 		timestamp    & Long   &                                \\ \bottomrule
-	\end{tabular}
+	\end{tabular*}
 	\label{tab:attachments:schemas:profileimage}
 \end{table}
 
 \subsubsection*{Item}
 \label{subsubsec:attachments:schemas:item}
 \begin{table}[H]
-	\begin{tabular}{@{}lll@{}}
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld   & Typ    & Anmerkung             \\ \toprule
 		id     & String & Muss einzigartig sein \\ \midrule
 		name   & String &                       \\ \midrule
 		amount & Int    & Optional              \\ \midrule
 		price  & Double &                       \\ \bottomrule
-	\end{tabular}
+	\end{tabular*}
 	\label{tab:attachments:schemas:item}
 \end{table}
 
 \subsubsection*{Transaction - Funding}
 \label{subsubsec:attachments:schemas:funding}
 \begin{table}[H]
-	\begin{tabular}{@{}lll@{}}
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld      & Typ    & Anmerkung                      \\ \toprule
 		type      & String & Muss \glqq funding\grqq{} sein \\ \midrule
 		value     & Double & Wert der Guthabenaufladung     \\ \midrule
 		timestamp & Long   &                                \\ \bottomrule
-	\end{tabular}
+	\end{tabular*}
 	\label{tab:attachments:schemas:funding}
 \end{table}
 
 \subsubsection*{Transaction - Purchase}
 \label{subsubsec:attachments:schemas:purchase}
 \begin{table}[H]
-	\begin{tabular}{@{}lll@{}}
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld      & Typ    & Anmerkung                       \\ \toprule
 		type      & String & Muss \glqq purchase\grqq{} sein \\ \midrule
 		value     & Double & Gesamtwert der Transaktion      \\ \midrule
@@ -774,14 +774,14 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 		itemId    & String &                                 \\ \midrule
 		itemName  & String &                                 \\ \midrule
 		amount    & Int    &                                 \\ \bottomrule
-	\end{tabular}
+	\end{tabular*}
 	\label{tab:attachments:schemas:purchase}
 \end{table}
 
 \subsubsection*{Transaction - Refund}
 \label{subsubsec:attachments:schemas:refund}
 \begin{table}[H]
-	\begin{tabular}{@{}lll@{}}
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld      & Typ    & Anmerkung                     \\ \toprule
 		type      & String & Muss \glqq refund\grqq{} sein \\ \midrule
 		value     & Double & Gesamtwert der Transaktion    \\ \midrule
@@ -789,7 +789,7 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 		itemId    & String &                               \\ \midrule
 		itemName  & String &                               \\ \midrule
 		amount    & Int    &                               \\ \bottomrule
-	\end{tabular}
+	\end{tabular*}
 	\label{tab:attachments:schemas:refund}
 \end{table}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
