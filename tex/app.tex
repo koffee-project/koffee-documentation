@@ -37,7 +37,7 @@ Durch Klicken auf das Profilbild, beziehungsweise dessen Platzhalter, kann diese
 Die Artikelseite zeigt neben Preis und Name des Artikels auch alle Transaktionen des aktiven Nutzers an, die zu einem Artikel gehören.
 Falls es sich um einen Artikel mit begrenztem Bestand handelt, wird auch dieser angezeigt und bei Transaktionen aktualisiert.
 Zudem können Stornierungen auch von der Seite des betroffenen Artikels durchgeführt werden, wie in \autoref{fig:app:functionality:item} zu sehen ist.
-Wie auch beim Hauptbildschirm ist die Option nur während des gültigen Zeitrahmens von 60 Sekunden verfügbar und verschwindet selbstständig nach Ablaufen der Zeit.
+Wie auch bei der Hauptseite, ist die Option nur während des gültigen Zeitrahmens von 60 Sekunden verfügbar und verschwindet selbstständig nach Ablaufen der Zeit.
 \begin{figure}%
 	\centering
 	\subfloat[Gekaufter Artikel]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/item-purchased.png}\label{fig:app:functionality:item:purchase}}}%
@@ -48,29 +48,26 @@ Wie auch beim Hauptbildschirm ist die Option nur während des gültigen Zeitrahm
 \end{figure}
 
 Eine Übersicht über alle Transaktionen können sich Nutzer mit der Historie verschaffen.
-Diese ist wie auch die Haupt-, Statistik- und die Einstellungsseiten über die Navigationsleiste erreichbar (siehe \autoref{fig:app:functionality:history:navigation}).
+Diese ist, wie auch Haupt-, Statistik- und Einstellungsseiten, über eine Navigationsleiste am unteren Bildschirmrand erreichbar.
 Die Historie zeigt eine vollständige Liste aller Transaktionen, die der ausgewählte Nutzer getätigt hat.
 Sie sind nach Transaktionszeitpunkten sortiert und geben Art, Wert und weitere Details der Transaktion an, wie in \autoref{fig:app:functionality:history:history} abgebildet ist.
 Durch Klicken auf Käufe oder Stornierungen wird zur Seite des zugehörigen Artikels navigiert.
 Wie bei allen Bildschirmen dieser App ist es zudem möglich die Seite durch eine \textit{Swipe-to-Refresh}-Geste zu aktualisieren.
+Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer (siehe \autoref{fig:app:functionality:history:statistics}).
+Auch hier ist es möglich durch Klicken auf einen Eintrag zur Seite des zugehörigen Artikels zu navigieren.
 \begin{figure}%
 	\centering
-	\subfloat[Navigation]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/navigation.png}\label{fig:app:functionality:history:navigation}}}%
-	\qquad
 	\subfloat[Historie]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/history.png}\label{fig:app:functionality:history:history}}}%
-	\caption{Navigation und Historie}%
+	\qquad
+	\subfloat[Statistiken]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/statistics.png}\label{fig:app:functionality:history:statistics}}}%
+	\caption{Historie und Statistiken}%
 	\label{fig:app:functionality:history}%
 \end{figure}
-
-Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer (siehe \autoref{fig:app:functionality:various:statistics}).
-Auch hier ist es möglich durch Klicken auf einen Eintrag zur Seite des zugehörigen Artikels zu navigieren.
 
 Die Einstellungen umfassen neben Optionen zur erneuten Nutzerauswahl und Starten des geteilten Modus auch die Administrator-Funktionen (siehe \autoref{fig:app:functionality:various:settings} und \autoref{fig:app:functionality:various:adminfunctions}).
 Diese sind jedoch erst nach einem Login zugänglich, welcher über die in \autoref{fig:app:functionality:various:login} gezeigte Seite stattfindet.
 \begin{figure}%
 	\centering
-	\subfloat[Statistiken]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/statistics.png}\label{fig:app:functionality:various:statistics}}}%
-	\qquad
 	\subfloat[Einstellungen]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/settings.png}\label{fig:app:functionality:various:settings}}}%
 	\qquad
 	\subfloat[Administrator-Funktionen]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/settings-admin.png}\label{fig:app:functionality:various:adminfunctions}}}%
@@ -106,7 +103,7 @@ Beim Löschen müssen zwei Dialoge bestätigt werden um sicherzustellen, dass di
 \end{figure}
 
 Der geteilte Modus dient dazu einen schnellen Nutzerwechsel zu ermöglichen.
-Er umfasst ebenfalls Nutzerauswahl, Hauptbildschirm und Artikelseiten.
+Er umfasst ebenfalls Nutzerauswahl, Haupt- und Artikelseiten.
 Es ist jedoch nur möglich in dieser Reihenfolge zwischen ihnen zu navigieren, da ausgewählte Nutzer nicht gespeichert werden.
 Nachdem dieser Modus gestartet wurde, kann er nur durch einen Neustart der App wieder verlassen werden.
 
