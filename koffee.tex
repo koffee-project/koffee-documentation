@@ -102,7 +102,7 @@ In diesem Kapitel werden Funktionalität, Architektur, verwendete Android Jetpac
 \subsection{Funktionalität}
 \label{subsec:app:functionality}
 Beim erstmaligen Starten der App werden Nutzer gebeten ihren Account auszuwählen.
-Alternativ können sie den Modus für eine geteilte Verwendung starten, welcher später erläutert wird.
+Alternativ können sie den Modus für eine geteilte Verwendung starten, welcher am Ende diese Abschnittes erläutert wird.
 Der zugehörige Dialog ist in \autoref{fig:app:architecture:functionality:selection:dialog} zu sehen.
 \begin{figure}[]
 	\begin{subfigure}{.5\textwidth}
@@ -121,13 +121,13 @@ Der zugehörige Dialog ist in \autoref{fig:app:architecture:functionality:select
 	\label{fig:app:architecture:functionality:selection}
 \end{figure}
 
-Die Nutzerauswahl zeigt eine Liste aller existieren Nutzer an und ermöglicht es diese Interaktiv zu filtern.
+Die Nutzerauswahl zeigt eine Liste aller existierenden Nutzer an und ermöglicht es diese Interaktiv zu filtern.
 Suchergebnisse werden unmittelbar angezeigt und benötigen keine zusätzlichen Eingaben (siehe \autoref{fig:app:architecture:functionality:selection:search}).
-Nachdem ein Nutzer durch Klicken ausgewählt wurde öffnet sich die Hauptseite der App.
-Dort werden Informationen des ausgewählten Nutzers, falls vorhanden seine letzte Transaktion und verfügbare Artikel angezeigt.
+Nachdem ein Nutzer durch Klicken ausgewählt wurde, öffnet sich die Hauptseite der App.
+Dort werden Informationen des ausgewählten Nutzers und verfügbare Artikel angezeigt.
 Auch diese lassen sich analog zu Nutzern filtern und durch klicken auswählen, wie in \autoref{fig:app:architecture:functionality:home:search} sichtbar.
 Falls eine stornierbare Transaktion vorliegt wird diese ebenfalls hier angezeigt (siehe \autoref{fig:app:architecture:functionality:home:transaction}).
-Durch Klicken auf das Profilbild beziehungsweise dessen Platzhalter kann dieses bearbeitet oder entfernt werden.
+Durch Klicken auf das Profilbild, beziehungsweise dessen Platzhalter, kann dieses bearbeitet oder entfernt werden.
 \begin{figure}[]
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -141,14 +141,14 @@ Durch Klicken auf das Profilbild beziehungsweise dessen Platzhalter kann dieses 
 		\caption{Stornierbare Transaktion}
 		\label{fig:app:architecture:functionality:home:transaction}
 	\end{subfigure}
-	\caption{Hauptbildschirm}
+	\caption{Hauptseite}
 	\label{fig:app:architecture:functionality:home}
 \end{figure}
 
-Die Artikelseite zeigt neben Preis und Name des Artikels auch alle Transaktionen des aktiven Nutzers an, die zu diesem Artikel gehören.
-Falls es sich um einen Artikel mit begrenztem Bestand handelt wird auch dieser angezeigt und bei Transaktionen aktualisiert.
+Die Artikelseite zeigt neben Preis und Name des Artikels auch alle Transaktionen des aktiven Nutzers an, die zu einem Artikel gehören.
+Falls es sich um einen Artikel mit begrenztem Bestand handelt, wird auch dieser angezeigt und bei Transaktionen aktualisiert.
 Zudem können Stornierungen auch von der Seite des betroffenen Artikels durchgeführt werden, wie in \autoref{fig:app:architecture:functionality:item} zu sehen ist.
-Wie auch beim Hauptbildschirm ist die Option nur während des gültigen Zeitrahmens von 60 Sekunden verfügbar und verschwindet nach Ablaufen der Zeit selbstständig.
+Wie auch beim Hauptbildschirm ist die Option nur während des gültigen Zeitrahmens von 60 Sekunden verfügbar und verschwindet selbstständig nach Ablaufen der Zeit.
 \begin{figure}[]
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -225,15 +225,15 @@ Diese sind jedoch erst nach einem Login zugänglich, welcher über die in \autor
 
 Die Buttons \textit{MANAGE USERS} und \textit{MANAGE ITEMS} öffnen Seiten, welche respektiv denen der Nutzer- und Artikelauswahl entsprechen.
 Sie verfügen jedoch über zusätzliche Buttons, die Seiten zum Erstellen neuer Nutzer beziehungsweise Artikel öffnen.
-\autoref{fig:app:architecture:functionality:admin:create} zeigt diese Nutzervariante dieser Seite.
-Felder, welche als optional markiert sind müssen nicht ausgefüllt werden.
+\autoref{fig:app:architecture:functionality:admin:create} zeigt die Nutzervariante dieser Seite.
+Felder, welche als optional markiert sind, müssen nicht ausgefüllt werden.
 IDs können beispielsweise von der Serveranwendung vergeben werden.
 Um einen Nutzer oder Artikel zu bearbeiten muss auf diesen geklickt werden.
-Während sich bei Artikel eine erweiterte Ansicht der Artikelseite öffnet haben Administratoren eine besondere Ansicht für Nutzer (siehe \autoref{fig:app:architecture:functionality:admin:user}).
-Dort sehen sie alle Transaktionen von Nutzern, können Profilbildern bearbeiten sowie löschen und haben die Möglichkeit Guthaben aufzuladen.
-Letzteres kann über eine eigene Seite, welche in \autoref{fig:app:architecture:functionality:admin:crediting} zu sehen ist, durchgeführt werden.
+Während sich bei Artikeln eine erweiterte Ansicht der Artikelseite öffnet, haben Administratoren eine besondere Ansicht für Nutzer (siehe \autoref{fig:app:architecture:functionality:admin:user}).
+Dort sehen sie alle Transaktionen, können Profilbildern bearbeiten sowie löschen und haben die Möglichkeit Guthaben aufzuladen.
+Letzteres wird dann über eine eigene Seite, welche in \autoref{fig:app:architecture:functionality:admin:crediting} zu sehen ist, durchgeführt.
 Sowohl bei Nutzern als auch bei Artikeln gibt es Optionen zum Löschen und Bearbeiten der gesamten Entität.
-Bearbeitungsseiten entsprechen vom Aufbau her den Seiten zum Erstellen, wie in \autoref{fig:app:architecture:functionality:admin:edit} zu sehen ist.
+Aufbau der Bearbeitungsseiten entspricht denen der Seiten zum Erstellen, wie in \autoref{fig:app:architecture:functionality:admin:edit} zu sehen ist.
 Beim Löschen müssen zwei Dialoge bestätigt werden um sicherzustellen, dass die Aktion bewusst stattfindet.
 \begin{figure}[]
 	\begin{subfigure}{.5\textwidth}
