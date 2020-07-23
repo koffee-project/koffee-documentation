@@ -1,0 +1,371 @@
+\section{Android App}
+\label{sec:app}
+Kern dieser Projektarbeit ist die Android App, die als Benutzeroberfläche der digitalen Kaffeekasse dient.
+Sie basiert auf Grundlagen, welche durch Android Jetpack gelegt wurden.
+In diesem Kapitel werden Funktionalität, Architektur, verwendete Android Jetpack Komponenten und Bibliotheken sowie Konfiguration der App vorgestellt.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Funktionalität}
+\label{subsec:app:functionality}
+Beim erstmaligen Starten der App werden Nutzer gebeten ihren Account auszuwählen.
+Alternativ können sie den Modus für eine geteilte Verwendung starten, welcher am Ende diese Abschnittes erläutert wird.
+Der zugehörige Dialog ist in \autoref{fig:app:architecture:functionality:selection:dialog} zu sehen.
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+			\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/greetings-dialog.png}
+		\caption{Begrüßungsdialog}
+		\label{fig:app:architecture:functionality:selection:dialog}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/user-search.png}
+		\caption{Nutzerauswahl und -suche}
+		\label{fig:app:architecture:functionality:selection:search}
+	\end{subfigure}
+	\caption{Begrüßungsdialog und Nutzerauswahl}
+	\label{fig:app:architecture:functionality:selection}
+\end{figure}
+
+Die Nutzerauswahl zeigt eine Liste aller existierenden Nutzer an und ermöglicht es diese Interaktiv zu filtern.
+Suchergebnisse werden unmittelbar angezeigt und benötigen keine zusätzlichen Eingaben (siehe \autoref{fig:app:architecture:functionality:selection:search}).
+Nachdem ein Nutzer durch Klicken ausgewählt wurde, öffnet sich die Hauptseite der App.
+Dort werden Informationen des ausgewählten Nutzers und verfügbare Artikel angezeigt.
+Auch diese lassen sich analog zu Nutzern filtern und durch klicken auswählen, wie in \autoref{fig:app:architecture:functionality:home:search} sichtbar.
+Falls eine stornierbare Transaktion vorliegt wird diese ebenfalls hier angezeigt (siehe \autoref{fig:app:architecture:functionality:home:transaction}).
+Durch Klicken auf das Profilbild, beziehungsweise dessen Platzhalter, kann dieses bearbeitet oder entfernt werden.
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/home-fragment.png}
+		\caption{Artikelsuche}
+		\label{fig:app:architecture:functionality:home:search}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/home-fragment-transaction.png}
+		\caption{Stornierbare Transaktion}
+		\label{fig:app:architecture:functionality:home:transaction}
+	\end{subfigure}
+	\caption{Hauptseite}
+	\label{fig:app:architecture:functionality:home}
+\end{figure}
+
+Die Artikelseite zeigt neben Preis und Name des Artikels auch alle Transaktionen des aktiven Nutzers an, die zu einem Artikel gehören.
+Falls es sich um einen Artikel mit begrenztem Bestand handelt, wird auch dieser angezeigt und bei Transaktionen aktualisiert.
+Zudem können Stornierungen auch von der Seite des betroffenen Artikels durchgeführt werden, wie in \autoref{fig:app:architecture:functionality:item} zu sehen ist.
+Wie auch beim Hauptbildschirm ist die Option nur während des gültigen Zeitrahmens von 60 Sekunden verfügbar und verschwindet selbstständig nach Ablaufen der Zeit.
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/item-purchased.png}
+		\caption{Gekaufter Artikel}
+		\label{fig:app:architecture:functionality:item:purchase}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/item-refunded.png}
+		\caption{Stornierte Transaktion}
+		\label{fig:app:architecture:functionality:item:refund}
+	\end{subfigure}
+	\caption{Artikelbildschirm}
+	\label{fig:app:architecture:functionality:item}
+\end{figure}
+
+Eine Übersicht über alle Transaktionen können sich Nutzer mit der Historie verschaffen.
+Diese ist wie auch die Haupt-, Statistik- und die Einstellungsseiten über die Navigationsleiste erreichbar (siehe \autoref{fig:app:architecture:functionality:history:navigation}).
+Die Historie zeigt eine vollständige Liste aller Transaktionen, die der ausgewählte Nutzer getätigt hat.
+Sie sind nach Transaktionszeitpunkten sortiert und geben Art, Wert und weitere Details der Transaktion an, wie in \autoref{fig:app:architecture:functionality:history:history} abgebildet ist.
+Durch Klicken auf Käufe oder Stornierungen wird zur Seite des zugehörigen Artikels navigiert.
+Wie bei allen Bildschirmen dieser App ist es zudem möglich die Seite durch eine \textit{Swipe-to-Refresh}-Geste zu aktualisieren.
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/navigation.png}
+		\caption{Navigation}
+		\label{fig:app:architecture:functionality:history:navigation}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/history.png}
+		\caption{Historie}
+		\label{fig:app:architecture:functionality:history:history}
+	\end{subfigure}
+	\caption{Navigation und Historie}
+	\label{fig:app:architecture:functionality:history}
+\end{figure}
+
+Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer (siehe \autoref{fig:app:architecture:functionality:various:statistics}).
+Auch hier ist es möglich durch Klicken auf einen Eintrag zur Seite des zugehörigen Artikels zu navigieren.
+
+Die Einstellungen umfassen neben Optionen zur erneuten Nutzerauswahl und Starten des geteilten Modus auch die Administrator-Funktionen (siehe \autoref{fig:app:architecture:functionality:various:settings} und \autoref{fig:app:architecture:functionality:various:adminfunctions}).
+Diese sind jedoch erst nach einem Login zugänglich, welcher über die in \autoref{fig:app:architecture:functionality:various:login} gezeigte Seite stattfindet.
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/statistics.png}
+		\caption{Statistiken}
+		\label{fig:app:architecture:functionality:various:statistics}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/settings.png}
+		\caption{Einstellungen}
+		\label{fig:app:architecture:functionality:various:settings}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/login.png}
+		\caption{Login}
+		\label{fig:app:architecture:functionality:various:login}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/settings-admin.png}
+		\caption{Administrator-Funktionen}
+		\label{fig:app:architecture:functionality:various:adminfunctions}
+	\end{subfigure}
+	\caption{Verschiedene Bildschirme}
+	\label{fig:app:architecture:functionality:various}
+\end{figure}
+
+Die Buttons \textit{MANAGE USERS} und \textit{MANAGE ITEMS} öffnen Seiten, welche jeweils denen der Nutzer- und Artikelauswahl entsprechen.
+Sie verfügen jedoch über zusätzliche Buttons, die Seiten zum Erstellen neuer Nutzer beziehungsweise Artikel öffnen.
+\autoref{fig:app:architecture:functionality:admin:create} zeigt die Nutzervariante dieser Seite.
+Felder, welche als optional markiert sind, müssen nicht ausgefüllt werden.
+IDs können beispielsweise von der Serveranwendung vergeben werden.
+Um einen Nutzer oder Artikel zu bearbeiten muss auf diesen geklickt werden.
+Während sich bei Artikeln eine erweiterte Ansicht der Artikelseite öffnet, haben Administratoren eine besondere Ansicht für Nutzer (siehe \autoref{fig:app:architecture:functionality:admin:user}).
+Dort sehen sie alle Transaktionen, können Profilbildern bearbeiten sowie löschen und haben die Möglichkeit Guthaben aufzuladen.
+Letzteres wird dann über eine eigene Seite, welche in \autoref{fig:app:architecture:functionality:admin:crediting} zu sehen ist, durchgeführt.
+Sowohl bei Nutzern als auch bei Artikeln gibt es Optionen zum Löschen und Bearbeiten der gesamten Entität.
+Aufbau der Bearbeitungsseiten entspricht denen der Seiten zum Erstellen, wie in \autoref{fig:app:architecture:functionality:admin:edit} zu sehen ist.
+Beim Löschen müssen zwei Dialoge bestätigt werden um sicherzustellen, dass die Aktion bewusst stattfindet.
+\begin{figure}[]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/create-user.png}
+		\caption{Nutzer erstellen}
+		\label{fig:app:architecture:functionality:admin:create}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/user-admin-view.png}
+		\caption{Administratoransicht}
+		\label{fig:app:architecture:functionality:admin:user}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/crediting.png}
+		\caption{Guthabenaufladung}
+		\label{fig:app:architecture:functionality:admin:crediting}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/edit-item.png}
+		\caption{Artikel bearbeiten}
+		\label{fig:app:architecture:functionality:admin:edit}
+	\end{subfigure}
+	\caption{Administrator-Funktionen}
+	\label{fig:app:architecture:functionality:admin}
+\end{figure}
+
+Der geteilte Modus dient dazu einen schnellen Nutzerwechsel zu ermöglichen.
+Er umfasst ebenfalls Nutzerauswahl, Hauptbildschirm und Artikelseiten.
+Es ist jedoch nur möglich in dieser Reihenfolge zwischen ihnen zu navigieren, da ausgewählte Nutzer nicht gespeichert werden.
+Nachdem dieser Modus gestartet wurde, kann er nur durch einen Neustart der App wieder verlassen werden.
+
+Sollten während einer Verwendung der App Fehler auftreten, werden Nutzer über einen Text am unteren Bildschirmrand darüber informiert.
+Parallel werden Fehlerbehebungen, wie das Entfernen veralteter Daten, automatisch durchgeführt.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Architektur}
+\label{subsec:app:architecture}
+Die App verwendet die von Google empfohlene \textit{Model-View-ViewModel} Architektur (\textit{MVVM}) \autocite{androidarchitecture}.
+Bei dieser wird die Anwendung in Datenmodell, Benutzeroberfläche und die sogenannten \textit{ViewModels} aufgeteilt (siehe \autoref{fig:app:architecture:mvvm}).
+
+Die Ebene des Datenmodells liegt in Form von \textit{Repositories} vor.
+Diese kommunizieren über eine Netzwerkschnittstelle mit der Serveranwendung um Daten zu laden oder Aktionen wie Käufe und Logins durchzuführen.
+So erhaltene Daten werden unmittelbar in die lokale Datenbank geschrieben und auch nur von dort aus geladen.
+Über diesen Mechanismus wird eine lokale Persistenz ermöglicht, wodurch Daten auch ohne Verbindung zum Server angezeigt werden können.
+Weil der Zustand eines Datenmodells ausschließlich vom zugehörigen Repository bestimmt wird, werden sie auch als \textit{Single source of truth} bezeichnet.
+Durch diese Eigenschaft ist es möglich inkonsistente Datenbestände zu verhindern.
+
+ViewModels passen von Repositories bereitgestellte Daten für Benutzeroberflächen an und stellen sie in Datencontainern bereit.
+Sie selbst haben keine Informationen über Benutzeroberflächen.
+Stattdessen reagieren diese auf Änderungen an ViewModels und entscheiden selbst über die Datenanzeige.
+
+\begin{figure}[]
+	\centering
+	\includegraphics[height=8cm,keepaspectratio]{./img/android-architecture.png}
+	\caption{MVVM-Entwurfsmuster in Android}
+	\caption*{\small Quelle: \url{https://developer.android.com/topic/libraries/architecture/img/final-architecture.png}}
+	\label{fig:app:architecture:mvvm}
+\end{figure}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Android Jetpack}
+\label{subsec:app:jetpack}
+Android Jetpack umfasst eine Reihe von Bibliotheken und Tools, welche dazu dienen die Entwicklung moderner Android Apps zu vereinfachen.
+Dazu reduzieren sie beispielsweise den notwendigen \textit{Boilerplate Code} und vereinheitlichen Interaktionen mit dem Android Framework über verschiedene API Level hinweg.
+Darüber existieren Komponenten, welche bereits umfassende Grundlagen der MVVM-Architektur implementieren oder komplexe Elemente für Benutzeroberflächen bereitstellen.
+
+Vor der Einführung von Jetpack mit Android 9.0 konnten Entwickler auf Support Libraries zurückgreifen.
+Diese stellten bereits einen kleinen Teil der Jetpack Funktionalität zur Verfügung.
+Sie unterscheiden sich jedoch dadurch, dass ihre Veröffentlichungen unterschiedliche API Level unterstützten \autocite{supportlibrariesversions}.
+Dementsprechend konnten sie Entwicklern keine einheitliche Entwicklung über alle relevanten API Level ermöglichen.
+Jetpack behebt dieses Problem, indem auf unterschiedliche Versionen für mehrere API Level verzichtet wird.
+Stattdessen wird Kompatibilität von Jetpack selbst sichergestellt, indem Interaktionen mit dem Android Framework verkapselt werden.
+Die Entwicklungsumgebung Android Studio erstellt neue Projekte standardmäßig mit Jetpack.
+Projekte, welche Support Libraries verwenden, können automatisch migriert werden, so dass Entwickler schnell und einfach umsteigen können \autocite{androidxmigration}.
+
+Zum Zeitpunkt dieser Ausarbeitung existieren 82 Jetpack Bibliotheken, von denen ein Großteil produktionsbereite Veröffentlichungen besitzt \autocite{jetpackcount}.
+Diese werden kontinuierlich aktualisiert, erweitert und durch neue Bibliotheken ergänzt.
+Im Folgenden werden die in dieser App verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Core und AppCompat}
+\label{subsubsec:app:jetpack:base}
+Die \textit{Core} und \textit{AppCompat} Bibliotheken ermöglichen eine Verwendung von Funktionen neuer Android API Level auf älteren Android Versionen.
+Dazu stellen sie eine Vielzahl an Hilfsklassen zur Verfügung, welche die unterschiedliche Behandlung der API Level verkapseln und die Entwicklung so vereinheitlichen und vereinfachen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Fragment}
+\label{subsubsec:app:jetpack:fragment}
+Fragmente sind modulare Teile einer Benutzeroberfläche.
+Sie sind wiederverwendbar, leichtgewichtig und lassen sich in \textit{Activities} sowie anderen Fragmenten kombinieren um komplexe Benutzeroberflächen zu erstellen.
+Ihr Lebenszyklus wird von ihrem Container verwaltet, weshalb sie sich für Entwickler nur gering von Activities unterscheiden.
+Darüber hinaus ist es möglich Fragmente dynamisch hinzuzufügen und zu entfernen.
+Komplexe \textit{Layouts} lassen sich so in mehrere Fragmente unterteilen, welche unabhängig voneinander wiederverwendbar sind.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Databinding}
+\label{subsubsec:app:jetpack:databinding}
+Mit Hilfe der \textit{Databinding} Bibliothek ist es möglich Datenquellen für Eigenschaften von Benutzeroberflächen und deren Elemente in Layout-Dateien festzulegen.
+In Kombination mit \textit{LiveData} passen sich Benutzeroberflächen bei Änderungen automatisch an, wodurch der Anteil an Quelltext für Benutzeroberflächen reduziert wird.
+Zusätzlich lassen sich \textit{BindingAdapters} definieren, durch welche benutzerdefiniertes Verhalten und eine Definition neuer Eigenschaften möglich wird.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Lifecycle}
+\label{subsubsec:app:jetpack:lifecycle}
+Die \textit{Lifecycle} Bibliothek umfasst primär ViewModels und LiveData.
+Jetpack ViewModels werden vom Android Framework verwaltet und passen sich dem Lebenszyklus des besitzenden Fragments an.
+
+LiveData baut auf diesem Konzept auf.
+Dabei handelt es sich um \textit{Wrapper} für beliebige Daten, deren Werte beobachtet werden können.
+Anders als traditionelle \textit{Observables} besitzt LiveData jedoch einen Lebenszyklus.
+Änderungen werden nur dann propagiert, wenn sie auch beobachtet werden.
+Zudem übernimmt das besitzende ViewModel die Verwaltung ihres Lebenszyklus, wodurch \textit{Memory Leaks} vermieden werden.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Navigation}
+\label{subsubsec:app:jetpack:navigation}
+Fragmente können mit Argumenten erzeugt werden.
+Dabei ist jedoch keine Typsicherheit garantiert und es gibt keinen Mechanismus, der die Vollständigkeit von Argumenten sicherstellt.
+Die \textit{Navigation} Bibliothek löst beide Probleme durch Verwendung von Navigationsgraphen.
+In diesen werden verfügbare Fragmente und ihre Argumente definiert.
+Durch Verbindungen zwischen Fragmenten werden \textit{Directions} angegeben.
+Deren Verwendung bei der Navigation stellt sicher, dass alle Argumente mit korrektem Typ vorhanden sind und zum korrekten Fragment navigiert wird.
+Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initialisieren von Benutzerelementen wie \textit{Bottom Navigations} und \textit{Hamburger Menus} übernehmen. 
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{ConstraintLayout und SwiperefreshLayout}
+\label{subsubsec:app:jetpack:layouts}
+Android Jetpack umfasst auch mehrere Layout Bibliotheken.
+Im Rahmen dieses Projektes wurden \textit{ConstraintLayout} und \textit{SwiperefreshLayout} verwendet.
+
+Komplexe Hierarchien in Benutzeroberflächen verringern deren Performanz bei Layoutänderungen.
+ConstraintLayouts ermöglichen das freie Platzieren von Elementen durch Angaben zur Einschränkung ihrer Positionen.
+So können Entwickler simplere und effizientere Layouts implementieren.
+
+Bei mobilen Anwendungen gibt es die gängige \textit{Swipe-to-Refresh}-Geste zum Aktualisieren eines Bildschirms.
+Mit Hilfe von SwiperefreshLayout ist es möglich diese Funktionalität mit wenigen Zeilen Quelltext zu bestehenden Benutzeroberflächen hinzuzufügen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{RecyclerView}
+\label{subsubsec:app:jetpack:recyclerview}
+\textit{RecyclerViews} ermöglichen das Anzeigen von scrollbaren, dynamischen Listen.
+Anders als primitive \textit{Views} erzeugt RecyclerView nur tatsächlich benötigten Container und verwendet diese wieder.
+Dadurch sind RecyclerViews performanter als beispielsweise \textit{ListViews} oder \textit{LinearLayouts}.
+Entwickler müssen Adapter verwenden um Daten an eine RecyclerView zu übergeben.
+Es stehen jedoch Hilfsklassen bereit, die bereits über einen Großteil der benötigten Logik verfügen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Room}
+\label{subsubsec:app:jetpack:room}
+Bei \textit{Room} handelt es sich um eine Abstraktionsebene für \textit{SQLite} Datenbanken.
+Es können sowohl programmatische als auch reguläre SQL Anfragen definiert werden.
+Die Hauptfunktion von Room liegt jedoch in der Möglichkeit Rückgabewerte in reaktiven Wrapper-Klassen, wie beispielsweise LiveData, zu erhalten.
+Room übernimmt in diesem Fall die Aktualisierung der Daten, wodurch es reicht Datenbankanfragen einmalig auszuführen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Paging}
+\label{subsubsec:app:jetpack:paging}
+Das Laden großer Datenmengen aus Datenbanken oder Netzwerkquellen ist ein nicht zu unterschätzender Aufwand.
+Die \textit{Paging} Bibliothek ermöglicht deshalb ein stückweises Laden von Datensätzen.
+Dazu muss eine \textit{DataSource Factory} vorliegen, welche dieses Konzept unterstützt.
+Unter anderem ermöglicht Room solche \textit{Factories} als Rückgabewerte zu definieren.
+Sie lassen sich zu LiveData Objekten transformieren, welche \textit{PagedLists} enthalten.
+Diese besonderen Listen lassen sich unter anderem mit RecyclerViews und \textit{PagedListAdaptern} verwenden.
+Im Endeffekt können so Performanz und Speicherverbrauch verbessert werden.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Work}
+\label{subsubsec:app:jetpack:work}
+Hintergrundaufgaben, wie beispielsweise das Bereinigen von Datenbanken, können über die \textit{Work} Bibliothek verwaltet werden.
+Die zu erledigende Arbeit wird dabei in einer \textit{Worker} Klasse definiert.
+Bei der Registrierung können optional Einschränkungen angegeben werden, die festlegen wann und unter welchen Umständen der Worker ausgeführt wird.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{KTX}
+\label{subsubsec:app:jetpack:extensions}
+Kotlin ist die von Google empfohlene Sprache für die Entwicklung von Android Apps \autocite{androidkotlin}.
+Eine Vielzahl an Android Jetpack Bibliotheken enthalten Erweiterungsmethoden und Sprachfunktionen, welche die Programmierung von Android Apps mit Kotlin vereinfachen und verbessern.
+Dazu zählen unter anderem Methoden zum Erzeugen von ViewModels sowie \textit{Coroutine Scopes} für ViewModels, Erweiterungen für \textit{SharedPreferences} und Unterstützung für \textit{Coroutines} in Android Jetpack Bibliotheken.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Weitere Bibliotheken}
+\label{subsec:app:bibs}
+Im Rahmen der App-Entwicklung wurden auch Bibliotheken verwendet, welche nicht Teil von Android Jetpack sind.
+Im Folgenden werden ihre Funktionen und Verwendungsgründe vorgestellt.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Retrofit und Moshi}
+\label{subsubsec:app:bibs:retrofitmoshi}
+Über \textit{Retrofit} können abstrakte Methoden zum Anbinden von APIs definiert werden.
+Entwickler müssen dazu Informationen über die Art von Anfragen angeben.
+Implementierungen dieser Methoden werden von der Bibliothek generiert.
+In Kombination mit der Serialisierungsbibliothek \textit{Moshi} können so Netzwerkschnittstellen mit geringem Quelltextaufwand angebunden werden.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Glide}
+\label{subsubsec:app:bibs:glide}
+\textit{Glide} übernimmt das asynchrone Laden und Darstellen von Bildern.
+Dabei lassen sich Einstellungen für Verhalten und Darstellung anpassen.
+Unter anderem kann Glide Bilder für schnelleres Laden zwischenspeichern, zuschneiden und während einem Ladevorgang durch Platzhalter ersetzen.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Image Picker}
+\label{subsubsec:app:bibs:imagepicker}
+Die Bibliothek \textit{Image Picker} ermöglicht die Auswahl von Bildern zur Laufzeit, die Nutzer entweder aus ihrer Galerie auswählen oder mit ihrer Kamera aufnehmen können.
+Eine äquivalente Funktionalität zu implementieren ist mit nicht-trivialem Aufwand verbunden, weshalb eine Verwendung existierender Bibliotheken die Entwicklung verkürzte.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{PrettyTime}
+\label{subsubsec:app:bibs:prettytime}
+\textit{PrettyTime} wird verwendet um Zeitstempel in ein für Menschen lesbares Format zu transformieren.
+Die Bibliothek unterstützt mehrere Sprachen, unter anderem Deutsch sowie Englisch, und erspart Entwicklern so das Übersetzen und Formatieren.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Timber}
+\label{subsubsec:app:bibs:timber}
+Bei \textit{Timber} handelt es sich um eine Bibliothek die das Protokollieren vereinfacht, Nachrichten mit zusätzlichen Informationen wie beispielsweise ihrem Ursprung ausgibt und jegliche Protokollierung außerhalb der Entwicklungsphase deaktiviert.
+So ist es während der Entwicklung möglich schnell detaillierte Protokollnachrichten zu verfassen, welche bei der Suche nach Fehlern helfen und keine Auswirkung auf ausgelieferte Endprodukte haben.
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Konfiguration}
+\label{subsec:app:configuration}
+Zur Konfiguration muss die Adresse der Serveranwendung angepasst werden.
+Dies findet über den Wert des Feldes \verb|KOFFEE_BACKEND_URL|, in der Datei \verb|build.gradle|, statt.
+Eine weitere Konfiguration ist nicht notwendig.
+%------------------------------------------------------------------------------------------------------------------------------------------------------

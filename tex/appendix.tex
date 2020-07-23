@@ -1,0 +1,216 @@
+\section*{Anhang}
+\markboth{Anhang}{Anhang}
+\label{sec:attachments}
+
+\subsection*{Inbetriebnahme der Serveranwendung}
+\label{subsec:attachments:instructions}
+
+\subsubsection*{Einsatz während der Entwicklung}
+\label{subsubsec:attachments:instructions:development}
+\begin{enumerate}
+	\item \verb|./gradlew build|
+	\item Das benötigte Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
+	\item \verb|docker-compose up --build -d|
+	\item Der Server ist nun unter \verb|http://localhost:8080| erreichbar.
+\end{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection*{Einsatz in der Produktion}
+\label{subsubsec:attachments:instructions:production}
+\begin{enumerate}
+	\item \verb|./gradlew build|
+	\item Das benötigte Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
+	\item Den Wert von \verb|URL| in \verb|./environments/domain.env| auf eine valide Domäne ändern, über welche die Host-Maschine erreichbar ist.
+	\item Sicherstellen, dass die Host-Maschine über die Ports 80 und 443 erreichbar ist.
+	\item \verb|docker-compose -f docker-compose-prod.yml up --build -d|
+	\item Der Server ist nun unter \verb|https://your.domain/koffee| erreichbar.
+\end{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection*{Datenbankverwaltung}
+\label{subsec:attachments:database}
+
+\subsubsection*{Datensicherung}
+\label{subsubsec:attachments:database:backup}
+\begin{lstlisting}[language=Bash, breaklines=true]
+$ docker-compose exec -T mongo mongodump --archive --gzip --db koffee-database > dump.gz
+\end{lstlisting}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection*{Datenwiederherstellung}
+\label{subsubsec:attachments:database:restore}
+\begin{lstlisting}[language=Bash, breaklines=true]
+$ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
+\end{lstlisting}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection*{Datenbankschemas}
+\label{subsec:attachments:schemas}
+
+\subsubsection*{User}
+\label{subsubsec:attachments:schemas:user}
+\begin{table}[H]
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
+		Feld         & Typ                                      & Anmerkung             \\ \toprule
+		id           & String                                   & Muss einzigartig sein \\ \midrule
+		name         & String                                   &                       \\ \midrule
+		isAdmin      & Boolean                                  & Erlaubt Authentifizierung \\ \midrule
+		password     & String                                   & Optional              \\ \midrule
+		transactions & List\textless{}Transaction\textgreater{} & Verwendet Polymorphie \\ \bottomrule
+	\end{tabular*}
+	\label{tab:attachments:schemas:user}
+\end{table}
+
+\subsubsection*{Profile Image}
+\label{subsubsec:attachments:schemas:profileimage}
+\begin{table}[H]
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
+		Feld         & Typ    & Anmerkung                      \\ \toprule
+		id           & String & Muss einer User-ID entsprechen \\ \midrule
+		encodedImage & String & Base64-Kodierung               \\ \midrule
+		timestamp    & Long   &                                \\ \bottomrule
+	\end{tabular*}
+	\label{tab:attachments:schemas:profileimage}
+\end{table}
+
+\subsubsection*{Item}
+\label{subsubsec:attachments:schemas:item}
+\begin{table}[H]
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
+		Feld   & Typ    & Anmerkung             \\ \toprule
+		id     & String & Muss einzigartig sein \\ \midrule
+		name   & String &                       \\ \midrule
+		amount & Int    & Optional              \\ \midrule
+		price  & Double &                       \\ \bottomrule
+	\end{tabular*}
+	\label{tab:attachments:schemas:item}
+\end{table}
+
+\subsubsection*{Transaction - Funding}
+\label{subsubsec:attachments:schemas:funding}
+\begin{table}[H]
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
+		Feld      & Typ    & Anmerkung                      \\ \toprule
+		type      & String & Muss \glqq funding\grqq{} sein \\ \midrule
+		value     & Double & Wert der Guthabenaufladung     \\ \midrule
+		timestamp & Long   &                                \\ \bottomrule
+	\end{tabular*}
+	\label{tab:attachments:schemas:funding}
+\end{table}
+
+\subsubsection*{Transaction - Purchase}
+\label{subsubsec:attachments:schemas:purchase}
+\begin{table}[H]
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
+		Feld      & Typ    & Anmerkung                       \\ \toprule
+		type      & String & Muss \glqq purchase\grqq{} sein \\ \midrule
+		value     & Double & Gesamtwert der Transaktion      \\ \midrule
+		timestamp & Long   &                                 \\ \midrule
+		itemId    & String &                                 \\ \midrule
+		itemName  & String &                                 \\ \midrule
+		amount    & Int    &                                 \\ \bottomrule
+	\end{tabular*}
+	\label{tab:attachments:schemas:purchase}
+\end{table}
+
+\subsubsection*{Transaction - Refund}
+\label{subsubsec:attachments:schemas:refund}
+\begin{table}[H]
+	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
+		Feld      & Typ    & Anmerkung                     \\ \toprule
+		type      & String & Muss \glqq refund\grqq{} sein \\ \midrule
+		value     & Double & Gesamtwert der Transaktion    \\ \midrule
+		timestamp & Long   &                               \\ \midrule
+		itemId    & String &                               \\ \midrule
+		itemName  & String &                               \\ \midrule
+		amount    & Int    &                               \\ \bottomrule
+	\end{tabular*}
+	\label{tab:attachments:schemas:refund}
+\end{table}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection*{Routen}
+\label{subsec:attachments:routes}
+
+Alle Routen verwenden JSON um Daten zu senden und erhalten.
+Routen, welche eine zuvorige Authentifizierung voraussetzen, sind mit einem Sternchen (\verb|*|) gekennzeichnet.
+Es werden keine \textit{Query}-Parameter verwendet.
+Felder eventuell benötigter \textit{Body}-Parameter sind unter den jeweiligen Routen aufgelistet.
+
+\begin{description}
+	\item[POST /login] Authentifiziert einen Nutzer und gibt im Erfolgsfall einen JWT zurück.
+	\begin{itemize}
+		\item id: String
+		\item password: String
+	\end{itemize}
+
+	\item[GET /users] Gibt IDs und Namen aller Nutzer zurück.
+	
+	\item[*POST /users] Erstellt einen neuen Nutzer und gibt dessen ID zurück.
+	\begin{itemize}
+		\item id: String (Optional)
+		\item name: String
+		\item isAdmin: Boolean
+		\item password: String (Optional)
+	\end{itemize}
+
+	\item[*PUT /users] Aktualisiert einen existierenden Nutzer.
+	\begin{itemize}
+		\item id: String
+		\item name: String
+		\item isAdmin: Boolean
+		\item password: String (Optional)
+	\end{itemize}
+
+	\item[GET /users/:id] Gibt ID, Name und Guthaben des Nutzers mit der gegebenen ID zurück.
+	
+	\item[*DELETE /users/:id] Löscht den Nutzer mit der gegebenen ID.
+	
+	\item[*POST /users/:id/funding] Lädt das Guthaben des Nutzers mit der gegebenen ID um den gewünschten Betrag auf.
+	\begin{itemize}
+		\item amount: Double
+	\end{itemize}
+
+	\item[POST /users/:id/purchases] Kauft einen Artikel für den Nutzer mit der gegebenen ID.
+	\begin{itemize}
+		\item itemId: String
+		\item amount: Int
+	\end{itemize}
+
+	\item[POST /users/:id/purchases/refund] Falls möglich wird der letzte Kauf des Nutzers mit der gegebenen ID storniert.
+	
+	\item[GET /users/:id/image] Gibt Bytes des Profilbilds eines Nutzers mit der gegebenen ID zurück.
+	
+	\item[GET /users/:id/image/timestamp] Antwortet mit dem Zeitstempel des Profilbilds eines Nutzers mit der gegebenen ID.
+	
+	\item[POST /users/:id/image] Speichert die hochgeladene Datei als Profilbild des Nutzers mit der gegebenen ID.
+	\begin{itemize}
+		\item Multipart Datei (kein JSON)
+	\end{itemize}
+
+	\item[DELETE /users/:id/image] Löscht das Profilbilds des Nutzers mit der gegebenen ID.
+	
+	
+	\item[GET /items] Gibt IDs, Namen, Preise und Mengenangaben aller Artikel zurück.
+
+	\item[*POST /items] Erstellt einen neuen Artikel und gibt dessen ID zurück.
+	\begin{itemize}
+		\item id: String (Optional)
+		\item name: String
+		\item amount: Int (Optional)
+		\item price: Double
+	\end{itemize}
+	
+	\item[*PUT /items] Aktualisiert einen existierenden Artikel.
+	\begin{itemize}
+		\item id: String
+		\item name: String
+		\item amount: Int (Optional)
+		\item price: Double
+	\end{itemize}
+	
+	\item[GET /items/:id] Gibt ID, Name, Preis und Mengenangabe des Artikels mit der gegebenen ID zurück.
+	
+	\item[*DELETE /users/:id] Löscht den Artikel mit der gegebenen ID.
+\end{description}
+%------------------------------------------------------------------------------------------------------------------------------------------------------
