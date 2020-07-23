@@ -10,67 +10,60 @@ In diesem Kapitel werden Funktionalität, Architektur, verwendete Android Jetpac
 Beim erstmaligen Starten der App werden Nutzer gebeten ihren Account auszuwählen.
 Alternativ können sie den Modus für eine geteilte Verwendung starten, welcher am Ende diese Abschnittes erläutert wird.
 Der zugehörige Dialog ist in \autoref{fig:app:architecture:functionality:selection:dialog} zu sehen.
-\begin{figure}[]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-			\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/greetings-dialog.png}
-		\caption{Begrüßungsdialog}
-		\label{fig:app:architecture:functionality:selection:dialog}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/user-search.png}
-		\caption{Nutzerauswahl und -suche}
-		\label{fig:app:architecture:functionality:selection:search}
-	\end{subfigure}
-	\caption{Begrüßungsdialog und Nutzerauswahl}
-	\label{fig:app:architecture:functionality:selection}
-\end{figure}
+%\begin{figure}[]
+%	\centering
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[width=.4\linewidth]{./img/screenshots/greetings-dialog.png}
+%		\caption{Begrüßungsdialog}
+%		\label{fig:app:architecture:functionality:selection:dialog}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[width=.4\linewidth]{./img/screenshots/user-search.png}
+%		\caption{Nutzerauswahl und -suche}
+%		\label{fig:app:architecture:functionality:selection:search}
+%	\end{subfigure}
+%	\caption{Begrüßungsdialog und Nutzerauswahl}
+%	\label{fig:app:architecture:functionality:selection}
+%\end{figure}
 
 Die Nutzerauswahl zeigt eine Liste aller existierenden Nutzer an und ermöglicht es diese Interaktiv zu filtern.
 Suchergebnisse werden unmittelbar angezeigt und benötigen keine zusätzlichen Eingaben (siehe \autoref{fig:app:architecture:functionality:selection:search}).
 Nachdem ein Nutzer durch Klicken ausgewählt wurde, öffnet sich die Hauptseite der App.
 Dort werden Informationen des ausgewählten Nutzers und verfügbare Artikel angezeigt.
-Auch diese lassen sich analog zu Nutzern filtern und durch klicken auswählen, wie in \autoref{fig:app:architecture:functionality:home:search} sichtbar.
+Auch diese lassen sich analog zu Nutzern filtern und durch klicken auswählen, wie in \autoref{fig:app:functionality:home:search} sichtbar.
 Falls eine stornierbare Transaktion vorliegt wird diese ebenfalls hier angezeigt (siehe \autoref{fig:app:architecture:functionality:home:transaction}).
 Durch Klicken auf das Profilbild, beziehungsweise dessen Platzhalter, kann dieses bearbeitet oder entfernt werden.
-\begin{figure}[]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/home-fragment.png}
-		\caption{Artikelsuche}
-		\label{fig:app:architecture:functionality:home:search}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/home-fragment-transaction.png}
-		\caption{Stornierbare Transaktion}
-		\label{fig:app:architecture:functionality:home:transaction}
-	\end{subfigure}
-	\caption{Hauptseite}
-	\label{fig:app:architecture:functionality:home}
+\begin{figure}%
+	\centering
+	\subfloat[Artikelsuche]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/home-fragment.png}\label{fig:app:functionality:home:search}}}%
+	\qquad
+	\subfloat[Stornierbare Transaktion]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/home-fragment-transaction.png}\label{fig:app:functionality:home:transaction}}}%
+	\caption{Hauptseite}%
+	\label{fig:app:functionality:home}%
 \end{figure}
 
 Die Artikelseite zeigt neben Preis und Name des Artikels auch alle Transaktionen des aktiven Nutzers an, die zu einem Artikel gehören.
 Falls es sich um einen Artikel mit begrenztem Bestand handelt, wird auch dieser angezeigt und bei Transaktionen aktualisiert.
 Zudem können Stornierungen auch von der Seite des betroffenen Artikels durchgeführt werden, wie in \autoref{fig:app:architecture:functionality:item} zu sehen ist.
 Wie auch beim Hauptbildschirm ist die Option nur während des gültigen Zeitrahmens von 60 Sekunden verfügbar und verschwindet selbstständig nach Ablaufen der Zeit.
-\begin{figure}[]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/item-purchased.png}
-		\caption{Gekaufter Artikel}
-		\label{fig:app:architecture:functionality:item:purchase}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/item-refunded.png}
-		\caption{Stornierte Transaktion}
-		\label{fig:app:architecture:functionality:item:refund}
-	\end{subfigure}
-	\caption{Artikelbildschirm}
-	\label{fig:app:architecture:functionality:item}
-\end{figure}
+%\begin{figure}[]
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/item-purchased.png}
+%		\caption{Gekaufter Artikel}
+%		\label{fig:app:architecture:functionality:item:purchase}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/item-refunded.png}
+%		\caption{Stornierte Transaktion}
+%		\label{fig:app:architecture:functionality:item:refund}
+%	\end{subfigure}
+%	\caption{Artikelbildschirm}
+%	\label{fig:app:architecture:functionality:item}
+%\end{figure}
 
 Eine Übersicht über alle Transaktionen können sich Nutzer mit der Historie verschaffen.
 Diese ist wie auch die Haupt-, Statistik- und die Einstellungsseiten über die Navigationsleiste erreichbar (siehe \autoref{fig:app:architecture:functionality:history:navigation}).
@@ -78,56 +71,56 @@ Die Historie zeigt eine vollständige Liste aller Transaktionen, die der ausgew�
 Sie sind nach Transaktionszeitpunkten sortiert und geben Art, Wert und weitere Details der Transaktion an, wie in \autoref{fig:app:architecture:functionality:history:history} abgebildet ist.
 Durch Klicken auf Käufe oder Stornierungen wird zur Seite des zugehörigen Artikels navigiert.
 Wie bei allen Bildschirmen dieser App ist es zudem möglich die Seite durch eine \textit{Swipe-to-Refresh}-Geste zu aktualisieren.
-\begin{figure}[]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/navigation.png}
-		\caption{Navigation}
-		\label{fig:app:architecture:functionality:history:navigation}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/history.png}
-		\caption{Historie}
-		\label{fig:app:architecture:functionality:history:history}
-	\end{subfigure}
-	\caption{Navigation und Historie}
-	\label{fig:app:architecture:functionality:history}
-\end{figure}
+%\begin{figure}[]
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/navigation.png}
+%		\caption{Navigation}
+%		\label{fig:app:architecture:functionality:history:navigation}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/history.png}
+%		\caption{Historie}
+%		\label{fig:app:architecture:functionality:history:history}
+%	\end{subfigure}
+%	\caption{Navigation und Historie}
+%	\label{fig:app:architecture:functionality:history}
+%\end{figure}
 
 Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer (siehe \autoref{fig:app:architecture:functionality:various:statistics}).
 Auch hier ist es möglich durch Klicken auf einen Eintrag zur Seite des zugehörigen Artikels zu navigieren.
 
 Die Einstellungen umfassen neben Optionen zur erneuten Nutzerauswahl und Starten des geteilten Modus auch die Administrator-Funktionen (siehe \autoref{fig:app:architecture:functionality:various:settings} und \autoref{fig:app:architecture:functionality:various:adminfunctions}).
 Diese sind jedoch erst nach einem Login zugänglich, welcher über die in \autoref{fig:app:architecture:functionality:various:login} gezeigte Seite stattfindet.
-\begin{figure}[]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/statistics.png}
-		\caption{Statistiken}
-		\label{fig:app:architecture:functionality:various:statistics}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/settings.png}
-		\caption{Einstellungen}
-		\label{fig:app:architecture:functionality:various:settings}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/login.png}
-		\caption{Login}
-		\label{fig:app:architecture:functionality:various:login}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/settings-admin.png}
-		\caption{Administrator-Funktionen}
-		\label{fig:app:architecture:functionality:various:adminfunctions}
-	\end{subfigure}
-	\caption{Verschiedene Bildschirme}
-	\label{fig:app:architecture:functionality:various}
-\end{figure}
+%\begin{figure}[]
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/statistics.png}
+%		\caption{Statistiken}
+%		\label{fig:app:architecture:functionality:various:statistics}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/settings.png}
+%		\caption{Einstellungen}
+%		\label{fig:app:architecture:functionality:various:settings}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/login.png}
+%		\caption{Login}
+%		\label{fig:app:architecture:functionality:various:login}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/settings-admin.png}
+%		\caption{Administrator-Funktionen}
+%		\label{fig:app:architecture:functionality:various:adminfunctions}
+%	\end{subfigure}
+%	\caption{Verschiedene Bildschirme}
+%	\label{fig:app:architecture:functionality:various}
+%\end{figure}
 
 Die Buttons \textit{MANAGE USERS} und \textit{MANAGE ITEMS} öffnen Seiten, welche jeweils denen der Nutzer- und Artikelauswahl entsprechen.
 Sie verfügen jedoch über zusätzliche Buttons, die Seiten zum Erstellen neuer Nutzer beziehungsweise Artikel öffnen.
@@ -141,34 +134,34 @@ Letzteres wird dann über eine eigene Seite, welche in \autoref{fig:app:architec
 Sowohl bei Nutzern als auch bei Artikeln gibt es Optionen zum Löschen und Bearbeiten der gesamten Entität.
 Aufbau der Bearbeitungsseiten entspricht denen der Seiten zum Erstellen, wie in \autoref{fig:app:architecture:functionality:admin:edit} zu sehen ist.
 Beim Löschen müssen zwei Dialoge bestätigt werden um sicherzustellen, dass die Aktion bewusst stattfindet.
-\begin{figure}[]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/create-user.png}
-		\caption{Nutzer erstellen}
-		\label{fig:app:architecture:functionality:admin:create}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/user-admin-view.png}
-		\caption{Administratoransicht}
-		\label{fig:app:architecture:functionality:admin:user}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/crediting.png}
-		\caption{Guthabenaufladung}
-		\label{fig:app:architecture:functionality:admin:crediting}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/edit-item.png}
-		\caption{Artikel bearbeiten}
-		\label{fig:app:architecture:functionality:admin:edit}
-	\end{subfigure}
-	\caption{Administrator-Funktionen}
-	\label{fig:app:architecture:functionality:admin}
-\end{figure}
+%\begin{figure}[]
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/create-user.png}
+%		\caption{Nutzer erstellen}
+%		\label{fig:app:architecture:functionality:admin:create}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/user-admin-view.png}
+%		\caption{Administratoransicht}
+%		\label{fig:app:architecture:functionality:admin:user}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/crediting.png}
+%		\caption{Guthabenaufladung}
+%		\label{fig:app:architecture:functionality:admin:crediting}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/edit-item.png}
+%		\caption{Artikel bearbeiten}
+%		\label{fig:app:architecture:functionality:admin:edit}
+%	\end{subfigure}
+%	\caption{Administrator-Funktionen}
+%	\label{fig:app:architecture:functionality:admin}
+%\end{figure}
 
 Der geteilte Modus dient dazu einen schnellen Nutzerwechsel zu ermöglichen.
 Er umfasst ebenfalls Nutzerauswahl, Hauptbildschirm und Artikelseiten.
