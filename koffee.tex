@@ -715,7 +715,6 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \subsubsection*{User}
 \label{subsubsec:attachments:schemas:user}
 \begin{table}[H]
-	\centering
 	\begin{tabular}{@{}lll@{}}
 		Feld         & Typ                                      & Anmerkung             \\ \toprule
 		id           & String                                   & Muss einzigartig sein \\ \midrule
@@ -730,7 +729,6 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \subsubsection*{Profile Image}
 \label{subsubsec:attachments:schemas:profileimage}
 \begin{table}[H]
-	\centering
 	\begin{tabular}{@{}lll@{}}
 		Feld         & Typ    & Anmerkung                      \\ \toprule
 		id           & String & Muss einer User-ID entsprechen \\ \midrule
@@ -743,7 +741,6 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \subsubsection*{Item}
 \label{subsubsec:attachments:schemas:item}
 \begin{table}[H]
-	\centering
 	\begin{tabular}{@{}lll@{}}
 		Feld   & Typ    & Anmerkung             \\ \toprule
 		id     & String & Muss einzigartig sein \\ \midrule
@@ -757,7 +754,6 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \subsubsection*{Transaction - Funding}
 \label{subsubsec:attachments:schemas:funding}
 \begin{table}[H]
-	\centering
 	\begin{tabular}{@{}lll@{}}
 		Feld      & Typ    & Anmerkung                      \\ \toprule
 		type      & String & Muss \glqq funding\grqq{} sein \\ \midrule
@@ -770,7 +766,6 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \subsubsection*{Transaction - Purchase}
 \label{subsubsec:attachments:schemas:purchase}
 \begin{table}[H]
-	\centering
 	\begin{tabular}{@{}lll@{}}
 		Feld      & Typ    & Anmerkung                       \\ \toprule
 		type      & String & Muss \glqq purchase\grqq{} sein \\ \midrule
@@ -786,7 +781,6 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \subsubsection*{Transaction - Refund}
 \label{subsubsec:attachments:schemas:refund}
 \begin{table}[H]
-	\centering
 	\begin{tabular}{@{}lll@{}}
 		Feld      & Typ    & Anmerkung                     \\ \toprule
 		type      & String & Muss \glqq refund\grqq{} sein \\ \midrule
