@@ -159,13 +159,15 @@ Im Folgenden werden die in dieser App verwendeten Android Jetpack Bibliotheken k
 \label{subsubsec:app:jetpack:base}
 Die \textit{Core} und \textit{AppCompat} Bibliotheken ermöglichen eine Verwendung von Funktionen neuer Android API Level auf älteren Android Versionen.
 Dazu stellen sie eine Vielzahl an Hilfsklassen zur Verfügung, welche die unterschiedliche Behandlung der API Level verkapseln und die Entwicklung so vereinheitlichen und vereinfachen.
+Die Klasse \textit{AppCompatActivity} erlaubt beispielsweise eine Verwendung von \textit{ActionBars}, welche ohne sie auf älteren Android Versionen nicht möglich wäre.
+Core enthält hingegen Kompatibilitätskomponenten, welche Benachrichtigungen, Berechtigungen und weitere Interaktionen mit dem Android Framework über API Level hinweg vereinheitlichen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Fragment}
 \label{subsubsec:app:jetpack:fragment}
-Fragmente sind modulare Teile einer Benutzeroberfläche.
+Fragmente sind modulare Teile von Benutzeroberflächen.
 Sie sind wiederverwendbar, leichtgewichtig und lassen sich in \textit{Activities} sowie anderen Fragmenten kombinieren um komplexe Benutzeroberflächen zu erstellen.
-Ihr Lebenszyklus wird von ihrem Container verwaltet, weshalb sich Entwickler nicht um diesen kümmern müssen.
+Ihr Lebenszyklus wird vom Android Framework verwaltet, weshalb sich Entwickler nicht um diesen kümmern müssen.
 Darüber hinaus ist es möglich Fragmente dynamisch hinzuzufügen und zu entfernen.
 Komplexe \textit{Layouts} lassen sich so in mehrere Fragmente unterteilen, welche unabhängig voneinander wiederverwendbar sind.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
