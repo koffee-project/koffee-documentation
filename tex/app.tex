@@ -206,15 +206,18 @@ Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initi
 
 \subsubsection{ConstraintLayout und SwiperefreshLayout}
 \label{subsubsec:app:jetpack:layouts}
-Android Jetpack umfasst auch mehrere Layout Bibliotheken.
+Android Jetpack umfasst auch mehrere Layout-Bibliotheken.
 Im Rahmen dieses Projektes wurden \textit{ConstraintLayout} und \textit{SwiperefreshLayout} verwendet.
 
 Komplexe Hierarchien in Benutzeroberflächen verringern deren Performanz bei Layoutänderungen.
-ConstraintLayouts ermöglichen das freie Platzieren von Elementen durch Angaben zur Einschränkung ihrer Positionen.
-So können Entwickler simplere und effizientere Layouts implementieren.
+ConstraintLayout ermöglicht ein freies Platzieren von Views, durch relative Angaben zur Einschränkung ihrer Positionen.
+Dies funktioniert, da Einschränkungen relativ zum Container als auch anderen Views angegeben werden können.
+Auf Grund der flachen Hierarchie von ConstraintLayouts ist ihre Performanz deutlich besser als die alternativer Layouts \autocite{viewperformance}.
+Gleichzeitig können sich so erstelle Layouts an unterschiedliche Bildschirmgrößen und -orientierungen anpassen, wodurch Benutzeroberflächen flexibler entwickelt werden können.
 
 Bei mobilen Anwendungen gibt es die gängige \textit{Swipe-to-Refresh}-Geste zum Aktualisieren eines Bildschirms.
 Mit Hilfe von SwiperefreshLayout ist es möglich diese Funktionalität mit wenigen Zeilen Quelltext zu bestehenden Benutzeroberflächen hinzuzufügen.
+SwiperefreshLayout verfügt über die von vielen Google Apps verwendete Spinner Animation und ist mit scrollbaren Views und Layouts kompatibel.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{RecyclerView}
