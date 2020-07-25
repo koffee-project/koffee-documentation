@@ -172,10 +172,13 @@ Komplexe \textit{Layouts} lassen sich so in mehrere Fragmente unterteilen, welch
 
 \subsubsection{Databinding}
 \label{subsubsec:app:jetpack:databinding}
-Mit Hilfe der \textit{Databinding} Bibliothek ist es möglich Datenquellen für Eigenschaften von Benutzeroberflächen und deren Elemente in Layout-Dateien festzulegen.
-Dafür werden sogenannte \textit{BindingImplementations} generiert, welche die dafür benötigte Logik bereitstellen und zudem direkte Zugriffe auf Elemente von Benutzeroberflächen ermöglichen.
+Mit Hilfe der \textit{Databinding} Bibliothek ist es möglich Datenquellen für Eigenschaften von Benutzeroberflächen und deren Elemente, welche auch \textit{Views} genannt werden, in Layout-Dateien festzulegen.
+Dafür werden sogenannte \textit{BindingImplementations} generiert, welche die dafür benötigte Logik bereitstellen und zudem direkte Zugriffe auf Views ermöglichen.
 In Kombination mit \textit{LiveData} passen sich Benutzeroberflächen bei Änderungen automatisch an, wodurch der Anteil an Quelltext für Benutzeroberflächen reduziert wird.
-Zusätzlich lassen sich \textit{BindingAdapters} definieren, durch welche benutzerdefiniertes Verhalten und eine Definition neuer Eigenschaften möglich wird.
+Zusätzlich lassen sich \textit{BindingAdapters} definieren.
+Dabei handelt es sich um Funktionen, welche eine View sowie weitere beliebige Parameter erhalten.
+Sie können in Layout-Dateien verwendet werden um benutzerdefiniertes Verhalten sowie Eigenschaften zu definieren.
+Zum Beispiel kann ein BindingAdapter definiert werden, welcher in Abhängigkeit eines Parameters Views aus- und einblendet.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Lifecycle}
