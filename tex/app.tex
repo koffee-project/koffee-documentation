@@ -183,14 +183,18 @@ Zum Beispiel kann ein BindingAdapter definiert werden, welcher in Abhängigkeit 
 
 \subsubsection{Lifecycle}
 \label{subsubsec:app:jetpack:lifecycle}
-Die \textit{Lifecycle} Bibliothek umfasst primär ViewModels und LiveData.
-Jetpack ViewModels werden vom Android Framework verwaltet und passen sich dem Lebenszyklus des besitzenden Fragments an.
+Die \textit{Lifecycle} Bibliothek umfasst primär ViewModels und LiveData, aber auch allgemeine Komponenten zum Verwalten und Implementieren von Lebenszyklen.
+
+Jetpack ViewModels werden vom Android Framework verwaltet.
+Sie besitzen einen Lebenszyklus, welcher sich Fragmenten anpasst, die ihre Instanzen verwenden.
+So kann sichergestellt werden, dass sie nach einer Zerstörung zugehöriger Fragmente korrekt beendet werden.
 
 LiveData baut auf diesem Konzept auf.
 Dabei handelt es sich um \textit{Wrapper} für beliebige Daten, deren Werte beobachtet werden können.
 Anders als traditionelle \textit{Observables} besitzt LiveData jedoch einen Lebenszyklus.
-Änderungen werden nur dann propagiert, wenn sie auch beobachtet werden.
-Zudem übernimmt das besitzende ViewModel die Verwaltung ihres Lebenszyklus, wodurch \textit{Memory Leaks} vermieden werden.
+Sobald keine \textit{Oberserver} mehr registriert sind, da deren Lebenszyklus beendet wurde, propagiert LiveData keine Änderungen mehr.
+Entwickler müssen deshalb keine Referenzen entfernen oder auf andere Art und Weise sicherstellen, dass ihre Observables korrekt terminiert werden.
+LiveData übernimmt diesen Aspekt, welcher bei inkorrekter Behandlung leicht zu \textit{Memory Leaks} führen kann.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Navigation}
