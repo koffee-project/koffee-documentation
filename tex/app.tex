@@ -229,9 +229,13 @@ Es stehen jedoch Hilfsklassen bereit, die bereits über einen Großteil der ben�
 \subsubsection{Room}
 \label{subsubsec:app:jetpack:room}
 Bei \textit{Room} handelt es sich um eine Abstraktionsebene für \textit{SQLite} Datenbanken.
-Es können sowohl programmatische als auch reguläre SQL Anfragen definiert werden.
+Datenbankinteraktionen werden dabei in \textit{Data Access Objects}, auch \textit{DAOs} genannt, über Annotationen an Funktionen definiert.
+Bei DAOs handelt es sich um \textit{Interfaces}, deren Implementierungen von Room generiert werden.
+Komplexe SQL-Anfragen können ebenfalls in Textform angegeben werden.
 Die Hauptfunktion von Room liegt jedoch in der Möglichkeit Rückgabewerte in reaktiven Wrapper-Klassen, wie beispielsweise LiveData, zu erhalten.
 Room übernimmt in diesem Fall die Aktualisierung der Daten, wodurch es reicht Datenbankanfragen einmalig auszuführen.
+Darüber hinaus können Datenbanktransaktionen programmatisch definiert und Konfliktstrategien an Voraussetzungen angepasst werden.
+Room unterstützt zudem benutzerdefinierte Migrationsstrategien, wodurch Aktualisierungen von Datenbankschemas erleichtert werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Paging}
