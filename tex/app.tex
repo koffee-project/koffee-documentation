@@ -219,11 +219,15 @@ Mit Hilfe von SwiperefreshLayout ist es möglich diese Funktionalität mit wenig
 
 \subsubsection{RecyclerView}
 \label{subsubsec:app:jetpack:recyclerview}
-\textit{RecyclerViews} ermöglichen das Anzeigen von scrollbaren, dynamischen Listen.
-Anders als primitive \textit{Views} erzeugt RecyclerView nur tatsächlich benötigten Container und verwendet diese wieder.
-Dadurch sind RecyclerViews performanter als beispielsweise \textit{ListViews} oder \textit{LinearLayouts}.
-Entwickler müssen Adapter verwenden um Daten an eine RecyclerView zu übergeben.
-Es stehen jedoch Hilfsklassen bereit, die bereits über einen Großteil der benötigten Logik verfügen.
+\textit{RecyclerViews} ermöglichen ein Anzeigen von langen Listen, ohne dass Speicherverbrauch oder Performanz leiden.
+Dies ist möglich, indem nicht mehr Container für Listenelemente erzeugt werden, als gleichzeitig darstellbar sind. 
+Zudem werden sie für andere Listenelemente wiederverwendet, sobald sie nicht mehr sichtbar sind.
+Durch dieses Konzept sind RecyclerViews performanter als beispielsweise \textit{ListViews} oder \textit{LinearLayouts}.
+Zur Interaktion mit RecyclerViews werden Adapter verwendet, welche Erzeugen von Container und Zuweise von Elementen definieren.
+Es stehen Hilfsklassen bereit, die bereits über einen Großteil der benötigten Logik verfügen.
+\textit{ListAdapter} ermöglicht es beispielsweise Listen direkt zu übergeben.
+Um Änderungen an Listeneinträgen zu erkennen werden in der Regel \textit{DiffCallbacks} verwendet.
+Diese sind in der Bibliothek enthalten und verwenden komplexe Algorithmen um Änderungen an Listen darzustellen, so dass nur betroffene Container aktualisiert werden müssen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Room}
