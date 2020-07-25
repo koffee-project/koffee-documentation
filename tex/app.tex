@@ -248,8 +248,10 @@ Im Endeffekt können so Performanz und Speicherverbrauch verbessert werden.
 \subsubsection{Work}
 \label{subsubsec:app:jetpack:work}
 Hintergrundaufgaben, wie beispielsweise das Bereinigen von Datenbanken, können über die \textit{Work} Bibliothek verwaltet werden.
-Die zu erledigende Arbeit wird dabei in einer \textit{Worker} Klasse definiert.
-Bei der Registrierung können optional Einschränkungen angegeben werden, die festlegen wann und unter welchen Umständen der Worker ausgeführt wird.
+Die zu erledigende Arbeit wird in \textit{Worker}-Klassen definiert, welche optional Coroutines verwenden können um vollständig asynchron ausgeführt zu werden.
+Beim Registrieren von Worker-Instanzen können Einschränkungen definiert werden, welche Zustände, Zeitpunkte und Intervalle von Ausführungen festlegen.
+So kann sichergestellt werden, dass beispielsweise eine Internetverbindung besteht oder Akkus von Endgeräten nicht übermäßig stark belastet werden.
+Im Endeffekt erlaubt die Bibliothek so eine benutzerfreundliche Ausführung von Aufgaben, welche im Hintergrund stattfinden sollen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{KTX}
