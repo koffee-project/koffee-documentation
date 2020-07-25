@@ -165,7 +165,7 @@ Dazu stellen sie eine Vielzahl an Hilfsklassen zur Verfügung, welche die unters
 \label{subsubsec:app:jetpack:fragment}
 Fragmente sind modulare Teile einer Benutzeroberfläche.
 Sie sind wiederverwendbar, leichtgewichtig und lassen sich in \textit{Activities} sowie anderen Fragmenten kombinieren um komplexe Benutzeroberflächen zu erstellen.
-Ihr Lebenszyklus wird von ihrem Container verwaltet, weshalb sie sich für Entwickler nur gering von Activities unterscheiden.
+Ihr Lebenszyklus wird von ihrem Container verwaltet, weshalb sich Entwickler nicht um diesen kümmern müssen.
 Darüber hinaus ist es möglich Fragmente dynamisch hinzuzufügen und zu entfernen.
 Komplexe \textit{Layouts} lassen sich so in mehrere Fragmente unterteilen, welche unabhängig voneinander wiederverwendbar sind.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -197,11 +197,14 @@ Zudem übernimmt das besitzende ViewModel die Verwaltung ihres Lebenszyklus, wod
 \label{subsubsec:app:jetpack:navigation}
 Fragmente können mit Argumenten erzeugt werden.
 Dabei ist jedoch keine Typsicherheit garantiert und es gibt keinen Mechanismus, der die Vollständigkeit von Argumenten sicherstellt.
-Die \textit{Navigation} Bibliothek löst beide Probleme durch Verwendung von Navigationsgraphen.
-In diesen werden verfügbare Fragmente und ihre Argumente definiert.
-Durch Verbindungen zwischen Fragmenten werden \textit{Directions} angegeben.
+Die \textit{Navigation} Bibliothek löst beide Probleme durch Navigationsgraphen.
+In diesen werden verfügbare Fragmente und ihre Argumente festgelegt.
+Durch Verbindungen zwischen Fragmenten werden \textit{Directions} definiert, welche Navigationsrichtungen symbolisieren.
 Deren Verwendung bei der Navigation stellt sicher, dass alle Argumente mit korrektem Typ vorhanden sind und zum korrekten Fragment navigiert wird.
-Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initialisieren von Benutzerelementen wie \textit{Bottom Navigations} und \textit{Hamburger Menus} übernehmen. 
+Zudem kann über Directions das Verhalten einer Navigation festgelegt werden.
+Darunter fallen beispielsweise Übergangsanimationen und ein Aufräumen des \textit{Android Backstacks}\footnote{Siehe \url{https://developer.android.com/guide/components/activities/tasks-and-back-stack}.}.
+Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initialisieren von Benutzerelementen wie \textit{Bottom Navigations}, \textit{Hamburger Menus} und \textit{Toolbars} übernehmen.
+
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{ConstraintLayout und SwiperefreshLayout}
