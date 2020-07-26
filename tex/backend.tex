@@ -33,7 +33,7 @@ Sowohl Dienste als auch Repositories liegen als Interfaces und Implementierungen
 \subsection{Authentifizierung}
 \label{subsec:backend:authentication}
 Um Administrator-Funktionen zu verwenden müssen sich Nutzer authentifizieren.
-Dies findet mit Hilfe von \textit{JSON Web Tokens}\footnote{Siehe \url{https://jwt.io/}.}, auch \textit{JWT} genannt, statt.
+Dies findet mithilfe von \textit{JSON Web Tokens}\footnote{Siehe \url{https://jwt.io/}.}, auch \textit{JWT} genannt, statt.
 Ein JWT wird nach einem erfolgreichen Login generiert, ist für 24 Stunden gültig und muss bei jeder Anfrage für Administrator-Funktionen enthalten sein.
 Einloggen können sich nur Nutzer, die über Administratorrechte verfügen, welche wiederum nur von Administratoren vergeben werden können.
 Bei jedem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{subsec:backend:configuration}).
@@ -43,7 +43,7 @@ Bei jedem Start generiert das Backend einen Standard\-administrator, welcher zuv
 \label{subsec:backend:database}
 Bei der MongoDB des Backends handelt es sich um eine dokumentenbasierte Datenbank.
 Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \autoref{sec:appendix:schemas}).
-Falls die über \textit{Docker Compose} vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mit Hilfe zweier Kommandozeilenbefehle sichern und wiederherstellen (siehe \autoref{sec:appendix:database}).
+Falls die über \textit{Docker Compose} vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mithilfe zweier Kommandozeilenbefehle sichern und wiederherstellen (siehe \autoref{sec:appendix:database}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Bibliotheken}
