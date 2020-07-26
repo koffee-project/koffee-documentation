@@ -54,7 +54,7 @@ Sie sind nach Transaktionszeitpunkten sortiert und geben Art, Wert und weitere D
 Durch Klicken auf Käufe oder Stornierungen wird zur Seite des zugehörigen Artikels navigiert.
 Wie bei allen Bildschirmen dieser App ist es zudem möglich die Seite durch eine \textit{Swipe-to-Refresh}-Geste zu aktualisieren.
 Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer (siehe \autoref{fig:app:functionality:history:statistics}).
-Auch hier ist es möglich durch Klicken auf einen Eintrag zur Seite des zugehörigen Artikels zu navigieren.
+Auch hier ist es möglich, durch Klicken auf einen Eintrag zur Seite des zugehörigen Artikels zu navigieren.
 \begin{figure}%
 	\centering
 	\subfloat[Historie]{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/history.png}\label{fig:app:functionality:history:history}}}%
@@ -121,7 +121,7 @@ Diese kommunizieren über eine Netzwerkschnittstelle mit der Serveranwendung um 
 So erhaltene Daten werden unmittelbar in die lokale Datenbank geschrieben und auch nur von dort aus geladen.
 Über diesen Mechanismus wird eine lokale Persistenz ermöglicht, wodurch Daten auch ohne Verbindung zum Server angezeigt werden können.
 Weil der Zustand eines Datenmodells ausschließlich vom zugehörigen Repository bestimmt wird, werden sie auch als \textit{Single source of truth} bezeichnet.
-Durch diese Eigenschaft ist es möglich inkonsistente Datenbestände zu verhindern.
+Durch diese Eigenschaft ist es möglich, inkonsistente Datenbestände zu verhindern.
 
 ViewModels passen von Repositories bereitgestellte Daten für Benutzeroberflächen an und stellen sie in Datencontainern bereit.
 Sie selbst haben keine Informationen über Benutzeroberflächen.
@@ -137,7 +137,7 @@ Stattdessen reagieren diese auf Änderungen an ViewModels und entscheiden selbst
 
 \subsection{Android Jetpack}
 \label{subsec:app:jetpack}
-Android Jetpack umfasst eine Reihe von Bibliotheken, welche dazu dienen die Entwicklung moderner Android Apps zu vereinfachen.
+Android Jetpack umfasst eine Reihe von Bibliotheken, welche dazu dienen, die Entwicklung moderner Android Apps zu vereinfachen.
 Dazu reduzieren sie beispielsweise den notwendigen \textit{Boilerplate Code} und vereinheitlichen Interaktionen mit dem Android Framework über verschiedene API Level hinweg.
 Des Weiteren existieren Komponenten, welche bereits umfassende Grundlagen der MVVM-Architektur implementieren oder komplexe Elemente für Benutzeroberflächen bereitstellen.
 
@@ -167,14 +167,14 @@ Core enthält hingegen Kompatibilitätskomponenten, welche Benachrichtigungen, B
 \label{subsubsec:app:jetpack:fragment}
 Fragmente sind modulare Teile von Benutzeroberflächen.
 Sie sind wiederverwendbar, leichtgewichtig und lassen sich in \textit{Activities} sowie anderen Fragmenten kombinieren um komplexe Benutzeroberflächen zu erstellen.
-Ihr Lebenszyklus wird vom Android Framework verwaltet, weshalb sich Entwickler nicht um diesen kümmern müssen.
-Darüber hinaus ist es möglich Fragmente dynamisch hinzuzufügen und zu entfernen.
+Ihr Lebenszyklus wird vom Android Framework verwaltet, weshalb Entwickler für diesen keinen Mehraufwand betreiben müssen.
+Darüber hinaus ist es möglich, Fragmente dynamisch hinzuzufügen und zu entfernen.
 Komplexe \textit{Layouts} lassen sich so in mehrere Fragmente unterteilen, welche unabhängig voneinander wiederverwendbar sind.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Databinding}
 \label{subsubsec:app:jetpack:databinding}
-Mit Hilfe der \textit{Databinding} Bibliothek ist es möglich Datenquellen für Eigenschaften von Benutzeroberflächen und deren Elemente, welche auch \textit{Views} genannt werden, in Layout-Dateien festzulegen.
+Mit Hilfe der \textit{Databinding} Bibliothek ist es möglich, Datenquellen für Eigenschaften von Benutzeroberflächen und deren Elemente, welche auch \textit{Views} genannt werden, in Layout-Dateien festzulegen.
 Dafür werden sogenannte \textit{BindingImplementations} generiert, welche die dafür benötigte Logik bereitstellen und zudem direkte Zugriffe auf Views ermöglichen.
 In Kombination mit \textit{LiveData} passen sich Benutzeroberflächen bei Änderungen automatisch an, wodurch der Anteil an Quelltext für Benutzeroberflächen reduziert wird.
 Zusätzlich lassen sich \textit{BindingAdapters} definieren.
@@ -225,7 +225,7 @@ Auf Grund der flachen Hierarchie von ConstraintLayouts ist ihre Performanz deutl
 Gleichzeitig können sich so erstelle Layouts an unterschiedliche Bildschirmgrößen und -orientierungen anpassen, wodurch Benutzeroberflächen flexibler entwickelt werden können.
 
 Bei mobilen Anwendungen gibt es die gängige \textit{Swipe-to-Refresh}-Geste zum Aktualisieren eines Bildschirms.
-Mit Hilfe von SwiperefreshLayout ist es möglich diese Funktionalität mit wenigen Zeilen Quelltext zu bestehenden Benutzeroberflächen hinzuzufügen.
+Mit Hilfe von SwiperefreshLayout ist es möglich, diese Funktionalität mit wenigen Zeilen Quelltext zu bestehenden Benutzeroberflächen hinzuzufügen.
 SwiperefreshLayout verfügt über die von vielen Google Apps verwendete Spinner Animation und ist mit scrollbaren Views und Layouts kompatibel.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -237,7 +237,7 @@ Zudem werden sie für andere Listenelemente wiederverwendet, sobald sie nicht me
 Durch dieses Konzept sind RecyclerViews performanter als beispielsweise \textit{ListViews} oder \textit{LinearLayouts}.
 Zur Interaktion mit RecyclerViews werden Adapter verwendet, welche Erzeugen von Container und Zuweise von Elementen definieren.
 Es stehen Hilfsklassen bereit, die bereits über einen Großteil der benötigten Logik verfügen.
-\textit{ListAdapter} ermöglicht es beispielsweise Listen direkt zu übergeben.
+\textit{ListAdapter} ermöglicht beispielsweise eine direkte Übergabe von Listen.
 Um Änderungen an Listeneinträgen zu erkennen werden in der Regel \textit{DiffCallbacks} verwendet.
 Diese sind in der Bibliothek enthalten und verwenden komplexe Algorithmen um Änderungen an Listen darzustellen, so dass nur betroffene Container aktualisiert werden müssen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
