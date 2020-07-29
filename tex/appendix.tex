@@ -1,24 +1,24 @@
 \begin{appendix}
 \appendixpage
 
-\section{Inbetriebnahme der Serveranwendung}
-\label{sec:appendix:instructions}
+\chapter{Inbetriebnahme der Serveranwendung}
+\label{ch:appendix:instructions}
 
-\subsection{Einsatz während der Entwicklung}
-\label{subsec:appendix:instructions:development}
+\section{Einsatz während der Entwicklung}
+\label{sec:appendix:instructions:development}
 \begin{enumerate}
 	\item \verb|./gradlew build|
-	\item Das benötigte Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
+	\item Das benötigte Docker Secret anlegen (siehe \autoref{sec:backend:configuration}).
 	\item \verb|docker-compose up --build -d|
 	\item Der Server ist nun unter \verb|http://localhost:8080| erreichbar.
 \end{enumerate}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Einsatz in der Produktion}
-\label{subsec:appendix:instructions:production}
+\section{Einsatz in der Produktion}
+\label{sec:appendix:instructions:production}
 \begin{enumerate}
 	\item \verb|./gradlew build|
-	\item Das benötigte Docker Secret anlegen (siehe \autoref{subsec:backend:configuration}).
+	\item Das benötigte Docker Secret anlegen (siehe \autoref{sec:backend:configuration}).
 	\item Den Wert von \verb|URL| in \verb|./environments/domain.env| auf eine valide Domäne ändern, über welche die Host-Maschine erreichbar ist.
 	\item Sicherstellen, dass die Host-Maschine über die Ports 80 und 443 erreichbar ist.
 	\item \verb|docker-compose -f docker-compose-prod.yml up --build -d|
@@ -26,28 +26,28 @@
 \end{enumerate}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\section{Datenbankverwaltung}
-\label{sec:appendix:database}
+\chapter{Datenbankverwaltung}
+\label{ch:appendix:database}
 
-\subsection{Datensicherung}
-\label{subsec:appendix:database:backup}
+\section{Datensicherung}
+\label{sec:appendix:database:backup}
 \begin{lstlisting}[language=Bash, breaklines=true]
 $ docker-compose exec -T mongo mongodump --archive --gzip --db koffee-database > dump.gz
 \end{lstlisting}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Datenwiederherstellung}
-\label{subsec:appendix:database:restore}
+\section{Datenwiederherstellung}
+\label{sec:appendix:database:restore}
 \begin{lstlisting}[language=Bash, breaklines=true]
 $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \end{lstlisting}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\section{Datenbankschemas}
-\label{sec:appendix:schemas}
+\chapter{Datenbankschemas}
+\label{ch:appendix:schemas}
 
-\subsection{User}
-\label{subsec:appendix:schemas:user}
+\section{User}
+\label{sec:appendix:schemas:user}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld         & Typ                                      & Anmerkung             \\ \toprule
@@ -60,8 +60,8 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:appendix:schemas:user}
 \end{table}
 
-\subsection{Profile Image}
-\label{subsec:appendix:schemas:profileimage}
+\section{Profile Image}
+\label{sec:appendix:schemas:profileimage}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld         & Typ    & Anmerkung                      \\ \toprule
@@ -72,8 +72,8 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:appendix:schemas:profileimage}
 \end{table}
 
-\subsection{Item}
-\label{subsec:appendix:schemas:item}
+\section{Item}
+\label{sec:appendix:schemas:item}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld   & Typ    & Anmerkung             \\ \toprule
@@ -85,8 +85,8 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:appendix:schemas:item}
 \end{table}
 
-\subsection{Transaction - Funding}
-\label{subsec:appendix:schemas:funding}
+\section{Transaction - Funding}
+\label{sec:appendix:schemas:funding}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld      & Typ    & Anmerkung                      \\ \toprule
@@ -97,8 +97,8 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:appendix:schemas:funding}
 \end{table}
 
-\subsection{Transaction - Purchase}
-\label{subsec:appendix:schemas:purchase}
+\section{Transaction - Purchase}
+\label{sec:appendix:schemas:purchase}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld      & Typ    & Anmerkung                       \\ \toprule
@@ -112,8 +112,8 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 	\label{tab:appendix:schemas:purchase}
 \end{table}
 
-\subsection{Transaction - Refund}
-\label{subsec:appendix:schemas:refund}
+\section{Transaction - Refund}
+\label{sec:appendix:schemas:refund}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
 		Feld      & Typ    & Anmerkung                     \\ \toprule
@@ -128,8 +128,8 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \end{table}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\section{Routen}
-\label{sec:appendix:routes}
+\chapter{Routen}
+\label{ch:appendix:routes}
 
 Alle Routen verwenden JSON um Daten zu senden und erhalten.
 Routen, welche eine zuvorige Authentifizierung voraussetzen, sind mit einem Sternchen (\verb|*|) gekennzeichnet.

@@ -1,11 +1,11 @@
-\section{Android App}
-\label{sec:app}
+\chapter{Android App}
+\label{ch:app}
 Kern dieser Projektarbeit ist die Android App, die als Benutzeroberfläche der digitalen Kaffeekasse dient.
 Sie basiert auf Grundlagen, welche durch Android Jetpack gelegt wurden.
 In diesem Kapitel werden Funktionalität, Architektur, verwendete Android Jetpack Komponenten und Bibliotheken sowie Konfiguration der App vorgestellt.
 
-\subsection{Funktionalität}
-\label{subsec:app:functionality}
+\section{Funktionalität}
+\label{sec:app:functionality}
 Beim erstmaligen Starten der App werden Nutzer gebeten ihren Account auszuwählen.
 Alternativ können sie den Modus für eine geteilte Verwendung starten, welcher am Ende diese Abschnittes erläutert wird.
 Der zugehörige Dialog ist in \autoref{fig:app:functionality:selection:dialog} zu sehen.
@@ -111,8 +111,8 @@ Sollten während einer Verwendung der App Fehler auftreten, werden Nutzer über 
 Parallel werden Fehlerbehebungen, wie das Entfernen veralteter Daten, automatisch durchgeführt.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Architektur}
-\label{subsec:app:architecture}
+\section{Architektur}
+\label{sec:app:architecture}
 Die App verwendet die von Google empfohlene \textit{Model-View-ViewModel} Architektur (\textit{MVVM}) \autocite{androidarchitecture}.
 Bei dieser wird die Anwendung in Datenmodell, Benutzeroberfläche und die sogenannten \textit{ViewModels} aufgeteilt (siehe \autoref{fig:app:architecture:mvvm}).
 
@@ -135,8 +135,8 @@ Stattdessen reagieren diese auf Änderungen an ViewModels und entscheiden selbst
 \end{figure}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Android Jetpack}
-\label{subsec:app:jetpack}
+\section{Android Jetpack}
+\label{sec:app:jetpack}
 Android Jetpack umfasst eine Reihe von Bibliotheken, welche dazu dienen, die Entwicklung moderner Android Apps zu vereinfachen.
 Dazu reduzieren sie beispielsweise den notwendigen \textit{Boilerplate Code} und vereinheitlichen Interaktionen mit dem Android Framework über verschiedene API Level hinweg.
 Des Weiteren existieren Komponenten, welche bereits umfassende Grundlagen der MVVM-Architektur implementieren oder komplexe Elemente für Benutzeroberflächen bereitstellen.
@@ -155,16 +155,16 @@ Diese werden kontinuierlich aktualisiert, erweitert und durch neue Bibliotheken 
 Im Folgenden werden die in dieser App verwendeten Android Jetpack Bibliotheken kurz vorgestellt. Detaillierte Informationen können der offiziellen Dokumentation entnommen werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Core und AppCompat}
-\label{subsubsec:app:jetpack:base}
+\subsection{Core und AppCompat}
+\label{subsec:app:jetpack:base}
 Die \textit{Core} und \textit{AppCompat} Bibliotheken ermöglichen eine Verwendung von Funktionen neuer Android API Level auf älteren Android Versionen.
 Dazu stellen sie eine Vielzahl an Hilfsklassen zur Verfügung, welche die unterschiedliche Behandlung der API Level verkapseln und die Entwicklung so vereinheitlichen und vereinfachen.
 Die Klasse \textit{AppCompatActivity} erlaubt beispielsweise eine Verwendung von \textit{ActionBars}, welche ohne sie auf älteren Android Versionen nicht möglich wäre.
 Core enthält hingegen Kompatibilitätskomponenten, welche Benachrichtigungen, Berechtigungen und weitere Interaktionen mit dem Android Framework über API Level hinweg vereinheitlichen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Fragment}
-\label{subsubsec:app:jetpack:fragment}
+\subsection{Fragment}
+\label{subsec:app:jetpack:fragment}
 Fragmente sind modulare Teile von Benutzeroberflächen.
 Sie sind wiederverwendbar, leichtgewichtig und lassen sich in \textit{Activities} sowie anderen Fragmenten kombinieren um komplexe Benutzeroberflächen zu erstellen.
 Ihr Lebenszyklus wird vom Android Framework verwaltet, weshalb Entwickler für diesen keinen Mehraufwand betreiben müssen.
@@ -172,8 +172,8 @@ Darüber hinaus ist es möglich, Fragmente dynamisch hinzuzufügen und zu entfer
 Komplexe \textit{Layouts} lassen sich so in mehrere Fragmente unterteilen, welche unabhängig voneinander wiederverwendbar sind.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Databinding}
-\label{subsubsec:app:jetpack:databinding}
+\subsection{Databinding}
+\label{subsec:app:jetpack:databinding}
 Mithilfe der \textit{Databinding} Bibliothek ist es möglich, Datenquellen für Eigenschaften von Benutzeroberflächen und deren Elemente, welche auch \textit{Views} genannt werden, in Layout-Dateien festzulegen.
 Dafür werden sogenannte \textit{BindingImplementations} generiert, welche die dafür benötigte Logik bereitstellen und zudem direkte Zugriffe auf Views ermöglichen.
 In Kombination mit \textit{LiveData} passen sich Benutzeroberflächen bei Änderungen automatisch an, wodurch der Anteil an Quelltext für Benutzeroberflächen reduziert wird.
@@ -183,8 +183,8 @@ Sie können in Layout-Dateien verwendet werden um benutzerdefiniertes Verhalten 
 Zum Beispiel kann ein BindingAdapter definiert werden, welcher in Abhängigkeit eines Parameters Views aus- und einblendet.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Lifecycle}
-\label{subsubsec:app:jetpack:lifecycle}
+\subsection{Lifecycle}
+\label{subsec:app:jetpack:lifecycle}
 Die \textit{Lifecycle} Bibliothek umfasst primär ViewModels und LiveData, aber auch allgemeine Komponenten zum Verwalten und Implementieren von Lebenszyklen.
 
 Jetpack ViewModels werden vom Android Framework verwaltet.
@@ -199,8 +199,8 @@ Entwickler müssen deshalb keine Referenzen entfernen oder auf andere Art und We
 LiveData übernimmt diesen Aspekt, welcher bei inkorrekter Behandlung leicht zu \textit{Memory Leaks} führen kann.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Navigation}
-\label{subsubsec:app:jetpack:navigation}
+\subsection{Navigation}
+\label{subsec:app:jetpack:navigation}
 Fragmente können mit Argumenten erzeugt werden.
 Dabei ist jedoch keine Typsicherheit garantiert und es gibt keinen Mechanismus, der die Vollständigkeit von Argumenten sicherstellt.
 Die \textit{Navigation} Bibliothek löst beide Probleme durch Navigationsgraphen.
@@ -213,8 +213,8 @@ Darüber hinaus unterstützt die Bibliothek Navigationscontroller, die das Initi
 
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{ConstraintLayout und SwiperefreshLayout}
-\label{subsubsec:app:jetpack:layouts}
+\subsection{ConstraintLayout und SwiperefreshLayout}
+\label{subsec:app:jetpack:layouts}
 Android Jetpack umfasst auch mehrere Layout-Bibliotheken.
 Im Rahmen dieses Projektes wurden \textit{ConstraintLayout} und \textit{SwiperefreshLayout} verwendet.
 
@@ -229,8 +229,8 @@ Mithilfe von SwiperefreshLayout ist es möglich, diese Funktionalität mit wenig
 SwiperefreshLayout verfügt über die von vielen Google Apps verwendete Spinner Animation und ist mit scrollbaren Views und Layouts kompatibel.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{RecyclerView}
-\label{subsubsec:app:jetpack:recyclerview}
+\subsection{RecyclerView}
+\label{subsec:app:jetpack:recyclerview}
 \textit{RecyclerViews} ermöglichen ein Anzeigen von langen Listen, ohne dass Speicherverbrauch oder Performanz leiden.
 Dies ist möglich, indem nicht mehr Container für Listenelemente erzeugt werden, als gleichzeitig darstellbar sind. 
 Zudem werden sie für andere Listenelemente wiederverwendet, sobald sie nicht mehr sichtbar sind.
@@ -242,8 +242,8 @@ Um Änderungen an Listeneinträgen zu erkennen werden in der Regel \textit{DiffC
 Diese sind in der Bibliothek enthalten und verwenden komplexe Algorithmen um Änderungen an Listen darzustellen, so dass nur betroffene Container aktualisiert werden müssen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Room}
-\label{subsubsec:app:jetpack:room}
+\subsection{Room}
+\label{subsec:app:jetpack:room}
 Bei \textit{Room} handelt es sich um eine Abstraktionsebene für \textit{SQLite} Datenbanken.
 Datenbankinteraktionen werden dabei in \textit{Data Access Objects}, auch \textit{DAOs} genannt, über Annotationen an Funktionen definiert.
 Bei DAOs handelt es sich um \textit{Interfaces}, deren Implementierungen von Room generiert werden.
@@ -254,8 +254,8 @@ Darüber hinaus können Datenbanktransaktionen programmatisch definiert und Konf
 Room unterstützt zudem benutzerdefinierte Migrationsstrategien, wodurch Aktualisierungen von Datenbankschemas erleichtert werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Paging}
-\label{subsubsec:app:jetpack:paging}
+\subsection{Paging}
+\label{subsec:app:jetpack:paging}
 Das Laden großer Datenmengen aus Datenbanken oder Netzwerkquellen ist ein nicht zu unterschätzender Aufwand.
 Die \textit{Paging} Bibliothek ermöglicht deshalb ein stückweises Laden von Datensätzen.
 Dazu muss eine \textit{DataSource Factory} vorliegen, welche dieses Konzept unterstützt.
@@ -265,8 +265,8 @@ Diese besonderen Listen lassen sich unter anderem mit RecyclerViews und \textit{
 Im Endeffekt können so Performanz und Speicherverbrauch verbessert werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Work}
-\label{subsubsec:app:jetpack:work}
+\subsection{Work}
+\label{subsec:app:jetpack:work}
 Hintergrundaufgaben, wie beispielsweise das Bereinigen von Datenbanken, können über die \textit{Work} Bibliothek verwaltet werden.
 Die zu erledigende Arbeit wird in \textit{Worker}-Klassen definiert, welche optional Coroutines verwenden können um vollständig asynchron ausgeführt zu werden.
 Beim Registrieren von Worker-Instanzen können Einschränkungen definiert werden, welche Zustände, Zeitpunkte und Intervalle von Ausführungen festlegen.
@@ -274,8 +274,8 @@ So kann sichergestellt werden, dass beispielsweise eine Internetverbindung beste
 Im Endeffekt erlaubt die Bibliothek so eine benutzerfreundliche Ausführung von Aufgaben, welche im Hintergrund stattfinden sollen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{KTX}
-\label{subsubsec:app:jetpack:extensions}
+\subsection{KTX}
+\label{subsec:app:jetpack:extensions}
 Kotlin ist die von Google empfohlene Sprache für Android-Entwicklung \autocite{androidkotlin}.
 Sie zeichnet sich unter anderem dadurch aus, dass sie im Vergleich zu Java deutlich weniger verbos und in der Regel entsprechend kürzer ist.
 Eine Vielzahl an Android Jetpack Bibliotheken liegen in \textit{KTX}-Varianten vor.
@@ -285,47 +285,47 @@ Des Weiteren existieren zahlreiche Methoden zum Erzeugen von ViewModels und Live
 Auch Kotlin-spezifische Sprachkonstrukte wie \textit{Delegated Properties} und \textit{Coroutines} werden von Jetpack unterstützt, um die Entwicklung mit Kotlin weiter zu verbessern.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Weitere Bibliotheken}
-\label{subsec:app:bibs}
+\section{Weitere Bibliotheken}
+\label{sec:app:bibs}
 Im Rahmen der App-Entwicklung wurden auch Bibliotheken verwendet, welche nicht Teil von Android Jetpack sind.
 Im Folgenden werden ihre Funktionen und Verwendungsgründe vorgestellt.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Retrofit und Moshi}
-\label{subsubsec:app:bibs:retrofitmoshi}
+\subsection{Retrofit und Moshi}
+\label{subsec:app:bibs:retrofitmoshi}
 Über \textit{Retrofit} können abstrakte Methoden zum Anbinden von APIs definiert werden.
 Entwickler müssen dazu Informationen über die Art von Anfragen angeben.
 Implementierungen dieser Methoden werden von der Bibliothek generiert.
 In Kombination mit der Serialisierungsbibliothek \textit{Moshi} können so Netzwerkschnittstellen mit geringem Quelltextaufwand angebunden werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Glide}
-\label{subsubsec:app:bibs:glide}
+\subsection{Glide}
+\label{subsec:app:bibs:glide}
 \textit{Glide} übernimmt das asynchrone Laden und Darstellen von Bildern.
 Dabei lassen sich Einstellungen für Verhalten und Darstellung anpassen.
 Unter anderem kann Glide Bilder für schnelleres Laden zwischenspeichern, zuschneiden und während einem Ladevorgang durch Platzhalter ersetzen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Image Picker}
-\label{subsubsec:app:bibs:imagepicker}
+\subsection{Image Picker}
+\label{subsec:app:bibs:imagepicker}
 Die Bibliothek \textit{Image Picker} ermöglicht die Auswahl von Bildern zur Laufzeit, die Nutzer entweder aus ihrer Galerie auswählen oder mit ihrer Kamera aufnehmen können.
 Eine äquivalente Funktionalität zu implementieren ist mit nicht-trivialem Aufwand verbunden, weshalb eine Verwendung existierender Bibliotheken die Entwicklung verkürzte.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{PrettyTime}
-\label{subsubsec:app:bibs:prettytime}
+\subsection{PrettyTime}
+\label{subsec:app:bibs:prettytime}
 \textit{PrettyTime} wird verwendet um Zeitstempel in ein für Menschen lesbares Format zu transformieren.
 Die Bibliothek unterstützt mehrere Sprachen, unter anderem Deutsch sowie Englisch, und erspart Entwicklern so das Übersetzen und Formatieren.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Timber}
-\label{subsubsec:app:bibs:timber}
+\subsection{Timber}
+\label{subsec:app:bibs:timber}
 Bei \textit{Timber} handelt es sich um eine Bibliothek die das Protokollieren vereinfacht, Nachrichten mit zusätzlichen Informationen wie beispielsweise ihrem Ursprung ausgibt und jegliche Protokollierung außerhalb der Entwicklungsphase deaktiviert.
 So ist es während der Entwicklung möglich schnell detaillierte Protokollnachrichten zu verfassen, welche bei der Suche nach Fehlern helfen und keine Auswirkung auf ausgelieferte Endprodukte haben.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Konfiguration}
-\label{subsec:app:configuration}
+\section{Konfiguration}
+\label{sec:app:configuration}
 Zur Konfiguration muss die Adresse der Serveranwendung angepasst werden.
 Dies findet über den Wert des Feldes \verb|KOFFEE_BACKEND_URL|, in der Datei \verb|build.gradle|, statt.
 Eine weitere Konfiguration ist nicht notwendig.

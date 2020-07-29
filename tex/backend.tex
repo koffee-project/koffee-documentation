@@ -1,21 +1,21 @@
-\section{Serveranwendung}
-\label{sec:backend}
+\chapter{Serveranwendung}
+\label{ch:backend}
 Das Backend wurde, wie auch die App, mit der Programmiersprache Kotlin entwickelt.
 Es handelt sich dabei um eine \textit{REST}-Schnittstelle\footnote{Siehe \url{https://restfulapi.net/}.}, die dazu dient den Zustand der digitalen Kaffeekasse zu verwalten.
 Die folgenden Abschnitte stellen Funktionalität, Architektur, Authentifizierung, verwendete Bibliotheken sowie Konfiguration und Inbetriebnahme des Backends vor.
 %------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
-\subsection{Funktionalität}
-\label{subsec:backend:functionality}
-Alle Funktionen des Backends sind über eine Vielzahl von Routen verwendbar (siehe \autoref{sec:appendix:routes}).
+\section{Funktionalität}
+\label{sec:backend:functionality}
+Alle Funktionen des Backends sind über eine Vielzahl von Routen verwendbar (siehe \autoref{ch:appendix:routes}).
 Nach erfolgreicher Authentifizierung können Administratoren Nutzer sowie Artikel erstellen, aktualisieren und löschen.
 Zudem können Administratoren Guthabenaufladungen durchführen.
 Ohne Authentifizierung ist es möglich, Artikel zu kaufen und Käufe innerhalb einer Minute zu stornieren.
 Zudem können Nutzer Profilbilder hochladen und löschen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Architektur}
-\label{subsec:backend:architecture}
+\section{Architektur}
+\label{sec:backend:architecture}
 Das Backend verwendet eine serviceorientierte Architektur.
 Dabei werden Anfragen an Dienste weitergeleitet.
 Antworten von Diensten enthalten Informationen über die Ergebnisse von Aktionen, wie Statuscodes, Daten oder Fehlermeldungen, und werden an Kommunikationspartner weitergeleitet.
@@ -30,31 +30,31 @@ Die gegebenen Implementierungen der Nutzer-, Profilbild- und Artikel-Repositorie
 Sowohl Dienste als auch Repositories liegen als Interfaces und Implementierungen vor, um separates Testen zu ermöglichen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Authentifizierung}
-\label{subsec:backend:authentication}
+\section{Authentifizierung}
+\label{sec:backend:authentication}
 Um Administrator-Funktionen zu verwenden müssen sich Nutzer authentifizieren.
 Dies findet mithilfe von \textit{JSON Web Tokens}\footnote{Siehe \url{https://jwt.io/}.}, auch \textit{JWT} genannt, statt.
 Ein JWT wird nach einem erfolgreichen Login generiert, ist für 24 Stunden gültig und muss bei jeder Anfrage für Administrator-Funktionen enthalten sein.
 Einloggen können sich nur Nutzer, die über Administratorrechte verfügen, welche wiederum nur von Administratoren vergeben werden können.
-Bei jedem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{subsec:backend:configuration}).
+Bei jedem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{sec:backend:configuration}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Datenbank}
-\label{subsec:backend:database}
+\section{Datenbank}
+\label{sec:backend:database}
 Bei der MongoDB des Backends handelt es sich um eine dokumentenbasierte Datenbank.
-Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \autoref{sec:appendix:schemas}).
-Falls die über \textit{Docker Compose} vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mithilfe zweier Kommandozeilenbefehle sichern und wiederherstellen (siehe \autoref{sec:appendix:database}).
+Die von ihr verwendete Schemas entsprechen deshalb denen der im Quelltext definierten Klassen (siehe \autoref{ch:appendix:schemas}).
+Falls die über \textit{Docker Compose} vorkonfigurierte MongoDB verwendet wird, lassen sich Daten mithilfe zweier Kommandozeilenbefehle sichern und wiederherstellen (siehe \autoref{ch:appendix:database}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Bibliotheken}
-\label{subsec:backend:bibs}
+\section{Bibliotheken}
+\label{sec:backend:bibs}
 Um die Entwicklung des Backends zu beschleunigen wurden mehrere Open Source Bibliotheken verwendet.
 Diese werden im Folgenden kurz vorgestellt.
 Zusätzliche Informationen können den jeweiligen Projektseiten entnommen werden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Ktor}
-\label{subsubsec:backend:bibs:ktor}
+\subsection{Ktor}
+\label{subsec:backend:bibs:ktor}
 \textit{Ktor}, ein \textit{Web Framework} vom Entwickler der Sprache Kotlin, bildet die Grundlage des Backends.
 Ktor verwendet eine \textit{Domain Specific Language}, auch \textit{DSL} genannt, zum Definieren von Modulen.
 Solche Module können in der Serveranwendung installiert werden um ein erwünschtes Verhalten zu erreichen.
@@ -64,42 +64,42 @@ Ktor zeichnet sich zudem dadurch aus, dass es vollständig asynchron arbeitet un
 Dadurch können Entwickler asynchronen und performanten Quelltext schreiben, ohne zusätzliche Sprachkonstrukte zu verwenden.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Koin}
-\label{subsubsec:backend:bibs:koin}
+\subsection{Koin}
+\label{subsec:backend:bibs:koin}
 \textit{Koin} ist ein Framework für \textit{Dependency Injection}, mit dem einzelne Komponenten des Servers unabhängig von ihrem Einsatzort initialisiert werden können.
 So ist es möglich Instanzen von Diensten sowie Repositories wiederzuverwenden und den für Instanziierung benötigten Quelltext zu minimieren.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{KMongo}
-\label{subsubsec:backend:bibs:kmongo}
+\subsection{KMongo}
+\label{subsec:backend:bibs:kmongo}
 Die \textit{KMongo} Bibliothek ermöglicht eine simple Verwendung von \textit{Mongo}-Datenbanken in Kotlin.
 Dies erreicht sie durch automatische Serialisierung, Unterstützung für Kotlin Coroutines und programmatische, typsichere Anfragen.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{jBCrypt}
-\label{subsubsec:backend:bibs:jbcrypt}
+\subsection{jBCrypt}
+\label{subsec:backend:bibs:jbcrypt}
 Das Backend muss Passwörter sicher in der Datenbank ablegen.
 Dafür müssen diese mit einer geeigneten \textit{Hash}-Funktion transformiert werden.
 Die Bibliothek \textit{jBCrypt} enthält solche Funktionen.
 Darüber hinaus ermöglicht sie auch das anschließende Überprüfen von Passwörtern.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Arkenv}
-\label{subsubsec:backend:bibs:arkenv}
+\subsection{Arkenv}
+\label{subsec:backend:bibs:arkenv}
 Zur Konfiguration des Backends an eine Einsatzumgebung müssen einige Parameter, wie die Adresse der Datenbank, gesetzt werden.
 \textit{Arkenv} erlaubt es diese Umgebungsvariablen programmatisch und typsicher zu definieren, so dass die Fehleranfälligkeit beim Einlesen reduziert wird.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Docker Secrets}
-\label{subsubsec:backend:bibs:dockersecrets}
+\subsection{Docker Secrets}
+\label{subsec:backend:bibs:dockersecrets}
 Neben Umgebungsvariablen müssen auch sensible Daten, wie die Zugangsinformationen des Standardadministrators, festgelegt werden.
 Um diese zu schützen werden beim \textit{Deployment} des Backends mit Docker sogenannte \textit{Secrets} verwendet, welche nur das Backend selbst einsehen kann.
 Da es sich dabei um Dateien handelt ist das Einlesen ihrer Informationen mit einer Syntaxanalyse verbunden.
 Die leichtgewichtige Bibliothek \textit{Docker Secrets} übernimmt diesen Aufwand und lädt Parameter von Dateien in \textit{Maps}.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Konfiguration und Inbetriebnahme}
-\label{subsec:backend:configuration}
+\section{Konfiguration und Inbetriebnahme}
+\label{sec:backend:configuration}
 Um das Backend an Einsatzumgebungen anzupassen sollten einige Parameter konfiguriert werden.
 Dies findet über \verb|.env|-Dateien statt, welche sich in dem \verb|environments|-Ordner des Hauptverzeichnisses befinden.
 Dort werden die Adressen von Server und Datenbank sowie Eigenschaften der Zertifizierung festgelegt.
@@ -115,5 +115,5 @@ HMAC_SECRET=geheimeZeichenkette
 \end{lstlisting}
 Um das Backend in Betrieb zu nehmen müssen zuerst der \verb|URL|-Parameter in der Datei \verb|domain.env| angepasst und die \verb|.secret|-Datei angelegt werden.
 Nachdem das Projekt mit dem Befehl \verb|./gradlew build| erzeugt wurde, kann die Serveranwendung über Docker Compose gestartet werden.
-Schrittweise Anleitungen zur Inbetriebnahme befinden sich im Anhang (siehe \autoref{sec:appendix:instructions}).
+Schrittweise Anleitungen zur Inbetriebnahme befinden sich im Anhang (siehe \autoref{ch:appendix:instructions}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
