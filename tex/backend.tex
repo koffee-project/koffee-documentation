@@ -86,8 +86,10 @@ Dies erreicht sie durch automatische Serialisierung, Unterstützung für Kotlin 
 \label{subsec:backend:bibs:jbcrypt}
 Das Backend muss Passwörter sicher in der Datenbank ablegen.
 Dafür müssen diese mit einer geeigneten \textit{Hash}-Funktion transformiert werden.
-Die Bibliothek \textit{jBCrypt} enthält solche Funktionen.
-Darüber hinaus ermöglicht sie auch das anschließende Überprüfen von Passwörtern.
+Die Bibliothek \textit{jBCrypt} implementiert die bewährte  \textit{bcrypt}-Hash-Funktionen und stellt zudem einen \textit{Salt}-Generator bereit.
+bcrypt setzt auf einen skalierenden Berechnungsaufwand, um das Entschlüsseln von Passwörtern möglichst aufwändig zu gestalten.
+Es gilt deshalb als sicher und für die Zukunft gewappnet \autocite{bcrypt}.
+Darüber hinaus ermöglicht jBCrypt auch das Überprüfen von Passwörtern während einer Authentifizierung.
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Arkenv}
