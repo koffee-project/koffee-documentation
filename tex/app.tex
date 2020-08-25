@@ -9,11 +9,11 @@ In diesem Kapitel werden Funktionalität, Architektur, verwendete Android Jetpac
 Beim erstmaligen Starten der App werden Nutzer gebeten ihren Account auszuwählen.
 Alternativ können sie den Modus für eine geteilte Verwendung starten, welcher am Ende diese Abschnittes erläutert wird.
 Der zugehörige Dialog ist in \autoref{fig:app:functionality:selection:dialog} zu sehen.
-\begin{figure}%
+\begin{figure}[!htbp]%
 	\centering
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/greetings-dialog.png}\label{fig:app:functionality:selection:dialog}}}%
+	\subfloat[Begrüßungsdialog]{{\includegraphics[height=7.5cm,keepaspectratio]{./img/screenshots/greetings-dialog.png}\label{fig:app:functionality:selection:dialog}}}%
 	\qquad
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/user-search.png}\label{fig:app:functionality:selection:search}}}%
+	\subfloat[Nutzerauswahl]{{\includegraphics[height=7.5cm,keepaspectratio]{./img/screenshots/user-search.png}\label{fig:app:functionality:selection:search}}}%
 	\caption{Begrüßungsdialog und Nutzerauswahl}%
 	\label{fig:app:functionality:selection}%
 \end{figure}
@@ -22,59 +22,43 @@ Die Nutzerauswahl zeigt eine Liste aller existierenden Nutzer an und ermöglicht
 Suchergebnisse werden unmittelbar angezeigt und benötigen keine zusätzlichen Eingaben (siehe \autoref{fig:app:functionality:selection:search}).
 Nachdem ein Nutzer durch Klicken ausgewählt wurde, öffnet sich die Hauptseite der App.
 Dort werden Informationen des ausgewählten Nutzers und verfügbare Artikel angezeigt.
-Auch diese lassen sich analog zu Nutzern filtern und durch klicken auswählen, wie in \autoref{fig:app:functionality:home:search} sichtbar.
-Falls eine stornierbare Transaktion vorliegt wird diese ebenfalls hier angezeigt (siehe \autoref{fig:app:functionality:home:transaction}).
+Auch diese lassen sich analog zu Nutzern filtern und durch klicken auswählen;
+Falls eine stornierbare Transaktion vorliegt wird diese ebenfalls hier angezeigt (siehe \autoref{fig:app:functionality:main:home}).
 Durch Klicken auf das Profilbild, beziehungsweise dessen Platzhalter, kann dieses bearbeitet oder entfernt werden.
-\begin{figure}%
-	\centering
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/home-fragment.png}\label{fig:app:functionality:home:search}}}%
-	\qquad
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/home-fragment-transaction.png}\label{fig:app:functionality:home:transaction}}}%
-	\caption{Hauptseite}%
+\begin{figure}[!htbp]%
+	\centering%
+	\subfloat[Hauptseite]{{\includegraphics[height=7.5cm,keepaspectratio]{./img/screenshots/home-fragment-transaction.png}\label{fig:app:functionality:main:home}}}%
+	\qquad%
+	\subfloat[Artikelseite]{{\includegraphics[height=7.5cm,keepaspectratio]{./img/screenshots/item-purchased.png}\label{fig:app:functionality:main:item}}}%
+	\caption{Haupt- und Artikelseite}%
 	\label{fig:app:functionality:home}%
 \end{figure}
 
 Die Artikelseite zeigt neben Preis und Name des Artikels auch alle Transaktionen des aktiven Nutzers an, die zu einem Artikel gehören.
 Falls es sich um einen Artikel mit begrenztem Bestand handelt, wird auch dieser angezeigt und bei Transaktionen aktualisiert.
-Zudem können Stornierungen auch von der Seite des betroffenen Artikels durchgeführt werden, wie in \autoref{fig:app:functionality:item} zu sehen ist.
+Zudem können Stornierungen auch von der Seite des betroffenen Artikels durchgeführt werden, wie in \autoref{fig:app:functionality:main:item} zu sehen ist.
 Wie auch bei der Hauptseite, ist die Option nur während des gültigen Zeitrahmens von 60 Sekunden verfügbar und verschwindet selbstständig nach Ablaufen der Zeit.
-\begin{figure}%
-	\centering
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/item-purchased.png}\label{fig:app:functionality:item:purchase}}}%
-	\qquad
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/item-refunded.png}\label{fig:app:functionality:item:refund}}}%
-	\caption{Artikelseite}%
-	\label{fig:app:functionality:item}%
-\end{figure}
 
 Eine Übersicht über alle Transaktionen können sich Nutzer mit der Historie verschaffen.
 Diese ist, wie auch Haupt-, Statistik- und Einstellungsseiten, über eine Navigationsleiste am unteren Bildschirmrand erreichbar.
 Die Historie zeigt eine vollständige Liste aller Transaktionen, die der ausgewählte Nutzer getätigt hat.
-Sie sind nach Transaktionszeitpunkten sortiert und geben Art, Wert und weitere Details der Transaktion an, wie in \autoref{fig:app:functionality:history:history} abgebildet ist.
+Sie sind nach Transaktionszeitpunkten sortiert und geben Art, Wert und weitere Details der Transaktion an, wie in \autoref{fig:app:functionality:secondary:history} abgebildet ist.
 Durch Klicken auf Käufe oder Stornierungen wird zur Seite des zugehörigen Artikels navigiert.
 Wie bei allen Bildschirmen dieser App ist es zudem möglich die Seite durch eine \textit{Swipe-to-Refresh}-Geste zu aktualisieren.
-Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer (siehe \autoref{fig:app:functionality:history:statistics}).
+Auf der Statistikseite finden sich Angaben zu Anzahl und letzten Kaufzeitpunkten pro Artikel vom aktiven Nutzer.
 Auch hier ist es möglich, durch Klicken auf einen Eintrag zur Seite des zugehörigen Artikels zu navigieren.
-\begin{figure}%
+\begin{figure}[!htb]%
 	\centering
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/history.png}\label{fig:app:functionality:history:history}}}%
+	\subfloat[Historie]{{\includegraphics[height=7.5cm,keepaspectratio]{./img/screenshots/history.png}\label{fig:app:functionality:secondary:history}}}%
 	\qquad
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/statistics.png}\label{fig:app:functionality:history:statistics}}}%
-	\caption{Historie und Statistiken}%
-	\label{fig:app:functionality:history}%
+	\subfloat[Einstellungen]{{\includegraphics[height=7.5cm,keepaspectratio]{./img/screenshots/settings-admin.png}\label{fig:app:functionality:secondary:settings}}}%
+	\caption{Historie und Einstellungen}%
+	\label{fig:app:functionality:secondary}%
 \end{figure}
 
-Die Einstellungen umfassen neben Optionen zur erneuten Nutzerauswahl und Starten des geteilten Modus auch die Administrator-Funktionen (siehe \autoref{fig:app:functionality:settings:settings}).
-Diese sind jedoch erst nach einem Login zugänglich, welcher über die in \autoref{fig:app:functionality:settings:login} gezeigte Seite stattfindet.
-\begin{figure}%
-	\centering
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/settings-admin.png}\label{fig:app:functionality:settings:settings}}}%
-	\qquad
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/login.png}\label{fig:app:functionality:settings:login}}}%
-	\caption{Einstellungen und Login}%
-	\label{fig:app:functionality:settings}%
-\end{figure}
-Die Buttons \textit{MANAGE USERS} und \textit{MANAGE ITEMS} öffnen Seiten, welche jeweils denen der Nutzer- und Artikelauswahl entsprechen.
+Die Einstellungen umfassen neben Optionen zur erneuten Nutzerauswahl und Starten des geteilten Modus auch die Administrator-Funktionen (siehe \autoref{fig:app:functionality:secondary:settings}).
+Diese sind jedoch erst nach einem Login zugänglich, welcher über eine eigene Seite stattfindet.
+Die Buttons "`MANAGE  USERS"' und "`MANAGE ITEMS"' öffnen Seiten, welche jeweils denen der Nutzer- und Artikelauswahl entsprechen.
 Sie verfügen jedoch über zusätzliche Buttons, die Seiten zum Erstellen neuer Nutzer beziehungsweise Artikel öffnen.
 \autoref{fig:app:functionality:admin:create} zeigt die Nutzervariante dieser Seite.
 Felder, welche als optional markiert sind, müssen nicht ausgefüllt werden.
@@ -82,19 +66,17 @@ IDs können beispielsweise von der Serveranwendung vergeben werden.
 Um einen Nutzer oder Artikel zu bearbeiten muss auf diesen geklickt werden.
 Während sich bei Artikeln eine erweiterte Ansicht der Artikelseite öffnet, haben Administratoren eine besondere Ansicht für Nutzer (siehe \autoref{fig:app:functionality:admin:user}).
 Dort sehen sie alle Transaktionen, können Profilbildern bearbeiten sowie löschen und haben die Möglichkeit Guthaben aufzuladen.
-Letzteres wird dann über eine eigene Seite, welche in \autoref{fig:app:functionality:admin:crediting} zu sehen ist, durchgeführt.
+Letzteres wird über eine eigene Seite durchgeführt.
 Sowohl bei Nutzern als auch bei Artikeln gibt es Optionen zum Löschen und Bearbeiten der gesamten Entität.
 Aufbau der Bearbeitungsseiten entspricht denen der Seiten zum Erstellen, wie in \autoref{fig:app:functionality:admin:edit} zu sehen ist.
 Beim Löschen müssen zwei Dialoge bestätigt werden um sicherzustellen, dass die Aktion bewusst stattfindet.
-\begin{figure}%
+\begin{figure}[!htb]%
 	\centering
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/create-user.png}\label{fig:app:functionality:admin:create}}}%
+	\subfloat[Nutzer erstellen]{{\includegraphics[height=7.5cm,keepaspectratio]{./img/screenshots/create-user.png}\label{fig:app:functionality:admin:create}}}%
 	\qquad
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/user-admin-view.png}\label{fig:app:functionality:admin:user}}}%
+	\subfloat[Administrator-Ansicht]{{\includegraphics[height=7.5cm,keepaspectratio]{./img/screenshots/user-admin-view.png}\label{fig:app:functionality:admin:user}}}%
 	\qquad
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/crediting.png}\label{fig:app:functionality:admin:crediting}}}%
-	\qquad
-	\subfloat{{\includegraphics[height=8cm,keepaspectratio]{./img/screenshots/edit-item.png}\label{fig:app:functionality:admin:edit}}}%
+	\subfloat[Artikel bearbeiten]{{\includegraphics[height=7.5cm,keepaspectratio]{./img/screenshots/edit-item.png}\label{fig:app:functionality:admin:edit}}}%
 	\caption{Administrator-Funktionen}%
 	\label{fig:app:functionality:admin}%
 \end{figure}
@@ -116,6 +98,13 @@ MVVM wurde 2005 von Microsoft vorgestellt.
 Ziel war es, Quelltext zum Verwalten von Benutzeroberflächen zu reduzieren und falls möglich gänzlich zu eliminieren.
 Essentiell dafür ist das \textit{Binding}-Konzept (siehe \autoref{subsec:app:jetpack:databinding}).
 
+\begin{figure}[!htb]%
+	\centering
+	\includegraphics[height=8cm,keepaspectratio]{./img/android-architecture.png}
+	\caption{MVVM-Entwurfsmuster in Android \autocite{androidarchitecture}}
+	\label{fig:app:architecture:mvvm}
+\end{figure}
+
 Die Ebene des Datenmodells liegt in Form von \textit{Repositories} vor.
 Diese kommunizieren über eine Netzwerkschnittstelle mit der Serveranwendung um Daten zu laden oder Aktionen wie Käufe und Logins durchzuführen.
 So erhaltene Daten werden unmittelbar in die lokale Datenbank geschrieben und auch nur von dort aus geladen.
@@ -130,13 +119,6 @@ Bei Android liegen Benutzeroberflächen in Form von Fragmenten und Activities vo
 
 Die strikte Trennung der Schichten ermöglicht ein Testen der Geschäftslogik, ohne Benutzeroberflächen zu verwenden.
 Gleichzeitig ist es so möglich Logik unabhängig von der konkreten Benutzeroberfläche wiederzuverwenden.
-
-\begin{figure}
-	\centering
-	\includegraphics[height=8cm,keepaspectratio]{./img/android-architecture.png}
-	\caption{MVVM-Entwurfsmuster in Android \autocite{androidarchitecture}}
-	\label{fig:app:architecture:mvvm}
-\end{figure}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Android Jetpack}
