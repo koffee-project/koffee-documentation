@@ -34,7 +34,13 @@ Sowohl Dienste als auch Repositories liegen als Interfaces und Implementierungen
 \label{sec:backend:authentication}
 Um Administrator-Funktionen zu verwenden müssen sich Nutzer authentifizieren.
 Dies findet mithilfe von \textit{JSON Web Tokens}\footnote{Siehe \url{https://jwt.io/}.}, auch \textit{JWT} genannt, statt.
-Ein JWT wird nach einem erfolgreichen Login generiert, ist für 24 Stunden gültig und muss bei jeder Anfrage für Administrator-Funktionen enthalten sein.
+Diese bestehen aus Header, Payload und Signatur.
+Die Teile enthalten Informationen über den zur Signierung verwendeten Algorithmus, (Meta-)Daten sowie die errechnete Signatur.
+Letztere kann zum Verifizieren von JWTs verwendet werden.
+So ist es möglich sicherzustellen, dass Nachrichten vom erwarteten Absender stammen und nicht manipuliert wurden.
+
+Das Backend generiert JWTs nach erfolgreichen Logins.
+Sie sind für 24 Stunden gültig und müssen bei jeder Anfrage für Administrator-Funktionen enthalten sein.
 Einloggen können sich nur Nutzer, die über Administratorrechte verfügen, welche wiederum nur von Administratoren vergeben werden können.
 Bei jedem Start generiert das Backend einen Standard\-administrator, welcher zuvor festgelegte Daten besitzt (siehe \autoref{sec:backend:configuration}).
 %------------------------------------------------------------------------------------------------------------------------------------------------------
