@@ -55,19 +55,19 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 		name         & String                                   &                       \\ \midrule
 		isAdmin      & Boolean                                  & Erlaubt Authentifizierung \\ \midrule
 		password     & String                                   & Optional              \\ \midrule
-		transactions & List\textless{}Transaction\textgreater{} & Verwendet Polymorphie \\ \bottomrule
+		transactions & List\textless{}Transaction\textgreater{} & Verwendet Polymorphie \\ \midrule
+		profileImage & ProfileImage                             & Optional              \\ \bottomrule
 	\end{tabular*}
 	\label{tab:appendix:schemas:user}
 \end{table}
 
-\section{Profile Image}
+\section{ProfileImage}
 \label{sec:appendix:schemas:profileimage}
 \begin{table}[H]
 	\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}ll}
-		Feld         & Typ    & Anmerkung                      \\ \toprule
-		id           & String & Muss einer User-ID entsprechen \\ \midrule
-		encodedImage & String & Base64-Kodierung               \\ \midrule
-		timestamp    & Long   &                                \\ \bottomrule
+		Feld         & Typ    & Anmerkung        \\ \toprule
+		encodedImage & String & Base64-Kodierung \\ \midrule
+		timestamp    & Long   &                  \\ \bottomrule
 	\end{tabular*}
 	\label{tab:appendix:schemas:profileimage}
 \end{table}
