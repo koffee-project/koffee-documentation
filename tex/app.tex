@@ -112,6 +112,9 @@ Parallel werden Fehlerbehebungen, wie das Entfernen veralteter Daten, automatisc
 \label{sec:app:architecture}
 Die App verwendet die von Google empfohlene \textit{Model-View-ViewModel} Architektur (\textit{MVVM}) \autocite{androidarchitecture}.
 Bei dieser wird die Anwendung in Datenmodell, Benutzeroberfläche und die sogenannten \textit{ViewModels} aufgeteilt (siehe \autoref{fig:app:architecture:mvvm}).
+MVVM wurde 2005 von Microsoft vorgestellt.
+Ziel war es, Quelltext zum Verwalten von Benutzeroberflächen zu reduzieren und falls möglich gänzlich zu eliminieren.
+Essentiell dafür ist das \textit{Binding}-Konzept (siehe \autoref{subsec:app:jetpack:databinding}).
 
 Die Ebene des Datenmodells liegt in Form von \textit{Repositories} vor.
 Diese kommunizieren über eine Netzwerkschnittstelle mit der Serveranwendung um Daten zu laden oder Aktionen wie Käufe und Logins durchzuführen.
@@ -123,6 +126,10 @@ Durch diese Eigenschaft ist es möglich, inkonsistente Datenbestände zu verhind
 ViewModels passen von Repositories bereitgestellte Daten für Benutzeroberflächen an und stellen sie in Datencontainern bereit.
 Sie selbst haben keine Informationen über Benutzeroberflächen.
 Stattdessen reagieren diese auf Änderungen an ViewModels und entscheiden selbst über die Datenanzeige.
+Bei Android liegen Benutzeroberflächen in Form von Fragmenten und Activities vor.
+
+Die strikte Trennung der Schichten ermöglicht ein Testen der Geschäftslogik, ohne Benutzeroberflächen zu verwenden.
+Gleichzeitig ist es so möglich Logik unabhängig von der konkreten Benutzeroberfläche wiederzuverwenden.
 
 \begin{figure}
 	\centering
