@@ -128,13 +128,13 @@ $ docker-compose exec -T mongo mongorestore --archive --gzip < dump.gz
 \end{table}
 %------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\chapter{Routen}
+\chapter{Endpunkte}
 \label{ch:appendix:routes}
 
-Alle Routen verwenden JSON um Daten zu senden und erhalten.
-Routen, welche eine zuvorige Authentifizierung voraussetzen, sind mit einem Sternchen (\verb|*|) gekennzeichnet.
+Alle Endpunkte verwenden JSON um Daten zu senden und erhalten.
+Endpunkte, welche eine zuvorige Authentifizierung voraussetzen, sind mit einem Sternchen (\verb|*|) gekennzeichnet.
 Es werden keine \textit{Query}-Parameter verwendet.
-Felder eventuell benötigter \textit{Body}-Parameter sind unter den jeweiligen Routen aufgelistet.
+Felder eventuell benötigter \textit{Body}-Parameter sind unter den jeweiligen Endpunkten aufgelistet.
 
 \begin{description}
 	\item[POST /login] Authentifiziert einen Nutzer und gibt im Erfolgsfall einen JWT zurück.
